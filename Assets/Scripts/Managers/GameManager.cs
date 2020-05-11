@@ -1,18 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+namespace DeepWolf.SpaceSurvivor.Managers
 {
-    // Start is called before the first frame update
-    void Start()
+    public class GameManager : MonoSingleton<GameManager>
     {
-        
-    }
+        [SerializeField]
+        private string levelSceneName = "Level";
 
-    // Update is called once per frame
-    void Update()
-    {
+        [SerializeField]
+        private string mainSceneName = "MainMenu";
         
+        public void LoadLevel() => SceneManager.LoadScene(levelSceneName);
+        
+        public void LoadMainScene() => SceneManager.LoadScene(mainSceneName);
     }
 }
