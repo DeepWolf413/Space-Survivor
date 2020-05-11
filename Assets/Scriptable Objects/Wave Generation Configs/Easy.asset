@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a94417cf53440e280ee2146b96b4547, type: 3}
+  m_Name: Easy
+  m_EditorClassIdentifier: 
+  seed: 72472
+  enemies:
+  - prefab: {fileID: 6176004399441913443, guid: 1edd5dd240b8de64884ac4d177f480fc,
+      type: 3}
+    pointsToSpawn: 1
+  - prefab: {fileID: 6176004399441913443, guid: f60fa8298d2d552428a826448ec9f542,
+      type: 3}
+    pointsToSpawn: 3
+  - prefab: {fileID: 6176004399441913443, guid: 4e3f868a2ded9a44386c2356042a04c4,
+      type: 3}
+    pointsToSpawn: 5
+  - prefab: {fileID: 6176004399441913443, guid: 2a1bd415f4cbc274187dfc9c1f74e63d,
+      type: 3}
+    pointsToSpawn: 8
+  - prefab: {fileID: 6176004399441913443, guid: d5bae0e13343cc54183642020e73fca0,
+      type: 3}
+    pointsToSpawn: 10
+  pointsPerWave: 5
+  startingPoints: 5
+  maxPoints: 25
+  asteroidsEventSpawnDelayRange: {x: 30, y: 45}
+  asteroidSpawnDelay: 1
+  asteroidSpawnCountRange: {x: 10, y: 15}
