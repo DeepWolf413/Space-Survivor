@@ -26,6 +26,7 @@ namespace DeepWolf.SpaceSurvivor
         public void PlaySoundAtPosition(AudioClip clip, Vector3 position, float radius, ESoundType soundType)
         {
             AudioSource audioSource = GetAvailableAudioSource();
+            audioSource.gameObject.SetActive(true);
             audioSource.transform.position = position;
             audioSource.clip = clip;
             audioSource.spatialBlend = 1.0f;
@@ -51,6 +52,7 @@ namespace DeepWolf.SpaceSurvivor
         public void PlayGlobalSound(AudioClip clip, ESoundType soundType)
         {
             AudioSource audioSource = GetAvailableAudioSource();
+            audioSource.gameObject.SetActive(true);
             audioSource.clip = clip;
             audioSource.spatialBlend = 0.0f;
             audioSource.maxDistance = 5000;
