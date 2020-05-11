@@ -19,7 +19,13 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         private void Awake() => cachedRigidbody = GetComponent<Rigidbody2D>();
 
         private void Start()
-        { target = GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>(); }
+        {
+            GameObject playerObject = GameObject.FindWithTag("Player");
+            if (!playerObject)
+            { return; }
+            
+            target = playerObject.GetComponent<Rigidbody2D>();
+        }
 
         private void FixedUpdate()
         {

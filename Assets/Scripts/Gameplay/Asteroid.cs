@@ -20,10 +20,13 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 
         private void OnEnable()
         {
-            Transform player = GameObject.FindWithTag("Player").transform;
+            GameObject playerObject = GameObject.FindWithTag("Player");
+            if (!playerObject)
+            { return; }
+            
             float travelSpeed = Random.Range(travelSpeedRange.x, travelSpeedRange.y);
             
-            cachedRigidbody.velocity = (player.position - transform.position).normalized * travelSpeed;
+            cachedRigidbody.velocity = (playerObject.transform.position - transform.position).normalized * travelSpeed;
             cachedRigidbody.angularVelocity = angularVelocity;
         }
     }
