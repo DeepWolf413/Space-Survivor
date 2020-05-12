@@ -20,12 +20,17 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         [SerializeField]
         private Shooter shooterComponent = null;
 
+        [SerializeField]
+        private Health shipHealthComponent = null;
+
         private Camera cachedCamera = null;
 
         /// <summary>
         /// Gets or sets a <see cref="bool"/> that determines whether to process input or not.
         /// </summary>
         public bool DetectInput { get; set; } = true;
+
+        #region Unity callbacks
 
         private void OnValidate()
         {
@@ -34,9 +39,17 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             
             if (!shooterComponent)
             { shooterComponent = GetComponent<Shooter>(); }
+
+            if (!shipHealthComponent)
+            { shipHealthComponent = GetComponent<Health>(); }
         }
 
         private void Awake() => cachedCamera = Camera.main;
+
+        private void OnEnable()
+        {
+            shipHealthComponent.OnDeath += OnShipDead;
+        }
 
         private void Update()
         {
@@ -45,6 +58,8 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             
             ProcessInput();
         }
+
+        #endregion
 
         private void ProcessInput()
         {
@@ -76,5 +91,11 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         }
 
         private Vector3 GetDirectionToMouse() => cachedCamera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        
+        #region Event listeners
+        
+        private void OnShipDead() => GameEvents.SignalPlayerShipDestroyed();
+        
+        #endregion
     }
 }

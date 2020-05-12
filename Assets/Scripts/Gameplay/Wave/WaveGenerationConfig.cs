@@ -22,6 +22,10 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         [SerializeField, Tooltip("The maximum amount of points that a wave can have.")]
         private int maxPoints = 25;
 
+        [FormerlySerializedAs("waveSpawnDelay")]
+        [SerializeField]
+        private float nextWaveStartDelay = 10.0f;
+
         [SerializeField]
         private Vector2 enemySpawnDelayRange = new Vector2(1.2f, 3.0f);
 
@@ -56,6 +60,11 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         /// Gets the maximum amount of points that a wave can have.
         /// </summary>
         public int MaxPoints => maxPoints;
+
+        /// <summary>
+        /// Gets the wave spawn delay.
+        /// </summary>
+        public float NextWaveStartDelay => nextWaveStartDelay;
 
         /// <summary>
         /// Gets the asteroid spawn delay.

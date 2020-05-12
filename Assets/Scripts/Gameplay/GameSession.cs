@@ -18,7 +18,6 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         private float gameStartedTime = 0.0f;
         private float gameEndedTime = 0.0f;
         private int pointsForSpawning = 0;
-        private int enemiesLeftInWave = 0;
         
         private bool isGameInProgress = false;
         
@@ -57,15 +56,9 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             StartGame();
         }
 
-        private void OnEnable()
-        {
-            GameEvents.EnemyShipDestroyed += OnEnemyShipDestroyed;
-        }
+        private void OnEnable() => GameEvents.PlayerShipDestroyed += OnPlayerShipDestroyed;
 
-        private void OnDisable()
-        {
-            GameEvents.EnemyShipDestroyed -= OnEnemyShipDestroyed;
-        }
+        private void OnDisable() => GameEvents.PlayerShipDestroyed -= OnPlayerShipDestroyed;
 
         private void Update()
         {
@@ -89,8 +82,12 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 
         private void EndGame()
         {
-            StopCoroutine(waveSpawningCoroutine);
-            StopCoroutine(asteroidEventCoroutine);
+            if (waveSpawningCoroutine != null)
+            { StopCoroutine(waveSpawningCoroutine); }
+
+            if (asteroidEventCoroutine != null)
+            { StopCoroutine(asteroidEventCoroutine); }
+            
             CancelInvoke(nameof(StartNextWave));
             gameEndedTime = Time.time;
 
@@ -101,17 +98,10 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         private void StartNextWave()
         {
             currentWave = generationConfig.GenerateWave(currentWave == null ? 1 : currentWave.Number + 1, pointsForSpawning);
-            enemiesLeftInWave = currentWave.GetEnemySpawnCount();
-            
+            pointsForSpawning = Mathf.Clamp(pointsForSpawning + generationConfig.PointsPerWave, generationConfig.StartingPoints, generationConfig.MaxPoints);
             waveSpawningCoroutine = StartCoroutine(SpawnWave());
         }
-
-        private void CompleteWave()
-        {
-            pointsForSpawning = Mathf.Clamp(pointsForSpawning + generationConfig.PointsPerWave, generationConfig.StartingPoints, generationConfig.MaxPoints);
-            Invoke(nameof(StartNextWave), 3.5f);
-        }
-
+        
         private IEnumerator SpawnAsteroidEvent()
         {
             GameEvents.SignalAsteroidsEventSpawned();
@@ -141,6 +131,9 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
                 
                 currentEnemyIndex++;
             }
+            
+            // Start the next wave after the delay
+            Invoke(nameof(StartNextWave), generationConfig.NextWaveStartDelay);
         }
 
         /// <summary>
@@ -150,12 +143,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         
         #region Event listeners
 
-        private void OnEnemyShipDestroyed()
-        {
-            enemiesLeftInWave--;
-            if (enemiesLeftInWave <= 0)
-            { CompleteWave(); }
-        }
+        private void OnPlayerShipDestroyed() => EndGame();
 
         #endregion
     }
