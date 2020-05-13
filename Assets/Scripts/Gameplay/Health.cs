@@ -22,9 +22,13 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         #region Properties
 
         /// <summary>
-        /// Gets the maximum health.
+        /// Gets or sets the maximum health.
         /// </summary>
-        public float MaxHealth => maxHealth;
+        public float MaxHealth
+        {
+            get => maxHealth;
+            set => maxHealth = value;
+        }
         
         /// <summary>
         /// Gets or sets(private) the current health.
@@ -123,6 +127,8 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             CurrentHealth += amount;
             HealApplied?.Invoke(CurrentHealth, CurrentHealth - oldHealth);
         }
+
+        public void ResetHealth() => CurrentHealth = MaxHealth;
 
         #endregion
         

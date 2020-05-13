@@ -1,4 +1,6 @@
 ﻿using System;
+using DeepWolf.SpaceSurvivor.Data;
+using DeepWolf.SpaceSurvivor.Managers;
 using UnityEngine;
 
 namespace DeepWolf.SpaceSurvivor.Gameplay
@@ -23,6 +25,9 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         [SerializeField]
         private Health shipHealthComponent = null;
 
+        [SerializeField]
+        private SpriteRenderer spriteRenderer = null;
+
         private Camera cachedCamera = null;
 
         /// <summary>
@@ -42,14 +47,18 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 
             if (!shipHealthComponent)
             { shipHealthComponent = GetComponent<Health>(); }
+
+            if (!spriteRenderer)
+            { spriteRenderer = GetComponent<SpriteRenderer>(); }
         }
 
         private void Awake() => cachedCamera = Camera.main;
 
-        private void OnEnable()
-        {
-            shipHealthComponent.OnDeath += OnShipDead;
-        }
+        private void Start() => LoadShipData();
+
+        private void OnEnable() => shipHealthComponent.OnDeath += OnShipDead;
+        
+        private void OnDisable() => shipHealthComponent.OnDeath -= OnShipDead;
 
         private void Update()
         {
@@ -60,6 +69,21 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         }
 
         #endregion
+
+        private void LoadShipData()
+        {
+            GameManager gameManager = GameManager.Instance;
+            if (!gameManager || !gameManager.SelectedPlayerShip)
+            { return; }
+
+            PlayerShipData shipData = gameManager.SelectedPlayerShip;
+            
+            spriteRenderer.sprite = shipData.Sprite;
+            shipHealthComponent.MaxHealth = shipData.Health;
+            movementComponent.ThrusterPower = shipData.Speed;
+            
+            shipHealthComponent.ResetHealth();
+        }
 
         private void ProcessInput()
         {

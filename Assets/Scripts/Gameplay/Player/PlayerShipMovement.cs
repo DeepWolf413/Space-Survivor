@@ -21,6 +21,25 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         private Rigidbody2D cachedRigidbody = null;
         private Transform cachedTransform = null;
 
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the thruster power.
+        /// </summary>
+        public float ThrusterPower
+        {
+            get => thrusterPower;
+            set
+            {
+                if (value < 0)
+                { thrusterPower = 0; }
+                else
+                { thrusterPower = value; }
+            }
+        }
+
+        #endregion
+
         private void Awake()
         {
             cachedRigidbody = GetComponent<Rigidbody2D>();
