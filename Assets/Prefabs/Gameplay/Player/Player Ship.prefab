@@ -5027,7 +5027,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 6724847676137897107, guid: 65e7a1a285b19354bb049ba9ae91172d,
     type: 3}
   shootPoint: {fileID: 9041642233029674936}
-  fireRate: 0.1
+  fireRate: 0.12
   shootSfx: {fileID: 8300000, guid: 809eab1153d64a94a95c9ee0de67aeb8, type: 3}
 --- !u!114 &9041642232271611302
 MonoBehaviour:
