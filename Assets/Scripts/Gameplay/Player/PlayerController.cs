@@ -1,5 +1,4 @@
-﻿using System;
-using DeepWolf.SpaceSurvivor.Data;
+﻿using DeepWolf.SpaceSurvivor.Data;
 using DeepWolf.SpaceSurvivor.Managers;
 using UnityEngine;
 
@@ -8,43 +7,25 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
     public class PlayerController : MonoBehaviour
     {
         [SerializeField]
-        private string moveHorizontalName = "Horizontal";
+        private PlayerInputModule inputModule = new PlayerInputModule();
 
-        [SerializeField]
-        private string moveVerticalName = "Vertical";
-
-        [SerializeField]
-        private string shootName = "Shoot";
-
+        [Header("[Cached Components]")]
         [SerializeField]
         private PlayerShipMovement movementComponent = null;
 
         [SerializeField]
         private Shooter shooterComponent = null;
-
+        
         [SerializeField]
         private Health shipHealthComponent = null;
 
         [SerializeField]
         private SpriteRenderer spriteRenderer = null;
 
-        private Camera cachedCamera = null;
-
-        /// <summary>
-        /// Gets or sets a <see cref="bool"/> that determines whether to process input or not.
-        /// </summary>
-        public bool DetectInput { get; set; } = true;
-
         #region Unity callbacks
 
         private void OnValidate()
         {
-            if (!movementComponent)
-            { movementComponent = GetComponent<PlayerShipMovement>(); }
-            
-            if (!shooterComponent)
-            { shooterComponent = GetComponent<Shooter>(); }
-
             if (!shipHealthComponent)
             { shipHealthComponent = GetComponent<Health>(); }
 
@@ -52,7 +33,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             { spriteRenderer = GetComponent<SpriteRenderer>(); }
         }
 
-        private void Awake() => cachedCamera = Camera.main;
+        private void Awake() => inputModule.Initialize(movementComponent, shooterComponent);
 
         private void Start() => LoadShipData();
 
@@ -60,16 +41,13 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         
         private void OnDisable() => shipHealthComponent.OnDeath -= OnShipDead;
 
-        private void Update()
-        {
-            if (!DetectInput)
-            { return; }
-            
-            ProcessInput();
-        }
+        private void Update() => inputModule.ProcessInput();
 
         #endregion
 
+        /// <summary>
+        /// Loads the ship data from the selected player ship that is stored on the <see cref="GameManager"/>.
+        /// </summary>
         private void LoadShipData()
         {
             GameManager gameManager = GameManager.Instance;
@@ -85,37 +63,6 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             shipHealthComponent.ResetHealth();
         }
 
-        private void ProcessInput()
-        {
-            if (movementComponent)
-            { ProcessMovementInput(); }
-
-            if (shooterComponent)
-            { ProcessShootInput(); }
-        }
-
-        private void ProcessMovementInput()
-        {
-            if (Input.GetAxisRaw(moveVerticalName) > 0.0f)
-            { movementComponent.StartMove(); }
-            else
-            { movementComponent.StopMove(); }
-
-            movementComponent.LookTowards(GetDirectionToMouse());
-            //movementComponent.Turn(Input.GetAxisRaw(moveHorizontalName));
-        }
-
-        private void ProcessShootInput()
-        {
-            if (Input.GetButtonDown(shootName))
-            { shooterComponent.BeginShooting(); }
-            
-            if (Input.GetButtonUp(shootName))
-            { shooterComponent.StopShooting(); }
-        }
-
-        private Vector3 GetDirectionToMouse() => cachedCamera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        
         #region Event listeners
         
         private void OnShipDead() => GameEvents.SignalPlayerShipDestroyed();
