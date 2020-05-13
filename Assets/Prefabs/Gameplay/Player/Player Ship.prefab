@@ -31,7 +31,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7213605420919767682}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5104270837205393342
 MonoBehaviour:
@@ -74,6 +74,67 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clipToPlay: {fileID: 8300000, guid: d72949eba57711a4cb21688f8661c9d9, type: 3}
+--- !u!1 &3702142913038684840
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8220928228463630306}
+  - component: {fileID: 7737845245633787223}
+  - component: {fileID: 5690154270887318098}
+  m_Layer: 0
+  m_Name: Healed Feedback
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8220928228463630306
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3702142913038684840}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7213605420919767682}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7737845245633787223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3702142913038684840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51f31585f081b424fa523e16b00a8708, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  feedbacks:
+  - {fileID: 5690154270887318098}
+--- !u!114 &5690154270887318098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3702142913038684840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b88b1f0243b7b5649a700a59e4d1b6c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 9041642232271611308}
+  flashColor: {r: 0, g: 1, b: 0.1634264, a: 1}
+  duration: 0.15
 --- !u!1 &4596827336958546439
 GameObject:
   m_ObjectHideFlags: 0
@@ -4856,6 +4917,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1347310460350369343}
+  - {fileID: 8220928228463630306}
   - {fileID: 994167043246306290}
   m_Father: {fileID: 9041642232271611299}
   m_RootOrder: 2
@@ -4920,7 +4982,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 9041642232271611308}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  duration: 0.1
+  duration: 0.15
 --- !u!1 &9041642232271611311
 GameObject:
   m_ObjectHideFlags: 0
