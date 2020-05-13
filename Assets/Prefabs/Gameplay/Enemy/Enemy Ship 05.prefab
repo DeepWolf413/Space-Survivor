@@ -94,7 +94,17 @@ PrefabInstance:
     - target: {fileID: 4357913513997015993, guid: 7066622ab46216640bf304cb9485eea4,
         type: 3}
       propertyPath: damageToApply
-      value: 20
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4357913513997015994, guid: 7066622ab46216640bf304cb9485eea4,
+        type: 3}
+      propertyPath: startHealth
+      value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 4357913513997015994, guid: 7066622ab46216640bf304cb9485eea4,
+        type: 3}
+      propertyPath: maxHealth
+      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 4357913513997015997, guid: 7066622ab46216640bf304cb9485eea4,
         type: 3}

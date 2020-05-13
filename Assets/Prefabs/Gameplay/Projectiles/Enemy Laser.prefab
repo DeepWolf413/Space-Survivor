@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 371ce3d1c01d22446a4715cfbd1b796a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageToApply: 25
+  damageToApply: 15
   tagToDamage: Player
 --- !u!50 &6724847676137897106
 Rigidbody2D:
