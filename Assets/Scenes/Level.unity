@@ -6685,6 +6685,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 3886740562572298447, guid: cbc8b50dbc083724ea797c87d10f996a,
+        type: 3}
+      propertyPath: selectedPlayerShip
+      value: 
+      objectReference: {fileID: 11400000, guid: fe935568fc577b9468fe5f0a2e7cfee8,
+        type: 2}
     - target: {fileID: 4839153429089627734, guid: cbc8b50dbc083724ea797c87d10f996a,
         type: 3}
       propertyPath: m_LocalPosition.x

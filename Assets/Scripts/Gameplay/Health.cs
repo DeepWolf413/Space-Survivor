@@ -1,4 +1,5 @@
 ﻿using System;
+using DeepWolf.SpaceSurvivor.Gameplay.Feedbacks;
 using UnityEngine;
 
 namespace DeepWolf.SpaceSurvivor.Gameplay
@@ -12,10 +13,10 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         private float maxHealth = 100.0f;
 
         [SerializeField]
-        private GameObject deathFX = null;
-
+        private FeedbackPlayer damagedFeedback = null;
+        
         [SerializeField]
-        private AudioClip deathSFX = null;
+        private FeedbackPlayer dieFeedback = null;
 
         private float currentHealth = 100.0f;
 
@@ -119,6 +120,11 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 
             if (IsDead)
             { Die(); }
+            else
+            {
+                if (damagedFeedback)
+                { damagedFeedback.Play(); }
+            }
         }
 
         public void Heal(float amount)
@@ -136,12 +142,9 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 
         private void Die()
         {
-            if (deathSFX)
-            { SoundManager.Instance.PlayGlobalSound(deathSFX, ESoundType.Sfx); }
+            if (dieFeedback)
+            { dieFeedback.Play(); }
 
-            if (deathFX)
-            { Instantiate(deathFX, transform.position, Quaternion.identity); }
-            
             OnDeath?.Invoke();
             Destroy(gameObject);
         }
