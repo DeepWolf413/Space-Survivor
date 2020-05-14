@@ -134,6 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 9041642232271611308}
   flashColor: {r: 0, g: 1, b: 0.1634264, a: 1}
+  flashAmount: 2
   duration: 0.15
 --- !u!1 &4596827336958546439
 GameObject:
@@ -4982,7 +4983,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 9041642232271611308}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  duration: 0.15
+  flashAmount: 2
+  duration: 0.1
 --- !u!1 &9041642232271611311
 GameObject:
   m_ObjectHideFlags: 0

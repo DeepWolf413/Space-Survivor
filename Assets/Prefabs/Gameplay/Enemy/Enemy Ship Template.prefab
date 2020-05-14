@@ -92,7 +92,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 4357913513997015998}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  duration: 0.15
+  flashAmount: 2
+  duration: 0.1
 --- !u!1 &4357913513331614342
 GameObject:
   m_ObjectHideFlags: 0
