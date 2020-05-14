@@ -33,6 +33,8 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 
         public float TimeSinceGameStarted => Time.time - gameStartedTime;
 
+        public float EndTime => gameEndedTime - gameStartedTime;
+
         #endregion
 
         #region Events
@@ -41,6 +43,8 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         public event Action GameEnded = delegate { }; 
 
         #endregion
+
+        #region Unity callbacks
 
         private void OnValidate()
         {
@@ -68,6 +72,8 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             if (nextAsteroidEvent <= Time.time && asteroidEventCoroutine == null)
             { asteroidEventCoroutine = StartCoroutine(SpawnAsteroidEvent()); }
         }
+
+        #endregion
 
         private void StartGame()
         {
