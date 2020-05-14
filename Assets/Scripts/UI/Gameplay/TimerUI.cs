@@ -11,6 +11,8 @@ namespace DeepWolf.SpaceSurvivor.UI
 
         private GameSession gameSession = null;
 
+        private void OnDisable() => CancelInvoke(nameof(RefreshTimer));
+
         private void Start()
         {
             gameSession = FindObjectOfType<GameSession>();
