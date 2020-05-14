@@ -74,6 +74,12 @@ namespace DeepWolf.SpaceSurvivor
         {
             for (int i = 0; i < pool.Count; i++)
             {
+                if (!pool[i])
+                {
+                    pool.Clear();
+                    break;
+                }
+                
                 if (!pool[i].gameObject.activeSelf)
                 { return pool[i]; }
             }
