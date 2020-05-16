@@ -96,12 +96,18 @@ namespace DeepWolf.SpaceSurvivor.UI
         private void OnHealthChanged(float current, float old)
         {
             RefreshHealth();
+
+            DOTween.Complete(healthBar.transform);
+            healthBar.transform.localScale = Vector3.one;
             healthBar.transform.DOPunchScale(new Vector3(0.2f, 0.2f), 0.3f);
         }
         
         private void OnShieldChanged(float current, float old)
         {
             RefreshShield();
+            
+            DOTween.Complete(shieldBar.transform);
+            shieldBar.transform.localScale = Vector3.one;
             shieldBar.transform.DOPunchScale(new Vector3(0.2f, 0.2f), 0.3f);
         }
 
