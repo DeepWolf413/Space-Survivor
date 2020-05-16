@@ -101,6 +101,16 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 4357913513997015994, guid: 7066622ab46216640bf304cb9485eea4,
+        type: 3}
+      propertyPath: startValue
+      value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 4357913513997015994, guid: 7066622ab46216640bf304cb9485eea4,
+        type: 3}
+      propertyPath: maxValue
+      value: 125
+      objectReference: {fileID: 0}
     - target: {fileID: 4357913513997015997, guid: 7066622ab46216640bf304cb9485eea4,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
