@@ -26,7 +26,6 @@ namespace DeepWolf.SpaceSurvivor.UI
             }
 
             timeLabel.text = GetFormattedTimer(gameSession.EndTime);
-            spaceCreditsLabel.text = 4929.ToString();
         }
 
         private string GetFormattedTimer(float timeInSeconds)
