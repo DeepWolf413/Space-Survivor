@@ -1,4 +1,5 @@
-﻿using DeepWolf.SpaceSurvivor.Data;
+﻿using System;
+using DeepWolf.SpaceSurvivor.Data;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,6 +24,12 @@ namespace DeepWolf.SpaceSurvivor.Managers
         public int PlayerShipCount => playerShips.Length;
         
         public PlayerShipData SelectedPlayerShip => selectedPlayerShip;
+
+        #endregion
+
+        #region Unity callbacks
+
+        private void Start() => Cursor.lockState = CursorLockMode.Confined;
 
         #endregion
         
