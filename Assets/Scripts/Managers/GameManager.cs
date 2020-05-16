@@ -27,12 +27,6 @@ namespace DeepWolf.SpaceSurvivor.Managers
 
         #endregion
 
-        #region Unity callbacks
-
-        private void Start() => Cursor.lockState = CursorLockMode.Confined;
-
-        #endregion
-        
         #region Player ship methods
 
         public PlayerShipData GetPlayerShipById(int id)
