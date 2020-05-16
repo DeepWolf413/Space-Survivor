@@ -49,4 +49,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fe935568fc577b9468fe5f0a2e7cfee8, type: 2}
   - {fileID: 11400000, guid: 07c41a4f641a3ac47a9265871931cb56, type: 2}
   - {fileID: 11400000, guid: 2ca91b14d3cf9ba4da2dd1d9202f3ec7, type: 2}
-  selectedPlayerShip: {fileID: 11400000, guid: 2ca91b14d3cf9ba4da2dd1d9202f3ec7, type: 2}
+  selectedPlayerShip: {fileID: 11400000, guid: fe935568fc577b9468fe5f0a2e7cfee8, type: 2}
