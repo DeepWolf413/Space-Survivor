@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4285115171092916788}
   - component: {fileID: 2025468005564463865}
   m_Layer: 0
-  m_Name: Die Feedback
+  m_Name: Health Die Feedback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 7737845245633787223}
   - component: {fileID: 5690154270887318098}
   m_Layer: 0
-  m_Name: Healed Feedback
+  m_Name: Health Heal Feedback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4920,9 +4920,72 @@ Transform:
   - {fileID: 1347310460350369343}
   - {fileID: 8220928228463630306}
   - {fileID: 994167043246306290}
+  - {fileID: 3710763464158911041}
   m_Father: {fileID: 9041642232271611299}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7557408327401804975
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3710763464158911041}
+  - component: {fileID: 3190222699354682351}
+  - component: {fileID: 3776216715701987143}
+  m_Layer: 0
+  m_Name: Shield Damage Feedback
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3710763464158911041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7557408327401804975}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7213605420919767682}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3190222699354682351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7557408327401804975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51f31585f081b424fa523e16b00a8708, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  feedbacks:
+  - {fileID: 3776216715701987143}
+--- !u!114 &3776216715701987143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7557408327401804975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b88b1f0243b7b5649a700a59e4d1b6c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 9041642232271611308}
+  flashColor: {r: 0, g: 0.5623102, b: 1, a: 1}
+  flashAmount: 2
+  duration: 0.1
 --- !u!1 &8902843481553956314
 GameObject:
   m_ObjectHideFlags: 0
@@ -4935,7 +4998,7 @@ GameObject:
   - component: {fileID: 4485868621298186641}
   - component: {fileID: 8639464610269845631}
   m_Layer: 0
-  m_Name: Damaged Feedback
+  m_Name: Health Damage Feedback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4996,7 +5059,9 @@ GameObject:
   - component: {fileID: 9041642232271611299}
   - component: {fileID: 9041642232271611303}
   - component: {fileID: 9041642232271611300}
+  - component: {fileID: 6650941861013105095}
   - component: {fileID: 9041642232271611297}
+  - component: {fileID: 771543837080935149}
   - component: {fileID: 9041642232271611296}
   - component: {fileID: 9041642232271611302}
   - component: {fileID: 9041642232271611298}
@@ -5060,6 +5125,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageToApply: 15
   tagToDamage: Enemy
+--- !u!114 &6650941861013105095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9041642232271611311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db432660edb64f04bdc6b7a333fe7433, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthComponent: {fileID: 9041642232271611297}
+  shieldComponent: {fileID: 771543837080935149}
 --- !u!114 &9041642232271611297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5072,10 +5151,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94cb221d662f12c449c56afc890bcf7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 100
-  maxHealth: 100
+  startValue: 100
+  maxValue: 100
   damagedFeedback: {fileID: 4485868621298186641}
   dieFeedback: {fileID: 5104270837205393342}
+--- !u!114 &771543837080935149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9041642232271611311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01be49cd4ca4cab41a89f660549c9904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startValue: 100
+  maxValue: 100
+  damagedFeedback: {fileID: 3190222699354682351}
+  depletedFeedback: {fileID: 0}
 --- !u!114 &9041642232271611296
 MonoBehaviour:
   m_ObjectHideFlags: 0

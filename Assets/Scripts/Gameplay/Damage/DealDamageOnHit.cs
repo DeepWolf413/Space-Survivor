@@ -14,8 +14,10 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         {
             if (tagToDamage != string.Empty && !other.CompareTag(tagToDamage))
             { return; }
-            
-            if (other.TryGetComponent(out Health healthComponent))
+
+            if (other.TryGetComponent(out ShipVitalsController shipVitals))
+            { shipVitals.ApplyDamage(damageToApply); }
+            else if (other.TryGetComponent(out Health healthComponent))
             { healthComponent.ApplyDamage(damageToApply); }
         }
     }

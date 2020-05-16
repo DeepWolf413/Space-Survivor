@@ -15,6 +15,8 @@ namespace DeepWolf.SpaceSurvivor.UI
 
         private Health healthComponent = null;
         
+        private Shield shieldComponent = null;
+        
         [SerializeField]
         private CanvasGroup cachedCanvasGroup = null;
 
@@ -32,27 +34,32 @@ namespace DeepWolf.SpaceSurvivor.UI
             if (!playerObject.TryGetComponent(out healthComponent))
             { Debug.LogError("Could not find Health component on player object."); }
             
-            /* TODO: Implement shield component.
-             if (!playerObject.TryGetComponent(out shieldComponent))
+            if (!playerObject.TryGetComponent(out shieldComponent))
             { Debug.LogError("Could not find Shield component on player object."); }
-             */
         }
 
         private void OnEnable()
         {
             if (healthComponent)
-            { healthComponent.HealthChanged += OnHealthChanged; }
+            { healthComponent.ValueChanged += OnHealthChanged; }
+
+            if (shieldComponent)
+            {
+                shieldComponent.ValueChanged += OnShieldChanged;
+            }
         }
-        
+
         private void OnDisable()
         {
             if (healthComponent)
-            { healthComponent.HealthChanged -= OnHealthChanged; }
+            { healthComponent.ValueChanged -= OnHealthChanged; }
         }
 
         private void Start()
         {
             RefreshHealth();
+            RefreshShield();
+            
             if (TryGetComponent(out UIWorldObjectFollower objectFollowerComponent))
             { objectFollowerComponent.Target = GameObject.FindWithTag("Player").transform; }
         }
@@ -66,27 +73,36 @@ namespace DeepWolf.SpaceSurvivor.UI
         {
             DOTween.Complete(cachedCanvasGroup);
             
-            // Whether the health is below max value.
-            bool isBelowMaxValue = healthComponent.CurrentHealth < healthComponent.MaxHealth;
+            // Whether the health or shield is below max value.
+            bool isBelowMaxValue = healthComponent.CurrentValue < healthComponent.MaxValue || shieldComponent.CurrentValue < shieldComponent.MaxValue;
             cachedCanvasGroup.DOFade(isBelowMaxValue ? 1.0f : 0.3f, 0.3f);
         }
 
         private void RefreshHealth()
         {
-            healthBar.value = healthComponent.CurrentHealth / healthComponent.MaxHealth;
+            healthBar.value = healthComponent.CurrentValue / healthComponent.MaxValue;
             HandleFading();
         }
         
 
-        // TODO: Uncomment when shield is implemented.
-        //private void RefreshShield() => shieldLabel.text = shieldComponent.CurrentShield.ToString();
+        private void RefreshShield()
+        {
+            shieldBar.value = shieldComponent.CurrentValue / shieldComponent.MaxValue;
+            HandleFading();
+        }
         
         #region Event listeners
 
-        private void OnHealthChanged(float newHealth, float oldHealth)
+        private void OnHealthChanged(float current, float old)
         {
             RefreshHealth();
             healthBar.transform.DOPunchScale(new Vector3(0.2f, 0.2f), 0.3f);
+        }
+        
+        private void OnShieldChanged(float current, float old)
+        {
+            RefreshShield();
+            shieldBar.transform.DOPunchScale(new Vector3(0.2f, 0.2f), 0.3f);
         }
 
         #endregion
