@@ -25,7 +25,13 @@ namespace DeepWolf.SpaceSurvivor.Data
 
         [SerializeField]
         private float shield = 200.0f;
-        
+
+        [SerializeField]
+        private float startShieldRegenDelay = 3.0f;
+
+        [SerializeField]
+        private float shieldRegenRate = 400.0f;
+
         [Header("[Shop]")]
         [SerializeField]
         private bool startOwned = false;
@@ -47,6 +53,10 @@ namespace DeepWolf.SpaceSurvivor.Data
 
         public float Shield => shield;
 
+        public float StartShieldRegenDelay => startShieldRegenDelay;
+
+        public float ShieldRegenRate => shieldRegenRate;
+        
         public bool StartOwned => startOwned;
 
         public float Price => price;

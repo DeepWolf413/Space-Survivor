@@ -20,6 +20,9 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         private Health shipHealthComponent = null;
 
         [SerializeField]
+        private Shield shipShieldComponent = null;
+
+        [SerializeField]
         private SpriteRenderer spriteRenderer = null;
 
         #region Unity callbacks
@@ -28,6 +31,9 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         {
             if (!shipHealthComponent)
             { shipHealthComponent = GetComponent<Health>(); }
+            
+            if (!shipShieldComponent)
+            { shipShieldComponent = GetComponent<Shield>(); }
 
             if (!spriteRenderer)
             { spriteRenderer = GetComponent<SpriteRenderer>(); }
@@ -59,6 +65,8 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             spriteRenderer.sprite = shipData.Sprite;
             shipHealthComponent.CurrentValue = shipData.Health;
             movementComponent.ThrusterPower = shipData.Speed;
+            shipShieldComponent.ShieldRegenRate = shipData.ShieldRegenRate;
+            shipShieldComponent.StartShieldRegenDelay = shipData.StartShieldRegenDelay;
             
             shipHealthComponent.ResetValue();
         }

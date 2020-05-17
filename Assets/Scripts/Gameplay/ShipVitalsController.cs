@@ -29,7 +29,10 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         public void ApplyDamage(float amount)
         {
             if (shieldComponent.IsDepleted)
-            { healthComponent.ApplyDamage(amount); }
+            {
+                healthComponent.ApplyDamage(amount);
+                shieldComponent.RestartRegenerationPreparation();
+            }
             else
             {
                 float damageAmount = shieldComponent.CurrentValue >= amount ? amount : shieldComponent.CurrentValue;
