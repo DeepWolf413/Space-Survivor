@@ -5561,6 +5561,31 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6826015135009382551, guid: 4e9d580dee1d53c48a1ec2d03e77012d,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6826015135009382551, guid: 4e9d580dee1d53c48a1ec2d03e77012d,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6826015135009382551, guid: 4e9d580dee1d53c48a1ec2d03e77012d,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6826015135009382551, guid: 4e9d580dee1d53c48a1ec2d03e77012d,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6826015135009382551, guid: 4e9d580dee1d53c48a1ec2d03e77012d,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6896737560419609735, guid: 4e9d580dee1d53c48a1ec2d03e77012d,
         type: 3}
       propertyPath: m_textInfo.characterCount
