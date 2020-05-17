@@ -44,13 +44,15 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 
         private void ProcessMovementInput()
         {
-            if (Input.GetAxisRaw(moveVerticalName) > 0.0f)
-            { movementComponent.StartMove(); }
+            float xAxis = Input.GetAxisRaw(moveHorizontalName);
+            float yAxis = Input.GetAxisRaw(moveVerticalName);
+            
+            if (!Mathf.Approximately(xAxis, 0.0f) || !Mathf.Approximately(yAxis, 0.0f))
+            { movementComponent.StartMove(xAxis, yAxis); }
             else
             { movementComponent.StopMove(); }
 
             movementComponent.LookTowards(GetDirectionToMouse());
-            //movementComponent.Turn(Input.GetAxisRaw(moveHorizontalName));
         }
 
         private void ProcessShootInput()
