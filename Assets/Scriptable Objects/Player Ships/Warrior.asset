@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d230ac50986be4fa63d88f0eb7c19f, type: 3}
   m_Name: Warrior
   m_EditorClassIdentifier: 
+  id: 0
   displayName: Warrior
-  icon: {fileID: 21300000, guid: d63fc8141bdab664d9cef1cfeb866f6b, type: 3}
+  sprite: {fileID: 21300000, guid: d63fc8141bdab664d9cef1cfeb866f6b, type: 3}
   health: 100
   speed: 25
   shield: 200
