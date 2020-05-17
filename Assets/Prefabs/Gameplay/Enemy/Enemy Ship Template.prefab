@@ -203,8 +203,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b88b1f0243b7b5649a700a59e4d1b6c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 4357913513997015998}
-  flashColor: {r: 0, g: 0.5623102, b: 1, a: 1}
+  spriteRenderer: {fileID: 293141509480573239}
+  flashColor: {r: 0, g: 0.6901961, b: 1, a: 1}
   flashAmount: 2
   duration: 0.1
 --- !u!1 &4228310712804085886
