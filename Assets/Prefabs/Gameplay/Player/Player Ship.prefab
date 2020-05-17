@@ -5200,8 +5200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0129916a6331a5458192eae4fdbf0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrusterPower: 25
-  turnSpeed: 350
+  turnSpeed: 500
   screenPadding: {x: 0.05, y: 0.1}
 --- !u!50 &9041642232271611298
 Rigidbody2D:

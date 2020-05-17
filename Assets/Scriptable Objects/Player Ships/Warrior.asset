@@ -16,7 +16,7 @@ MonoBehaviour:
   displayName: Warrior
   sprite: {fileID: 21300000, guid: d63fc8141bdab664d9cef1cfeb866f6b, type: 3}
   health: 100
-  speed: 25
+  speed: 20
   shield: 200
   startOwned: 1
   price: 0

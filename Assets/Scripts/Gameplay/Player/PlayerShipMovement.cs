@@ -8,9 +8,6 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         private float thrusterPower = 20.0f;
 
         [SerializeField]
-        private float turnSpeed = 500.0f;
-
-        [SerializeField]
         private Vector2 screenPadding = new Vector2(0.1f, 0.1f);
 
         private Vector3 moveInput = Vector3.zero;
@@ -88,12 +85,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             Vector3 force = new Vector3(moveInput.x, moveInput.y) * ThrusterPower;
             cachedRigidbody.AddForce(force);
         }
-
-        public void Turn()
-        {
-            cachedTransform.Rotate(0, 0, (moveInput.x * turnSpeed) * Time.deltaTime);
-        }
-
+        
         private void ClampToScreenBounds()
         {
             if (cachedTransform.position.x < screenBounds.x && cachedTransform.position.y < screenBounds.y && cachedTransform.position.x > -screenBounds.x && cachedTransform.position.y > -screenBounds.y)
