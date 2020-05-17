@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 
@@ -36,18 +37,6 @@ namespace DeepWolf.SpaceSurvivor.Gameplay.Feedbacks
             { return; }
 
             flashCoroutine = StartCoroutine(Flash());
-            /*if (DOTween.IsTweening(spriteRenderer))
-            { DOTween.Complete(spriteRenderer); }
-
-            spriteRenderer.color = originalColor;
-            
-            float halfDuration = duration * 0.5f;
-            spriteRenderer.DOColor(flashColor, halfDuration).onComplete += delegate
-            {
-                if (!spriteRenderer)
-                { return; }
-                spriteRenderer.DOColor(originalColor, halfDuration);
-            };*/
         }
 
         private IEnumerator Flash()

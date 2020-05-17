@@ -6,8 +6,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay.Feedbacks
     {
         [SerializeField]
         private GameObject prefab = null;
-        
-        public override void Play()
-        { Instantiate(prefab, transform.position, Quaternion.identity); }
+
+        public override void Play() => Instantiate(prefab, transform.position, Quaternion.identity);
     }
 }
