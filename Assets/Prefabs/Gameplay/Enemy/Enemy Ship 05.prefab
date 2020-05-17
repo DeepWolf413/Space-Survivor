@@ -120,7 +120,7 @@ PrefabInstance:
     - target: {fileID: 6597644186389324730, guid: 7066622ab46216640bf304cb9485eea4,
         type: 3}
       propertyPath: predictTargetVelocity
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7066622ab46216640bf304cb9485eea4, type: 3}
