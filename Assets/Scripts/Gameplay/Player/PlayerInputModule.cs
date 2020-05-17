@@ -52,6 +52,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             else
             { movementComponent.StopMove(); }
 
+            //movementComponent.Turn();
             movementComponent.LookTowards(GetDirectionToMouse());
         }
 

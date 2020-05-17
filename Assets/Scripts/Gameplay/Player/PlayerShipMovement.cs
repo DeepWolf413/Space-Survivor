@@ -1,13 +1,10 @@
 ﻿using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace DeepWolf.SpaceSurvivor.Gameplay
 {
     [RequireComponent(typeof(Rigidbody2D))]
     public class PlayerShipMovement : MonoBehaviour
     {
-        [FormerlySerializedAs("mainThrusterPower")]
-        [SerializeField]
         private float thrusterPower = 20.0f;
 
         [SerializeField]
@@ -79,7 +76,8 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 
         public void LookTowards(Vector3 direction)
         {
-            cachedTransform.rotation = Quaternion.RotateTowards(cachedTransform.rotation, Quaternion.LookRotation(cachedTransform.forward, direction), turnSpeed * Time.deltaTime);
+            cachedTransform.rotation = Quaternion.LookRotation(cachedTransform.forward, direction);
+            //cachedTransform.rotation = Quaternion.RotateTowards(cachedTransform.rotation, Quaternion.LookRotation(cachedTransform.forward, direction), turnSpeed * Time.deltaTime);
         }
 
         /// <summary>
@@ -89,6 +87,11 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         {
             Vector3 force = new Vector3(moveInput.x, moveInput.y) * ThrusterPower;
             cachedRigidbody.AddForce(force);
+        }
+
+        public void Turn()
+        {
+            cachedTransform.Rotate(0, 0, (moveInput.x * turnSpeed) * Time.deltaTime);
         }
 
         private void ClampToScreenBounds()
