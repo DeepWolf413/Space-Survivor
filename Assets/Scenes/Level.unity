@@ -5234,12 +5234,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 3886740562572298447, guid: cbc8b50dbc083724ea797c87d10f996a,
-        type: 3}
-      propertyPath: selectedPlayerShip
-      value: 
-      objectReference: {fileID: 11400000, guid: fe935568fc577b9468fe5f0a2e7cfee8,
-        type: 2}
     - target: {fileID: 4839153429089627734, guid: cbc8b50dbc083724ea797c87d10f996a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5517,16 +5511,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 9041642232271611297, guid: fc7e10a070712304f9805de86b9c2cd9,
-        type: 3}
-      propertyPath: startHealth
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 9041642232271611297, guid: fc7e10a070712304f9805de86b9c2cd9,
-        type: 3}
-      propertyPath: maxHealth
-      value: 200
-      objectReference: {fileID: 0}
     - target: {fileID: 9041642232271611299, guid: fc7e10a070712304f9805de86b9c2cd9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5582,30 +5566,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9041642232271611308, guid: fc7e10a070712304f9805de86b9c2cd9,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9041642232271611308, guid: fc7e10a070712304f9805de86b9c2cd9,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9041642232271611308, guid: fc7e10a070712304f9805de86b9c2cd9,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9041642232271611311, guid: fc7e10a070712304f9805de86b9c2cd9,
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 9041642232271611311, guid: fc7e10a070712304f9805de86b9c2cd9,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc7e10a070712304f9805de86b9c2cd9, type: 3}
