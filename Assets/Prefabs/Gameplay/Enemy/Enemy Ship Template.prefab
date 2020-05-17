@@ -334,7 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab13731802c59a344a88a461fd22b1b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrusterPower: 20
+  thrusterPower: 17
   powerRange: {x: 5, y: 30}
   predictTargetVelocity: 0
   offsetDistanceRange: {x: 4, y: 7}
