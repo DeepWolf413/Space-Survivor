@@ -37,8 +37,8 @@ MonoBehaviour:
   pointsPerWave: 5
   startingPoints: 5
   maxPoints: 25
-  nextWaveStartDelay: 8
-  enemySpawnDelayRange: {x: 1.2, y: 3}
-  asteroidsEventSpawnDelayRange: {x: 30, y: 45}
+  nextWaveStartDelay: 5
+  enemySpawnDelayRange: {x: 1, y: 2}
+  asteroidsEventSpawnDelayRange: {x: 25, y: 35}
   asteroidSpawnDelay: 1
   asteroidSpawnCountRange: {x: 10, y: 15}
