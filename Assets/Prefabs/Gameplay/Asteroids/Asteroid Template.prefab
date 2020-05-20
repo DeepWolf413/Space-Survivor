@@ -83,6 +83,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   travelSpeedRange: {x: 3, y: 5}
   angularVelocity: 100
+  setInitialVelocity: 1
+  spawnPiecesOnDestroy: 0
+  piecesMaxSpawnDistance: 1
+  piecesSpawnAmount: 0
+  piecesToSpawn: []
+  explosionForce: 1.5
 --- !u!114 &2856198063128984186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,8 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94cb221d662f12c449c56afc890bcf7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 100
-  maxHealth: 100
+  startValue: 100
+  maxValue: 100
   damagedFeedback: {fileID: 2467884119827820440}
   dieFeedback: {fileID: 1323757436599183779}
 --- !u!50 &2856198063128984190
@@ -260,7 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e4369d3a20145fdaaa384662133b193, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1736115028718041767, guid: 92b2cf9f6755a0a4ba66957d4c6485d1, type: 3}
+  prefab: {fileID: 1736115028718041767, guid: e64096351be0f5146828d24558b2343c, type: 3}
 --- !u!114 &5571560171876748236
 MonoBehaviour:
   m_ObjectHideFlags: 0

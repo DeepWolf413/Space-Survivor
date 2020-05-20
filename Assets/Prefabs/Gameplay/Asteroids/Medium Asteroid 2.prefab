@@ -7,6 +7,53 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2856198063128984185, guid: 6fc3515f30f3d1a49b7e5523feff2b56,
+        type: 3}
+      propertyPath: piecesToSpawn.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856198063128984185, guid: 6fc3515f30f3d1a49b7e5523feff2b56,
+        type: 3}
+      propertyPath: spawnPiecesOnDestroy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856198063128984185, guid: 6fc3515f30f3d1a49b7e5523feff2b56,
+        type: 3}
+      propertyPath: piecesSpawnAmount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856198063128984185, guid: 6fc3515f30f3d1a49b7e5523feff2b56,
+        type: 3}
+      propertyPath: piecesToSpawn.Array.data[0]
+      value: 
+      objectReference: {fileID: 1843801295836826752, guid: 408648e4dab30eb49957a146210cd6dc,
+        type: 3}
+    - target: {fileID: 2856198063128984185, guid: 6fc3515f30f3d1a49b7e5523feff2b56,
+        type: 3}
+      propertyPath: piecesToSpawn.Array.data[1]
+      value: 
+      objectReference: {fileID: 1843801295836826752, guid: dae90fc02d84872498e361b29d261990,
+        type: 3}
+    - target: {fileID: 2856198063128984185, guid: 6fc3515f30f3d1a49b7e5523feff2b56,
+        type: 3}
+      propertyPath: piecesMaxSpawnDistance
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856198063128984185, guid: 6fc3515f30f3d1a49b7e5523feff2b56,
+        type: 3}
+      propertyPath: explosionForce
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856198063128984187, guid: 6fc3515f30f3d1a49b7e5523feff2b56,
+        type: 3}
+      propertyPath: startValue
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856198063128984187, guid: 6fc3515f30f3d1a49b7e5523feff2b56,
+        type: 3}
+      propertyPath: maxValue
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 2856198063128984188, guid: 6fc3515f30f3d1a49b7e5523feff2b56,
         type: 3}
       propertyPath: m_Name

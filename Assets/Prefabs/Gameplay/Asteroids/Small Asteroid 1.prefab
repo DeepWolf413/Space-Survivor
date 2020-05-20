@@ -7,6 +7,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2856198063128984185, guid: 6fc3515f30f3d1a49b7e5523feff2b56,
+        type: 3}
+      propertyPath: setInitialVelocity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856198063128984185, guid: 6fc3515f30f3d1a49b7e5523feff2b56,
+        type: 3}
+      propertyPath: piecesMaxSpawnDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856198063128984187, guid: 6fc3515f30f3d1a49b7e5523feff2b56,
+        type: 3}
+      propertyPath: startValue
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856198063128984187, guid: 6fc3515f30f3d1a49b7e5523feff2b56,
+        type: 3}
+      propertyPath: maxValue
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 2856198063128984188, guid: 6fc3515f30f3d1a49b7e5523feff2b56,
         type: 3}
       propertyPath: m_Name
