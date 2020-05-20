@@ -24,9 +24,21 @@ namespace DeepWolf.SpaceSurvivor.Managers
         public int PlayerShipCount => playerShips.Length;
         
         public PlayerShipData SelectedPlayerShip => selectedPlayerShip;
+        
+        public bool IsApplicationQuitting { get; private set; }
 
         #endregion
 
+        #region Unity callbacks
+
+        private void OnEnable() => Application.quitting += OnApplicationQuitting;
+        
+        private void OnDisable() => Application.quitting -= OnApplicationQuitting;
+
+        private void OnApplicationQuitting() => IsApplicationQuitting = true;
+
+        #endregion
+        
         #region Player ship methods
 
         public PlayerShipData GetPlayerShipById(int id)
