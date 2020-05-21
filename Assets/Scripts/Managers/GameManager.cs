@@ -12,7 +12,7 @@ namespace DeepWolf.SpaceSurvivor.Managers
 
         public static SaveManager SaveManager => SaveManager.Instance;
 
-        public bool IsApplicationQuitting { get; private set; }
+        public static bool IsApplicationQuitting { get; private set; }
 
         #endregion
 
