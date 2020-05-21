@@ -1,5 +1,5 @@
-﻿using System;
-using DeepWolf.SpaceSurvivor.Managers;
+﻿using DeepWolf.SpaceSurvivor.Managers;
+using DeepWolf.SpaceSurvivor.Utilities;
 using TMPro;
 using UnityEngine;
 
@@ -19,8 +19,15 @@ namespace DeepWolf.SpaceSurvivor.UI
         [SerializeField]
         private RectTransform optionsMenu = null;
 
-        private void Start() => bestTimeLabel.text = $"<color=#00ABFD>Personal Best</color>\n{GameManager.SaveManager.SaveState.GetFormattedBestTime()}";
+        private void Start() => RefreshBestTimeLabel();
 
+        private void RefreshBestTimeLabel()
+        {
+            string headerText = "<color=#00ABFD>Personal Best</color>";
+            string formattedTime = $"{TimeUtilities.GetFormattedTime(GameManager.SaveManager.SaveState.BestTime)}";
+            bestTimeLabel.text = $"{headerText}\n{formattedTime}";
+        }
+        
         #region Button methods
 
         public void TransitionToMainMenu()

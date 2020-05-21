@@ -1,5 +1,6 @@
 ﻿using DeepWolf.SpaceSurvivor.Gameplay;
 using DeepWolf.SpaceSurvivor.Managers;
+using DeepWolf.SpaceSurvivor.Utilities;
 using TMPro;
 using UnityEngine;
 
@@ -25,16 +26,9 @@ namespace DeepWolf.SpaceSurvivor.UI
                 return;
             }
 
-            timeLabel.text = GetFormattedTimer(gameSession.EndTime);
+            timeLabel.text = TimeUtilities.GetFormattedTime(gameSession.EndTime);
             if (gameSession.HasNewBestTime)
             { personalBestTimeLabel.SetActive(true); }
-        }
-
-        private string GetFormattedTimer(float timeInSeconds)
-        {
-            float minutes = Mathf.Floor(timeInSeconds / 60);
-            float seconds = Mathf.Floor(timeInSeconds % 60);
-            return $"{minutes:00}m {seconds:00}s";
         }
 
         #region Button methods

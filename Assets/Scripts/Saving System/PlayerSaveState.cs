@@ -111,13 +111,6 @@ namespace DeepWolf.SpaceSurvivor.Data
 
             return false;
         }
-        
-        public string GetFormattedBestTime()
-        {
-            float minutes = Mathf.Floor(BestTime / 60);
-            float seconds = Mathf.Floor(BestTime % 60);
-            return $"{minutes:00}m {seconds:00}s";
-        }
 
         #endregion
         
