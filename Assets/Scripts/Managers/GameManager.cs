@@ -1,30 +1,17 @@
-﻿using System;
-using DeepWolf.SpaceSurvivor.Data;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 namespace DeepWolf.SpaceSurvivor.Managers
 {
     public class GameManager : MonoSingleton<GameManager>
     {
-        [SerializeField]
-        private string levelSceneName = "Level";
-
-        [SerializeField]
-        private string mainSceneName = "MainMenu";
-
-        [SerializeField]
-        private PlayerShipData[] playerShips = new PlayerShipData[0];
-        
-        [SerializeField]
-        private PlayerShipData selectedPlayerShip = null;
-
         #region Properties
 
-        public int PlayerShipCount => playerShips.Length;
-        
-        public PlayerShipData SelectedPlayerShip => selectedPlayerShip;
-        
+        public static SceneManager SceneManager => SceneManager.Instance;
+
+        public static SoundManager SoundManager => SoundManager.Instance;
+
+        public static SaveManager SaveManager => SaveManager.Instance;
+
         public bool IsApplicationQuitting { get; private set; }
 
         #endregion
@@ -35,39 +22,11 @@ namespace DeepWolf.SpaceSurvivor.Managers
         
         private void OnDisable() => Application.quitting -= OnApplicationQuitting;
 
-        private void OnApplicationQuitting() => IsApplicationQuitting = true;
-
-        #endregion
-        
-        #region Player ship methods
-
-        public PlayerShipData GetPlayerShipById(int id)
+        private void OnApplicationQuitting()
         {
-            for (int i = 0; i < PlayerShipCount; i++)
-            {
-                PlayerShipData ship = playerShips[i];
-                if (ship.Id == id)
-                { return ship; }
-            }
-
-            return null;
+            IsApplicationQuitting = true;
+            SaveManager.SaveGame();
         }
-        
-        public PlayerShipData GetPlayerShipByIndex(int index)
-        {
-            if (index < 0 || index >= PlayerShipCount)
-            { return null; }
-
-            return playerShips[index];
-        }
-
-        #endregion
-        
-        #region Scene loading methods
-
-        public void LoadLevel() => SceneManager.LoadScene(levelSceneName);
-        
-        public void LoadMainScene() => SceneManager.LoadScene(mainSceneName);
 
         #endregion
     }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DeepWolf.SpaceSurvivor.Managers;
+using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace DeepWolf.SpaceSurvivor.Gameplay
@@ -39,7 +40,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             nextShootTime = fireRate + Time.time;
 
             if (shootSfx)
-            { SoundManager.Instance.PlayGlobalSound(shootSfx, ESoundType.Sfx); }
+            { GameManager.SoundManager.PlayGlobalSound(shootSfx, ESoundType.Sfx); }
         }
     }
 }

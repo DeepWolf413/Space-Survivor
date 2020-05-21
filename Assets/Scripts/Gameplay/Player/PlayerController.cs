@@ -56,11 +56,11 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         /// </summary>
         private void LoadShipData()
         {
-            GameManager gameManager = GameManager.Instance;
-            if (!gameManager || !gameManager.SelectedPlayerShip)
+            SaveManager saveManager = GameManager.SaveManager;
+            if (!saveManager || !saveManager.GetSelectedShip())
             { return; }
 
-            PlayerShipData shipData = gameManager.SelectedPlayerShip;
+            PlayerShipData shipData = saveManager.GetSelectedShip();
             
             spriteRenderer.sprite = shipData.Sprite;
             shipHealthComponent.CurrentValue = shipData.Health;

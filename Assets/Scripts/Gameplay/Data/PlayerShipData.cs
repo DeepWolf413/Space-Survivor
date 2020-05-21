@@ -37,7 +37,7 @@ namespace DeepWolf.SpaceSurvivor.Data
         private bool startOwned = false;
         
         [SerializeField]
-        private float price = 0.0f;
+        private int price = 0;
 
         #region Properties
 
@@ -59,7 +59,7 @@ namespace DeepWolf.SpaceSurvivor.Data
         
         public bool StartOwned => startOwned;
 
-        public float Price => price;
+        public int Price => price;
 
         #endregion
     }

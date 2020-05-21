@@ -1,4 +1,4 @@
-﻿using System;
+﻿using DeepWolf.SpaceSurvivor.Managers;
 using UnityEngine;
 
 namespace DeepWolf.SpaceSurvivor.Gameplay.Feedbacks
@@ -8,6 +8,6 @@ namespace DeepWolf.SpaceSurvivor.Gameplay.Feedbacks
         [SerializeField]
         private AudioClip clipToPlay = null;
 
-        public override void Play() => SoundManager.Instance.PlayGlobalSound(clipToPlay, ESoundType.Sfx);
+        public override void Play() => GameManager.SoundManager.PlayGlobalSound(clipToPlay, ESoundType.Sfx);
     }
 }

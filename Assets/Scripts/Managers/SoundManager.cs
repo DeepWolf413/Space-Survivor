@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Audio;
 
-namespace DeepWolf.SpaceSurvivor
+namespace DeepWolf.SpaceSurvivor.Managers
 {
     public class SoundManager : MonoSingleton<SoundManager>
     {
@@ -16,6 +16,8 @@ namespace DeepWolf.SpaceSurvivor
         private AudioMixerGroup sfxMixer = null;
 
         private List<AudioSource> pool = new List<AudioSource>();
+        
+        protected override bool DontDestroyOnLoad => false;
 
         /// <summary>
         /// Plays an <see cref="AudioClip"/> in 3D.

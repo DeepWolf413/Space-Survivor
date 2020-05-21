@@ -34,7 +34,7 @@ namespace DeepWolf.SpaceSurvivor.UI
             optionsMenu.gameObject.SetActive(true);
         }
         
-        public void StartGame() => GameManager.Instance.LoadLevel();
+        public void StartGame() => GameManager.SceneManager.LoadLevel();
         
         /// <summary>
         /// Quits the game.

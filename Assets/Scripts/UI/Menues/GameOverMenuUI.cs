@@ -37,9 +37,9 @@ namespace DeepWolf.SpaceSurvivor.UI
 
         #region Button methods
 
-        public void Continue() => GameManager.Instance.LoadMainScene();
+        public void Continue() => GameManager.SceneManager.LoadMainScene();
 
-        public void PlayAgain() => GameManager.Instance.LoadLevel();
+        public void PlayAgain() => GameManager.SceneManager.LoadLevel();
 
         #endregion
     }
