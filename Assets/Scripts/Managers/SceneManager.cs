@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnitySceneManager = UnityEngine.SceneManagement.SceneManager;
 
 namespace DeepWolf.SpaceSurvivor.Managers
 {
@@ -10,10 +13,26 @@ namespace DeepWolf.SpaceSurvivor.Managers
         [SerializeField]
         private string mainSceneName = "MainMenu";
 
+        public bool IsChangingScene { get; private set; }
+        
         protected override bool DontDestroyOnLoad => false;
 
-        public void LoadLevel() => UnityEngine.SceneManagement.SceneManager.LoadScene(levelSceneName);
+        private void OnEnable() => UnitySceneManager.sceneLoaded += OnSceneLoaded;
         
-        public void LoadMainScene() => UnityEngine.SceneManagement.SceneManager.LoadScene(mainSceneName);
+        private void OnDisable() => UnitySceneManager.sceneLoaded -= OnSceneLoaded;
+
+        public void LoadLevel()
+        {
+            IsChangingScene = true;
+            UnitySceneManager.LoadScene(levelSceneName);
+        }
+
+        public void LoadMainScene()
+        {
+            IsChangingScene = true;
+            UnitySceneManager.LoadScene(mainSceneName);
+        }
+        
+        private void OnSceneLoaded(Scene scene, LoadSceneMode loadMode) => IsChangingScene = false;
     }
 }
