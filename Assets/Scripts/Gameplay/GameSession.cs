@@ -66,9 +66,20 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             StartGame();
         }
 
-        private void OnEnable() => GameEvents.PlayerShipDestroyed += OnPlayerShipDestroyed;
+        private void OnEnable()
+        {
+            ReferenceManager.Register(this);
+            GameEvents.PlayerShipDestroyed += OnPlayerShipDestroyed;
+        }
 
-        private void OnDisable() => GameEvents.PlayerShipDestroyed -= OnPlayerShipDestroyed;
+        private void OnDisable()
+        {
+            if (GameManager.IsApplicationQuitting)
+            { return; }
+            
+            ReferenceManager.Unregister(this);
+            GameEvents.PlayerShipDestroyed -= OnPlayerShipDestroyed;
+        }
 
         private void Update()
         {
