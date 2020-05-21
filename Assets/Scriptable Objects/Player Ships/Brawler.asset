@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Brawler
   m_EditorClassIdentifier: 
   id: 1
-  displayName: Warrior
+  displayName: Brawler
   sprite: {fileID: 21300000, guid: 87e7aaa17364a2e479c9cfc28cf9e619, type: 3}
   health: 150
   speed: 20
   shield: 200
+  startShieldRegenDelay: 3
+  shieldRegenRate: 400
   startOwned: 0
-  price: 2500
+  price: 3000

@@ -18,5 +18,7 @@ MonoBehaviour:
   health: 200
   speed: 15
   shield: 250
+  startShieldRegenDelay: 3
+  shieldRegenRate: 400
   startOwned: 0
-  price: 3000
+  price: 2500
