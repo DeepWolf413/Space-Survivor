@@ -17,7 +17,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 87e7aaa17364a2e479c9cfc28cf9e619, type: 3}
   health: 150
   speed: 20
-  shield: 200
+  shield: 250
   startShieldRegenDelay: 3
   shieldRegenRate: 400
   startOwned: 0
