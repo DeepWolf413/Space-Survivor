@@ -20,14 +20,12 @@ namespace DeepWolf.SpaceSurvivor.UI
 
         private void OnEnable()
         {
-            GameSession gameSession = FindObjectOfType<GameSession>();
-            if (!gameSession)
-            {
-                Logger.LogInfo("The game session could not be found.");
-                return;
-            }
+            if (!ReferenceManager.TryGet(out GameSession gameSession))
+            { return; }
 
             timeLabel.text = TimeUtilities.GetFormattedTime(gameSession.EndTime);
+            spaceCreditsLabel.text = gameSession.SpaceCreditsReward.ToString();
+            
             if (gameSession.HasNewBestTime)
             { personalBestTimeLabel.SetActive(true); }
         }
