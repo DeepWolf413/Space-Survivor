@@ -30,7 +30,7 @@ namespace DeepWolf.SpaceSurvivor.Managers
 
         #endregion
         
-        private void Start() => LoadSaveGame();
+        private void Awake() => LoadSaveGame();
 
         private void SetupSaveGame()
         {
