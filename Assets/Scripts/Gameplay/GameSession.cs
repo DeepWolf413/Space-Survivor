@@ -103,6 +103,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             CancelInvoke(nameof(StartNextWave));
             gameEndedTime = Time.time;
 
+            GameManager.SaveManager.SaveGame();
             HasNewBestTime = GameManager.SaveManager.SaveState.SetBestTime(EndTime);
             isGameInProgress = false;
             GameEnded?.Invoke();
