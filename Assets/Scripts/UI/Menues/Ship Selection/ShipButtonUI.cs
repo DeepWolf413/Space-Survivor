@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Logger = DeepWolf.Logging.Logger;
 
 namespace DeepWolf.SpaceSurvivor.UI
 {
@@ -58,7 +59,7 @@ namespace DeepWolf.SpaceSurvivor.UI
         {
             if (!representedShip)
             {
-                Debug.LogError("Failed to refresh UI. Missing reference to player ship data.", representedShip);
+                Logger.LogError("Failed to refresh UI. Missing reference to player ship data.");
                 return;
             }
             

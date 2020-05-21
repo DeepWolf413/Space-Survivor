@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Logger = DeepWolf.Logging.Logger;
 
 namespace DeepWolf.SpaceSurvivor.Gameplay
 {
@@ -25,7 +26,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         {
             if (index < 0 || index >= EnemyCount)
             {
-                Debug.LogError($"The index ({index}) was out of bounds of the 'enemiesToSpawn' array.");
+                Logger.LogError($"The index ({index}) was out of bounds of the 'enemiesToSpawn' array.");
                 return null;
             }
 

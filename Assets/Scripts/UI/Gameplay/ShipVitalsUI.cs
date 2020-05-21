@@ -2,6 +2,7 @@
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
+using Logger = DeepWolf.Logging.Logger;
 
 namespace DeepWolf.SpaceSurvivor.UI
 {
@@ -27,15 +28,15 @@ namespace DeepWolf.SpaceSurvivor.UI
             GameObject playerObject = GameObject.FindWithTag("Player");
             if (!playerObject)
             {
-                Debug.LogError("Could not find player object.");
+                Logger.LogError("Could not find player object.");
                 return;
             }
 
             if (!playerObject.TryGetComponent(out healthComponent))
-            { Debug.LogError("Could not find Health component on player object."); }
+            { Logger.LogError("Could not find Health component on player object."); }
             
             if (!playerObject.TryGetComponent(out shieldComponent))
-            { Debug.LogError("Could not find Shield component on player object."); }
+            { Logger.LogError("Could not find Shield component on player object."); }
         }
 
         private void OnEnable()

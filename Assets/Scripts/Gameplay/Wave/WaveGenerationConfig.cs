@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Logger = DeepWolf.Logging.Logger;
 
 namespace DeepWolf.SpaceSurvivor.Gameplay
 {
@@ -93,7 +94,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
                 return enemies[Random.Range(0, possibleEnemies.Count)];
             }
 
-            Debug.LogError($"Didn't find an enemy for the points ({points}).");
+            Logger.LogError($"Didn't find an enemy for the points ({points}).");
             return null;
         }
 
@@ -125,7 +126,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
                 EnemyWaveInfo enemy = GetEnemyBasedOnPoints(pointsAvailable, number);
                 if (enemy == null)
                 {
-                    Debug.LogError($"No enemy was found with the points available {pointsAvailable}.");
+                    Logger.LogError($"No enemy was found with the points available {pointsAvailable}.");
                     break;
                 }
 

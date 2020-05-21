@@ -3,6 +3,7 @@ using DeepWolf.SpaceSurvivor.Managers;
 using DeepWolf.SpaceSurvivor.Utilities;
 using TMPro;
 using UnityEngine;
+using Logger = DeepWolf.Logging.Logger;
 
 namespace DeepWolf.SpaceSurvivor.UI
 {
@@ -22,7 +23,7 @@ namespace DeepWolf.SpaceSurvivor.UI
             GameSession gameSession = FindObjectOfType<GameSession>();
             if (!gameSession)
             {
-                Debug.Log("The game session could not be found.");
+                Logger.LogInfo("The game session could not be found.");
                 return;
             }
 

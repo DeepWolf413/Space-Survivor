@@ -2,6 +2,7 @@
 using System.IO;
 using DeepWolf.SpaceSurvivor.Data;
 using UnityEngine;
+using Logger = DeepWolf.Logging.Logger;
 
 namespace DeepWolf.SpaceSurvivor.Managers
 {
@@ -115,7 +116,7 @@ namespace DeepWolf.SpaceSurvivor.Managers
             if (success)
             { SelectedShipChanged?.Invoke(ship); }
             else
-            { Debug.LogError(error); }
+            { Logger.LogError(error); }
 
             return (success, error);
         }
