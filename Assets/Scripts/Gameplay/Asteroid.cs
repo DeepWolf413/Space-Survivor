@@ -2,6 +2,7 @@
 using DeepWolf.SpaceSurvivor.Managers;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using SceneManager = UnityEngine.SceneManagement.SceneManager;
 
 namespace DeepWolf.SpaceSurvivor.Gameplay
 {
@@ -59,7 +60,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             if (!spawnPiecesOnDestroy)
             { return; }
 
-            if (!GameManager.Instance || GameManager.Instance.IsApplicationQuitting)
+            if (GameManager.IsApplicationQuitting || GameManager.SceneManager.IsChangingScene)
             { return; }
             
             SpawnPieces();
