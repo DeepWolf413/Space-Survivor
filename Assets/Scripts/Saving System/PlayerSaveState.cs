@@ -99,6 +99,28 @@ namespace DeepWolf.SpaceSurvivor.Data
 
         #endregion
 
+        #region Best time methods
+
+        public bool SetBestTime(float time)
+        {
+            if (time > BestTime)
+            {
+                bestTime = time;
+                return true;
+            }
+
+            return false;
+        }
+        
+        public string GetFormattedBestTime()
+        {
+            float minutes = Mathf.Floor(BestTime / 60);
+            float seconds = Mathf.Floor(BestTime % 60);
+            return $"{minutes:00}m {seconds:00}s";
+        }
+
+        #endregion
+        
         #region Ship methods
 
         public void AddShipAsOwned(int shipId) => shipsOwned.Add(shipId);

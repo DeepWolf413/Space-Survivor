@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DeepWolf.SpaceSurvivor.Managers;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -35,11 +36,16 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 
         public float EndTime => gameEndedTime - gameStartedTime;
 
+        public bool HasNewBestTime { get; private set; }
+        
         #endregion
 
         #region Events
 
         public event Action GameStarted = delegate { };
+        /// <summary>
+        /// Occurs when the game has ended.
+        /// </summary>
         public event Action GameEnded = delegate { }; 
 
         #endregion
@@ -97,6 +103,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             CancelInvoke(nameof(StartNextWave));
             gameEndedTime = Time.time;
 
+            HasNewBestTime = GameManager.SaveManager.SaveState.SetBestTime(EndTime);
             isGameInProgress = false;
             GameEnded?.Invoke();
         }

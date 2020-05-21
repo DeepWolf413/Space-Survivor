@@ -26,6 +26,8 @@ namespace DeepWolf.SpaceSurvivor.UI
             }
 
             timeLabel.text = GetFormattedTimer(gameSession.EndTime);
+            if (gameSession.HasNewBestTime)
+            { personalBestTimeLabel.SetActive(true); }
         }
 
         private string GetFormattedTimer(float timeInSeconds)

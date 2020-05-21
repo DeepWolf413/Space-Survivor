@@ -1,10 +1,15 @@
-﻿using DeepWolf.SpaceSurvivor.Managers;
+﻿using System;
+using DeepWolf.SpaceSurvivor.Managers;
+using TMPro;
 using UnityEngine;
 
 namespace DeepWolf.SpaceSurvivor.UI
 {
     public class MainMenuUI : MonoBehaviour
     {
+        [SerializeField]
+        private TextMeshProUGUI bestTimeLabel = null;
+
         [SerializeField]
         private RectTransform mainMenu = null;
         
@@ -13,7 +18,9 @@ namespace DeepWolf.SpaceSurvivor.UI
 
         [SerializeField]
         private RectTransform optionsMenu = null;
-        
+
+        private void Start() => bestTimeLabel.text = $"<color=#00ABFD>Personal Best</color>\n{GameManager.SaveManager.SaveState.GetFormattedBestTime()}";
+
         #region Button methods
 
         public void TransitionToMainMenu()
@@ -39,13 +46,7 @@ namespace DeepWolf.SpaceSurvivor.UI
         /// <summary>
         /// Quits the game.
         /// </summary>
-        public void QuitGame()
-        {
-            // Save progress.
-            
-            // Quit game.
-            Application.Quit();
-        }
+        public void QuitGame() => Application.Quit();
         
         #endregion
         
