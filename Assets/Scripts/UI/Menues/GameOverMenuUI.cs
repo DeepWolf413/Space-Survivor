@@ -24,7 +24,7 @@ namespace DeepWolf.SpaceSurvivor.UI
             { return; }
 
             timeLabel.text = TimeUtilities.GetFormattedTime(gameSession.EndTime);
-            spaceCreditsLabel.text = gameSession.SpaceCreditsReward.ToString();
+            spaceCreditsLabel.text = gameSession.SpaceCreditsCounter.ToString();
             
             if (gameSession.HasNewBestTime)
             { personalBestTimeLabel.SetActive(true); }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using DeepWolf.SpaceSurvivor.Managers;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -37,7 +36,11 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         public float EndTime => gameEndedTime - gameStartedTime;
 
         public bool HasNewBestTime { get; private set; }
-        public int SpaceCreditsReward { get; private set; }
+        
+        /// <summary>
+        /// Gets or sets(private) the space credits reward.
+        /// </summary>
+        public int SpaceCreditsCounter { get; private set; }
 
         #endregion
 
@@ -49,6 +52,8 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         /// Occurs when the game has ended.
         /// </summary>
         public event Action GameEnded = delegate { };
+
+        public event Action<int> SpaceCreditsCounterChanged = delegate { };
 
         #endregion
 
@@ -91,7 +96,11 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 
         #endregion
 
-        public void AddSpaceCreditsReward(int amount) => SpaceCreditsReward += amount;
+        public void AddSpaceCreditsReward(int amount)
+        {
+            SpaceCreditsCounter += amount;
+            SpaceCreditsCounterChanged?.Invoke(SpaceCreditsCounter);
+        }
 
         private void StartGame()
         {
@@ -115,7 +124,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             CancelInvoke(nameof(StartNextWave));
             gameEndedTime = Time.time;
 
-            GameManager.SaveManager.SaveState.AddSpaceCredits(SpaceCreditsReward);
+            GameManager.SaveManager.SaveState.AddSpaceCredits(SpaceCreditsCounter);
             HasNewBestTime = GameManager.SaveManager.SaveState.SetBestTime(EndTime);
             isGameInProgress = false;
             GameManager.SaveManager.SaveGame();
