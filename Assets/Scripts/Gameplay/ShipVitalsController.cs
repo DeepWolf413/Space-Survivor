@@ -37,10 +37,6 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             {
                 float damageAmount = shieldComponent.CurrentValue >= amount ? amount : shieldComponent.CurrentValue;
                 shieldComponent.ApplyDamage(damageAmount);
-
-                // Apply the rest of the damage to the health if there's any leftover.
-                if (shieldComponent.CurrentValue < amount)
-                { healthComponent.ApplyDamage(amount - shieldComponent.CurrentValue); }
             }
         }
     }
