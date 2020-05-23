@@ -85,7 +85,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             List<EnemyWaveInfo> possibleEnemies = new List<EnemyWaveInfo>();
             for (int i = 0; i < enemies.Length; i++)
             {
-                if (enemies[i].PointsRequiredToSpawn <= points)
+                if (enemies[i].PointsRequiredToSpawn <= points && enemies[i].IntroduceAtWave < waveNumber)
                 { possibleEnemies.Add(enemies[i]); }
             }
 
@@ -93,24 +93,27 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             {
                 return enemies[Random.Range(0, possibleEnemies.Count)];
             }
-
-            Logger.LogError($"Didn't find an enemy for the points ({points}).");
+            
             return null;
         }
-
-        /*private EnemySpawnInfo[] GetEnemiesForWave(int waveNumber, int points)
+        
+        private EnemySpawnInfo[] GetEnemiesToIntroduce(int waveNumber)
         {
             List<EnemySpawnInfo> enemiesToSpawn = new List<EnemySpawnInfo>();
-            while (points > 0)
+            for (int i = 0; i < enemies.Length; i++)
             {
                 if (enemies[i].IntroduceAtWave == waveNumber)
                 {
-                    possibleEnemies.Clear();
-                    possibleEnemies.Add(enemies[i]);
-                    break;
+                    EnemySpawnInfo spawnInfo = new EnemySpawnInfo(enemies[i].Prefab, enemies[i].PointsRequiredToSpawn);
+                    enemiesToSpawn.Add(spawnInfo);
+                    
+                    for (int j = 1; j < enemies[i].IntroductionSpawnAmount; j++)
+                    { spawnInfo.AddToSpawnAmount(); }
                 }
             }
-        }*/
+
+            return enemiesToSpawn.ToArray();
+        }
         
         /// <summary>
         /// Generates a <see cref="Wave"/> based on the config from <see cref="generationConfig"/>.
@@ -121,14 +124,24 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         {
             List<EnemySpawnInfo> enemiesToSpawn = new List<EnemySpawnInfo>();
 
+            #region Add introduction enemies to the spawn queue
+
+            EnemySpawnInfo[] enemiesToIntroduce = GetEnemiesToIntroduce(number);
+            if (enemiesToIntroduce.Length > 0)
+            {
+                enemiesToSpawn.AddRange(enemiesToIntroduce);
+                
+                for (int i = 0; i < enemiesToIntroduce.Length; i++)
+                { pointsAvailable -= enemiesToIntroduce[i].PointsRequiredToSpawn; }
+            }
+
+            #endregion
+
             while (pointsAvailable > 0)
             {
                 EnemyWaveInfo enemy = GetEnemyBasedOnPoints(pointsAvailable, number);
                 if (enemy == null)
-                {
-                    Logger.LogError($"No enemy was found with the points available {pointsAvailable}.");
-                    break;
-                }
+                { break; }
 
                 #region Check if enemy is already added
                     
@@ -146,7 +159,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 
                 // Add to spawn amount or add a new enemy entry based on the previous check.
                 if (spawnInfo == null)
-                { enemiesToSpawn.Add(new EnemySpawnInfo(enemy.Prefab)); }
+                { enemiesToSpawn.Add(new EnemySpawnInfo(enemy.Prefab, enemy.PointsRequiredToSpawn)); }
                 else
                 { spawnInfo.AddToSpawnAmount(); }
                 pointsAvailable -= enemy.PointsRequiredToSpawn;

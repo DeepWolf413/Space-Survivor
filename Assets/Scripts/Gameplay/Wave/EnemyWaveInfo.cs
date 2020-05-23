@@ -14,6 +14,9 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         [SerializeField, Tooltip("In what wave the enemy should be introduced.")]
         private int introduceAtWave;
 
+        [SerializeField]
+        private int introductionSpawnAmount;
+
         #region Constructors
 
         /// <summary>
@@ -24,6 +27,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             prefab = null;
             pointsRequiredToSpawn = 1;
             introduceAtWave = 1;
+            introductionSpawnAmount = 1;
         }
 
         #endregion
@@ -44,6 +48,11 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         /// Gets an <see cref="int"/> that determines when the enemy should be introduced.
         /// </summary>
         public int IntroduceAtWave => introduceAtWave;
+
+        /// <summary>
+        /// Gets an <see cref="int"/> that determines the amount of this enemy to spawn when introduced.
+        /// </summary>
+        public int IntroductionSpawnAmount => introductionSpawnAmount;
 
         #endregion
     }
