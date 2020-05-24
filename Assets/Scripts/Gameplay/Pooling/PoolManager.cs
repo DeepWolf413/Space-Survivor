@@ -5,7 +5,6 @@ using Object = UnityEngine.Object;
 
 namespace DeepWolf.SpaceSurvivor.Gameplay
 {
-    // TODO: Get rid of garbage collection, improve, and refactor.
     public class PoolManager : MonoSingleton<PoolManager>
     {
         private List<Pool> pools = new List<Pool>();
