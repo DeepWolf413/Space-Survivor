@@ -53,10 +53,19 @@ namespace DeepWolf.SpaceSurvivor.Managers
 					reference = (T)referenceList[typeof(T)][0];
 					return true;
 				}
+				else
+				{
+					reference = Object.FindObjectOfType<T>();
+					referenceList[typeof(T)].Add(reference);
+				}
+			}
+			else
+			{
+				reference = Object.FindObjectOfType<T>();
+				referenceList.Add(typeof(T), new List<Object>{reference});
 			}
 
 			Logger.LogError($"Failed to get reference of type '{typeof(T).Name}'.");
-			reference = null;
 			return false;
 		}
 
