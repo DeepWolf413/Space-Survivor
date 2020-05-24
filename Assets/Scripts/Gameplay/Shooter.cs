@@ -1,14 +1,12 @@
 ﻿using DeepWolf.SpaceSurvivor.Managers;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace DeepWolf.SpaceSurvivor.Gameplay
 {
     public class Shooter : MonoBehaviour
     {
-        [FormerlySerializedAs("projectile")]
         [SerializeField]
-        private Projectile projectilePrefab = null;
+        private PoolData projectilePool = null;
 
         [SerializeField]
         private Transform shootPoint = null;
@@ -36,7 +34,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         
         public void Shoot()
         {
-            Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
+            PoolManager.Spawn(projectilePool, shootPoint.position, shootPoint.rotation);
             nextShootTime = fireRate + Time.time;
 
             if (shootSfx)

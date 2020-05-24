@@ -6,7 +6,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
     public class Spawner : MonoBehaviour
     {
         [SerializeField]
-        private GameObject[] asteroidPrefabs = null;
+        private PoolData[] asteroidPools = null;
         
         private Camera cachedCamera = null;
         
@@ -14,8 +14,8 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 
         public void SpawnAsteroid()
         {
-            GameObject asteroidPrefab = asteroidPrefabs[Random.Range(0, asteroidPrefabs.Length)];
-            Spawn(asteroidPrefab);
+            PoolData asteroidPool = asteroidPools[Random.Range(0, asteroidPools.Length)];
+            Spawn(asteroidPool);
         }
         
         public GameObject Spawn(GameObject prefab, float offsetFromScreenEdge = 5.0f)
@@ -26,6 +26,16 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         public GameObject Spawn(GameObject prefab, EScreenEdge screenEdge, float offsetFromScreenEdge = 5.0f)
         {
             return Instantiate(prefab, GetRndPosOutsideScreen(screenEdge, offsetFromScreenEdge), Quaternion.identity);
+        }
+        
+        public GameObject Spawn(PoolData pool, float offsetFromScreenEdge = 5.0f)
+        {
+            return PoolManager.Spawn(pool, GetRndPosOutsideScreen(), Quaternion.identity);
+        }
+        
+        public GameObject Spawn(PoolData pool, EScreenEdge screenEdge, float offsetFromScreenEdge = 5.0f)
+        {
+            return PoolManager.Spawn(pool, GetRndPosOutsideScreen(screenEdge, offsetFromScreenEdge), Quaternion.identity);
         }
         
         private Vector2 GetRndPosOutsideScreen(EScreenEdge screenEdge, float offsetFromEdge = 5.0f)

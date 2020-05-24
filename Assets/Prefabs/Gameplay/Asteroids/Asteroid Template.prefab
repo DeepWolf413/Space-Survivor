@@ -88,7 +88,9 @@ MonoBehaviour:
   spawnPiecesOnDestroy: 0
   piecesMaxSpawnDistance: 1
   piecesSpawnAmount: 0
-  piecesToSpawn: []
+  poolsOfPiecesToSpawn:
+  - {fileID: 11400000, guid: d42971d806396fa4a8b7213cdae4c112, type: 2}
+  - {fileID: 11400000, guid: f420505a5ea66eb43862013c6f9967b0, type: 2}
   explosionForce: 1.5
 --- !u!114 &2856198063128984186
 MonoBehaviour:
@@ -118,6 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startValue: 100
   maxValue: 100
+  usePooling: 1
   damagedFeedback: {fileID: 2467884119827820440}
   dieFeedback: {fileID: 1323757436599183779}
 --- !u!114 &4030750645679633811
@@ -230,7 +233,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2916086328505543394}
   - component: {fileID: 1323757436599183779}
-  - component: {fileID: 7601649690020081385}
+  - component: {fileID: 7976773694149450011}
   - component: {fileID: 5571560171876748236}
   m_Layer: 0
   m_Name: Die Feedback
@@ -266,9 +269,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   feedbacks:
-  - {fileID: 7601649690020081385}
+  - {fileID: 7976773694149450011}
   - {fileID: 5571560171876748236}
---- !u!114 &7601649690020081385
+--- !u!114 &7976773694149450011
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -277,10 +280,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4390957053284024006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e4369d3a20145fdaaa384662133b193, type: 3}
+  m_Script: {fileID: 11500000, guid: 607bdaf152984606a93f1109ac61962f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1736115028718041767, guid: e64096351be0f5146828d24558b2343c, type: 3}
+  pool: {fileID: 11400000, guid: 8b145d640b17cff4492af80caa403d6a, type: 2}
 --- !u!114 &5571560171876748236
 MonoBehaviour:
   m_ObjectHideFlags: 0

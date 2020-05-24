@@ -10,6 +10,9 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
     public class Health : Vital
     {
         [SerializeField]
+        private bool usePooling;
+
+        [SerializeField]
         private FeedbackPlayer damagedFeedback = null;
         
         [SerializeField]
@@ -51,10 +54,6 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         
         #endregion
         
-        #region Unity callbacks
-
-        #endregion
-
         #region Public methods
 
         public void ApplyDamage(float amount)
@@ -92,7 +91,11 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             { dieFeedback.Play(); }
 
             OnDeath?.Invoke();
-            Destroy(gameObject);
+
+            if (usePooling)
+            { PoolManager.Despawn(gameObject); }
+            else
+            { Destroy(gameObject); }
         }
         
         #endregion

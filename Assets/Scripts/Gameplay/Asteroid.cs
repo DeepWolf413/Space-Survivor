@@ -1,8 +1,5 @@
-﻿using System;
-using DeepWolf.SpaceSurvivor.Managers;
-using UnityEngine;
+﻿using UnityEngine;
 using Random = UnityEngine.Random;
-using SceneManager = UnityEngine.SceneManagement.SceneManager;
 
 namespace DeepWolf.SpaceSurvivor.Gameplay
 {
@@ -29,17 +26,24 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         private int piecesSpawnAmount;
 
         [SerializeField, Tooltip("An array of possible pieces to spawn when this asteroid is destroyed. NOTE: This is only used if 'Spawn Pieces On Destroy' is enabled.")]
-        private Rigidbody2D[] piecesToSpawn = new Rigidbody2D[0];
+        private PoolData[] poolsOfPiecesToSpawn = new PoolData[0];
 
         [SerializeField]
         private float explosionForce = 1.5f;
 
+        [Header("[References]")]
+        [SerializeField]
+        private Health healthComponent = null;
+
         private Rigidbody2D cachedRigidbody = null;
 
-        private void Awake()
+        private void OnValidate()
         {
-            cachedRigidbody = GetComponent<Rigidbody2D>();
+            if (!healthComponent)
+            { healthComponent = GetComponent<Health>(); }
         }
+
+        private void Awake() => cachedRigidbody = GetComponent<Rigidbody2D>();
 
         private void OnEnable()
         {
@@ -53,31 +57,32 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
                 cachedRigidbody.velocity = (playerObject.transform.position - transform.position).normalized * travelSpeed;
                 cachedRigidbody.angularVelocity = angularVelocity;
             }
-        }
-
-        private void OnDestroy()
-        {
-            if (!spawnPiecesOnDestroy)
-            { return; }
-
-            if (GameManager.IsApplicationQuitting || GameManager.SceneManager.IsChangingScene)
-            { return; }
             
-            SpawnPieces();
+            healthComponent.OnDeath += OnDeath;
         }
+
+        private void OnDisable() => healthComponent.OnDeath -= OnDeath;
 
         private void SpawnPieces()
         {
             for (int i = 0; i < piecesSpawnAmount; i++)
             {
                 Vector3 spawnPos = transform.position + (Vector3)Random.insideUnitCircle * piecesMaxSpawnDistance;
-                Rigidbody2D asteroidPiece = Instantiate(GetRndPiece(), spawnPos, Quaternion.identity);
+                Rigidbody2D asteroidPiece = PoolManager.Spawn<Rigidbody2D>(GetRndPiece(), spawnPos, Quaternion.identity);
 
                 Vector2 direction = asteroidPiece.transform.position - transform.position;
                 asteroidPiece.AddForceAtPosition(direction.normalized * explosionForce, transform.position, ForceMode2D.Impulse);
             }
         }
 
-        private Rigidbody2D GetRndPiece() => piecesToSpawn[Random.Range(0, piecesToSpawn.Length)];
+        private PoolData GetRndPiece() => poolsOfPiecesToSpawn[Random.Range(0, poolsOfPiecesToSpawn.Length)];
+        
+        private void OnDeath()
+        {
+            if (!spawnPiecesOnDestroy)
+            { return; }
+
+            SpawnPieces();
+        }
     }
 }

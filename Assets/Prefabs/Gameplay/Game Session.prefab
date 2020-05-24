@@ -43,13 +43,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0c8595bfbc14d8ea57be6e8b5473633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asteroidPrefabs:
-  - {fileID: 1843801295836826754, guid: 1378d8c4a7773d74f938c697fb1e7529, type: 3}
-  - {fileID: 1843801295836826754, guid: 57b9b72717e7adc45bdb137fdd435873, type: 3}
-  - {fileID: 1843801295836826754, guid: d52a65bd068114b4b8514431815528cb, type: 3}
-  - {fileID: 1843801295836826754, guid: 1097e90a76956154fb6ba65934ac58fd, type: 3}
-  - {fileID: 1843801295836826754, guid: f7772c6c81055504587a018142989a33, type: 3}
-  - {fileID: 1843801295836826754, guid: e54522cc71bebf9459fe1a3439fe9e08, type: 3}
+  asteroidPools:
+  - {fileID: 11400000, guid: bbb32d1fd770cae439412103220d7fb9, type: 2}
+  - {fileID: 11400000, guid: e2ecf4f2190dc544daa9c1e6f1e14316, type: 2}
+  - {fileID: 11400000, guid: 1536025f717a9754fb2f91ac3dd7ceac, type: 2}
+  - {fileID: 11400000, guid: 5b076f98a2198ae408b7be8166f326be, type: 2}
+  - {fileID: 11400000, guid: fc0e88b4b9c62494d9c471edbcd58d38, type: 2}
+  - {fileID: 11400000, guid: e277ac8c83ffb374faedc92ee2914b34, type: 2}
+  - {fileID: 11400000, guid: d42971d806396fa4a8b7213cdae4c112, type: 2}
+  - {fileID: 11400000, guid: f420505a5ea66eb43862013c6f9967b0, type: 2}
 --- !u!1 &6326406231816481068
 GameObject:
   m_ObjectHideFlags: 0

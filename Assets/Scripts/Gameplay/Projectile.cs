@@ -12,23 +12,23 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         private string tagToDamage = string.Empty;
 
         [SerializeField]
-        private GameObject destroyFX = null;
+        private PoolData destroyFXPool = null;
 
         private Rigidbody2D cachedRigidbody = null;
 
         private void Awake() => cachedRigidbody = GetComponent<Rigidbody2D>();
 
-        private void Start() => cachedRigidbody.velocity = transform.up * speed;
+        private void OnEnable() => cachedRigidbody.velocity = transform.up * speed;
 
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (tagToDamage != string.Empty && !other.CompareTag(tagToDamage))
             { return; }
 
-            if (destroyFX)
-            { Instantiate(destroyFX, transform.position, Quaternion.identity); }
-            
-            Destroy(gameObject);
+            if (destroyFXPool)
+            { PoolManager.Spawn(destroyFXPool, transform.position, Quaternion.identity); }
+
+            PoolManager.Despawn(gameObject);
         }
     }
 }

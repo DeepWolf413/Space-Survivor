@@ -22,11 +22,16 @@ namespace DeepWolf.SpaceSurvivor.Gameplay.Feedbacks
         protected Coroutine flashCoroutine = null;
 
         protected Color originalColor = Color.white;
-
-        private void OnDestroy()
+        
+        private void OnDisable()
         {
             if (flashCoroutine != null)
-            { StopCoroutine(flashCoroutine); }
+            {
+                StopCoroutine(flashCoroutine);
+                flashCoroutine = null;
+            }
+            
+            spriteRenderer.color = originalColor;
         }
         
         protected virtual void Start() => originalColor = spriteRenderer.color;
