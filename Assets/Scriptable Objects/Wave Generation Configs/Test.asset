@@ -13,32 +13,12 @@ MonoBehaviour:
   m_Name: Test
   m_EditorClassIdentifier: 
   seed: 72472
-  enemies:
-  - prefab: {fileID: 6176004399441913443, guid: 1edd5dd240b8de64884ac4d177f480fc,
-      type: 3}
-    pointsRequiredToSpawn: 1
-    introduceAtWave: 1
-  - prefab: {fileID: 6176004399441913443, guid: f60fa8298d2d552428a826448ec9f542,
-      type: 3}
-    pointsRequiredToSpawn: 1
-    introduceAtWave: 1
-  - prefab: {fileID: 6176004399441913443, guid: 4e3f868a2ded9a44386c2356042a04c4,
-      type: 3}
-    pointsRequiredToSpawn: 1
-    introduceAtWave: 1
-  - prefab: {fileID: 6176004399441913443, guid: 2a1bd415f4cbc274187dfc9c1f74e63d,
-      type: 3}
-    pointsRequiredToSpawn: 1
-    introduceAtWave: 1
-  - prefab: {fileID: 6176004399441913443, guid: d5bae0e13343cc54183642020e73fca0,
-      type: 3}
-    pointsRequiredToSpawn: 1
-    introduceAtWave: 1
+  enemies: []
   pointsPerWave: 0
   startingPoints: 0
   maxPoints: 0
   nextWaveStartDelay: 5
   enemySpawnDelayRange: {x: 1, y: 2}
-  asteroidsEventSpawnDelayRange: {x: 5, y: 10}
+  asteroidsEventSpawnDelayRange: {x: 2, y: 5}
   asteroidSpawnDelay: 1
   asteroidSpawnCountRange: {x: 10, y: 15}
