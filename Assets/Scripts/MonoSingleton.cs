@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DeepWolf.SpaceSurvivor.Utilities;
 using UnityEngine;
 
 namespace DeepWolf.SpaceSurvivor
@@ -16,10 +17,10 @@ namespace DeepWolf.SpaceSurvivor
         {
             get
             {
-                if (instance == null)
-                { instance = FindObjectOfType<T>(); }
+                if (instance != null)
+                { return instance; }
                 
-                return instance;
+                return ObjectUtilities.TryGetObjectOfType(out instance) ? instance : null;
             }
         }
 
