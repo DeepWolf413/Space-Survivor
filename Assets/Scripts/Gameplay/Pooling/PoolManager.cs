@@ -9,6 +9,8 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
     {
         private List<Pool> pools = new List<Pool>();
 
+        protected override bool DontDestroyOnLoad => false;
+
         #region Unity callbacks
 
         private void OnEnable() => SceneManager.activeSceneChanged += OnActiveSceneChanged;
