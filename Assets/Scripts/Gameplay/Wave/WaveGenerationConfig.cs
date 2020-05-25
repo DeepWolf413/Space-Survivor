@@ -104,7 +104,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             {
                 if (enemies[i].IntroduceAtWave == waveNumber)
                 {
-                    EnemySpawnInfo spawnInfo = new EnemySpawnInfo(enemies[i].Prefab, enemies[i].PointsRequiredToSpawn);
+                    EnemySpawnInfo spawnInfo = new EnemySpawnInfo(enemies[i].EnemyPool, enemies[i].PointsRequiredToSpawn);
                     enemiesToSpawn.Add(spawnInfo);
                     
                     for (int j = 1; j < enemies[i].IntroductionSpawnAmount; j++)
@@ -148,7 +148,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
                 EnemySpawnInfo spawnInfo = null;
                 for (int i = 0; i < enemiesToSpawn.Count; i++)
                 {
-                    if (enemiesToSpawn[i].Prefab == enemy.Prefab)
+                    if (enemiesToSpawn[i].EnemyPool == enemy.EnemyPool)
                     {
                         spawnInfo = enemiesToSpawn[i];
                         break;
@@ -159,7 +159,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 
                 // Add to spawn amount or add a new enemy entry based on the previous check.
                 if (spawnInfo == null)
-                { enemiesToSpawn.Add(new EnemySpawnInfo(enemy.Prefab, enemy.PointsRequiredToSpawn)); }
+                { enemiesToSpawn.Add(new EnemySpawnInfo(enemy.EnemyPool, enemy.PointsRequiredToSpawn)); }
                 else
                 { spawnInfo.AddToSpawnAmount(); }
                 pointsAvailable -= enemy.PointsRequiredToSpawn;

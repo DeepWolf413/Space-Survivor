@@ -161,7 +161,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
                 for (int i = 0; i < spawnInfo.SpawnAmount; i++)
                 {
                     yield return new WaitForSeconds(generationConfig.GetRndEnemySpawnDelay());
-                    GameObject spawnedEnemy = spawner.Spawn(spawnInfo.Prefab);
+                    GameObject spawnedEnemy = spawner.Spawn(spawnInfo.EnemyPool);
                     GameEvents.SignalEnemyShipSpawned(spawnedEnemy);
                 }
 

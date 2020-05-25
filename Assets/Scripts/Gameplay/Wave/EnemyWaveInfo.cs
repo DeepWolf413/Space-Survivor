@@ -6,7 +6,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
     public class EnemyWaveInfo
     {
         [SerializeField]
-        private GameObject prefab;
+        private PoolData enemyPool;
 
         [SerializeField]
         private int pointsRequiredToSpawn;
@@ -24,7 +24,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         /// </summary>
         public EnemyWaveInfo()
         {
-            prefab = null;
+            enemyPool = null;
             pointsRequiredToSpawn = 1;
             introduceAtWave = 1;
             introductionSpawnAmount = 1;
@@ -35,9 +35,9 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         #region Properties
 
         /// <summary>
-        /// Gets the prefab of the enemey.
+        /// Gets the pool of the enemy to spawn.
         /// </summary>
-        public GameObject Prefab => prefab;
+        public PoolData EnemyPool => enemyPool;
 
         /// <summary>
         /// Gets an <see cref="int"/> that determines the amount of points that is required to spawn this enemy.

@@ -4,14 +4,14 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 {
     public class EnemySpawnInfo
     {
-        public EnemySpawnInfo(GameObject prefab, int pointsRequiredToSpawn)
+        public EnemySpawnInfo(PoolData enemyPool, int pointsRequiredToSpawn)
         {
-            Prefab = prefab;
+            EnemyPool = enemyPool;
             SpawnAmount = 1;
             PointsRequiredToSpawn = pointsRequiredToSpawn;
         }
         
-        public GameObject Prefab { get; }
+        public PoolData EnemyPool { get; }
         
         public int SpawnAmount { get; private set; }
         

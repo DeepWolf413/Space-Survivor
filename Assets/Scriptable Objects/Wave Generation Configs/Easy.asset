@@ -14,28 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seed: 72472
   enemies:
-  - prefab: {fileID: 6176004399441913443, guid: 1edd5dd240b8de64884ac4d177f480fc,
-      type: 3}
+  - enemyPool: {fileID: 11400000, guid: f4ea1722879b9fc48aa2c11f96b93c19, type: 2}
     pointsRequiredToSpawn: 1
     introduceAtWave: 1
     introductionSpawnAmount: 3
-  - prefab: {fileID: 6176004399441913443, guid: f60fa8298d2d552428a826448ec9f542,
-      type: 3}
+  - enemyPool: {fileID: 11400000, guid: c0523d2f8a7fcfe45bbba5c0092c7ac4, type: 2}
     pointsRequiredToSpawn: 2
     introduceAtWave: 4
     introductionSpawnAmount: 2
-  - prefab: {fileID: 6176004399441913443, guid: 4e3f868a2ded9a44386c2356042a04c4,
-      type: 3}
+  - enemyPool: {fileID: 11400000, guid: 75c079e828a50a046a05c7f0ce259a4a, type: 2}
     pointsRequiredToSpawn: 4
     introduceAtWave: 8
     introductionSpawnAmount: 2
-  - prefab: {fileID: 6176004399441913443, guid: 2a1bd415f4cbc274187dfc9c1f74e63d,
-      type: 3}
+  - enemyPool: {fileID: 11400000, guid: 41c29ef724c01a743a5ae944511237e9, type: 2}
     pointsRequiredToSpawn: 10
     introduceAtWave: 16
     introductionSpawnAmount: 1
-  - prefab: {fileID: 6176004399441913443, guid: d5bae0e13343cc54183642020e73fca0,
-      type: 3}
+  - enemyPool: {fileID: 11400000, guid: 400fccc3e3e053c43bb97326e2fca8d9, type: 2}
     pointsRequiredToSpawn: 5
     introduceAtWave: 12
     introductionSpawnAmount: 2
