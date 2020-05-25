@@ -59,10 +59,10 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         private void ProcessShootInput()
         {
             if (Input.GetButtonDown(shootName))
-            { shooterComponent.BeginShooting(); }
+            { shooterComponent.BeginShoot(); }
             
             if (Input.GetButtonUp(shootName))
-            { shooterComponent.StopShooting(); }
+            { shooterComponent.EndShoot(); }
         }
 
         private Vector3 GetDirectionToMouse() => cachedCamera.ScreenToWorldPoint(Input.mousePosition) - movementComponent.transform.position;

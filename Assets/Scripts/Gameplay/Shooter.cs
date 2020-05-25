@@ -1,44 +1,30 @@
-﻿using DeepWolf.SpaceSurvivor.Managers;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace DeepWolf.SpaceSurvivor.Gameplay
 {
     public class Shooter : MonoBehaviour
     {
         [SerializeField]
-        private PoolData projectilePool = null;
+        private WeaponBehaviour currentWeapon = null;
 
-        [SerializeField]
-        private Transform shootPoint = null;
-
-        [SerializeField]
-        private float fireRate = 0.1f;
-
-        [SerializeField]
-        private AudioClip shootSfx = null;
+        public WeaponData WeaponData => currentWeapon.Data;
         
-        private bool isShooting = false;
-        private float nextShootTime = 0.0f;
-        
-        public bool IsOnCooldown => nextShootTime > Time.time;
+        public void ChangeWeapon(WeaponBehaviour newWeapon) => currentWeapon = newWeapon;
 
-        private void Update()
+        public void BeginShoot()
         {
-            if (isShooting && !IsOnCooldown)
-            { Shoot(); }
+            if (!currentWeapon)
+            { return; }
+            
+            currentWeapon.BeginUse();
         }
 
-        public void BeginShooting() => isShooting = true;
-
-        public void StopShooting() => isShooting = false;
-        
-        public void Shoot()
+        public void EndShoot()
         {
-            PoolManager.Spawn(projectilePool, shootPoint.position, shootPoint.rotation);
-            nextShootTime = fireRate + Time.time;
-
-            if (shootSfx)
-            { GameManager.SoundManager.PlayGlobalSound(shootSfx, ESoundType.Sfx); }
+            if (!currentWeapon)
+            { return; }
+            
+            currentWeapon.EndUse();
         }
     }
 }

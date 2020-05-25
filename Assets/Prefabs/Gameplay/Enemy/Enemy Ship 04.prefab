@@ -41,6 +41,11 @@ PrefabInstance:
       propertyPath: amountToGive
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 1244400120485405724, guid: 7066622ab46216640bf304cb9485eea4,
+        type: 3}
+      propertyPath: shootPattern
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4357913513997015992, guid: 7066622ab46216640bf304cb9485eea4,
         type: 3}
       propertyPath: m_LocalPosition.x

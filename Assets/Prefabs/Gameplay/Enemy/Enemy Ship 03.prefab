@@ -41,6 +41,16 @@ PrefabInstance:
       propertyPath: amountToGive
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 1244400120485405724, guid: 7066622ab46216640bf304cb9485eea4,
+        type: 3}
+      propertyPath: shootPattern
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1244400120485405724, guid: 7066622ab46216640bf304cb9485eea4,
+        type: 3}
+      propertyPath: shootDelay
+      value: 1.25
+      objectReference: {fileID: 0}
     - target: {fileID: 4357913513997015992, guid: 7066622ab46216640bf304cb9485eea4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -132,10 +142,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Ship 03
       objectReference: {fileID: 0}
+    - target: {fileID: 4712542237339151333, guid: 7066622ab46216640bf304cb9485eea4,
+        type: 3}
+      propertyPath: m_Name
+      value: Single Laser - Big
+      objectReference: {fileID: 0}
     - target: {fileID: 6597644186389324730, guid: 7066622ab46216640bf304cb9485eea4,
         type: 3}
       propertyPath: predictTargetVelocity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6651916869887617005, guid: 7066622ab46216640bf304cb9485eea4,
+        type: 3}
+      propertyPath: projectilePool
+      value: 
+      objectReference: {fileID: 11400000, guid: 0d5311c94a255244aa6faf3292ff53c2,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7066622ab46216640bf304cb9485eea4, type: 3}

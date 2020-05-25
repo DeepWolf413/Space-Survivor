@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a6bfc3135724a8ab4074fefd86f1dd4, type: 3}
-  m_Name: Enemy Laser - Small
+  m_Name: Enemy Ship 5
   m_EditorClassIdentifier: 
-  id: Enemy Laser
-  prefab: {fileID: 6724847676137897104, guid: 7a15528bd49abb4499eaa374a1fca86d, type: 3}
+  id: Enemy Ship 05
+  prefab: {fileID: 6176004399441913443, guid: d5bae0e13343cc54183642020e73fca0, type: 3}
   preload: 1
-  preloadAmount: 20
+  preloadAmount: 5

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a6bfc3135724a8ab4074fefd86f1dd4, type: 3}
-  m_Name: Player Laser - Small
+  m_Name: Player - Big laser
   m_EditorClassIdentifier: 
-  id: Player Laser
-  prefab: {fileID: 6724847676137897104, guid: 65e7a1a285b19354bb049ba9ae91172d, type: 3}
+  id: Player - Big Laser
+  prefab: {fileID: 426267503726008907, guid: e422741cd34779c438295baefd6ead88, type: 3}
   preload: 1
   preloadAmount: 20
