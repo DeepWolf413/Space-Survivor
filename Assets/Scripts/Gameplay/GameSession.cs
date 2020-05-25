@@ -82,9 +82,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             
             GameEvents.PlayerShipDestroyed -= OnPlayerShipDestroyed;
         }
-
-        private void Start() => ReferenceManager.Register(this);
-
+        
         private void Update()
         {
             if (!isGameInProgress)

@@ -1,6 +1,5 @@
-﻿
-using DeepWolf.SpaceSurvivor.Gameplay;
-using DeepWolf.SpaceSurvivor.Managers;
+﻿using DeepWolf.SpaceSurvivor.Gameplay;
+using DeepWolf.SpaceSurvivor.Utilities;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -14,7 +13,7 @@ namespace DeepWolf.SpaceSurvivor.UI
 
         private void Start()
         {
-            if (ReferenceManager.TryGet(out GameSession gameSession))
+            if (ObjectUtilities.TryGetObjectOfType(out GameSession gameSession))
             { gameSession.SpaceCreditsCounterChanged += OnSpaceCreditsCounterChanged; }
         }
 

@@ -3,7 +3,6 @@ using DeepWolf.SpaceSurvivor.Managers;
 using DeepWolf.SpaceSurvivor.Utilities;
 using TMPro;
 using UnityEngine;
-using Logger = DeepWolf.Logging.Logger;
 
 namespace DeepWolf.SpaceSurvivor.UI
 {
@@ -20,9 +19,9 @@ namespace DeepWolf.SpaceSurvivor.UI
 
         private void OnEnable()
         {
-            if (!ReferenceManager.TryGet(out GameSession gameSession))
+            if (!ObjectUtilities.TryGetObjectOfType(out GameSession gameSession))
             { return; }
-
+            
             timeLabel.text = TimeUtilities.GetFormattedTime(gameSession.EndTime);
             spaceCreditsLabel.text = gameSession.SpaceCreditsCounter.ToString();
             

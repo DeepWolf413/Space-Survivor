@@ -1,5 +1,5 @@
-﻿using System;
-using DeepWolf.SpaceSurvivor.Managers;
+﻿using DeepWolf.SpaceSurvivor.Managers;
+using DeepWolf.SpaceSurvivor.Utilities;
 using UnityEngine;
 
 namespace DeepWolf.SpaceSurvivor.Gameplay
@@ -28,7 +28,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             if (GameManager.IsApplicationQuitting)
             { return; }
 
-            if (ReferenceManager.TryGet(out GameSession gameSession))
+            if (ObjectUtilities.TryGetObjectOfType(out GameSession gameSession))
             { gameSession.AddSpaceCreditsReward(amountToGive); }
         }
     }
