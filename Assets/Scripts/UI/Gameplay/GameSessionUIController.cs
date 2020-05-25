@@ -1,7 +1,7 @@
 ﻿using DeepWolf.SpaceSurvivor.Gameplay;
 using DeepWolf.SpaceSurvivor.Managers;
+using DeepWolf.SpaceSurvivor.Utilities;
 using UnityEngine;
-using Logger = DeepWolf.Logging.Logger;
 
 namespace DeepWolf.SpaceSurvivor.UI
 {
@@ -17,26 +17,14 @@ namespace DeepWolf.SpaceSurvivor.UI
 
         private void OnEnable()
         {
-            GameSession gameSession = FindObjectOfType<GameSession>();
-            if (!gameSession)
-            {
-                Logger.LogInfo("The game session could not be found.");
-                return;
-            }
-            
-            gameSession.GameEnded += OnGameEnded;
+            if (ObjectUtilities.TryGetObjectOfType(out GameSession gameSession))
+            { gameSession.GameEnded += OnGameEnded; }
         }
         
         private void OnDisable()
         {
-            GameSession gameSession = FindObjectOfType<GameSession>();
-            if (!gameSession && !GameManager.SceneManager.IsChangingScene)
-            {
-                Logger.LogInfo("The game session could not be found.");
-                return;
-            }
-            
-            gameSession.GameEnded -= OnGameEnded;
+            if (!GameManager.SceneManager.IsChangingScene && ObjectUtilities.TryGetObjectOfType(out GameSession gameSession))
+            { gameSession.GameEnded += OnGameEnded; }
         }
 
         #endregion
