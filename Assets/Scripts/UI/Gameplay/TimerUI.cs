@@ -16,7 +16,7 @@ namespace DeepWolf.SpaceSurvivor.UI
 
         private void Start()
         {
-            gameSession = FindObjectOfType<GameSession>();
+            ObjectUtilities.TryGetObjectOfType(out gameSession);
             InvokeRepeating(nameof(RefreshTimer), 0.05f, 1.0f);
         }
 
