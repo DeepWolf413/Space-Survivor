@@ -62,7 +62,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         private void OnValidate()
         {
             if (!spawner)
-            { spawner = FindObjectOfType<Spawner>(); }
+            { spawner = GetComponentInChildren<Spawner>(); }
         }
 
         private void Awake()
