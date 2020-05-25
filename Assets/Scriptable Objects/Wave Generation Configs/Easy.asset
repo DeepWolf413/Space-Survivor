@@ -24,15 +24,15 @@ MonoBehaviour:
     introductionSpawnAmount: 2
   - enemyPool: {fileID: 11400000, guid: 75c079e828a50a046a05c7f0ce259a4a, type: 2}
     pointsRequiredToSpawn: 4
-    introduceAtWave: 8
+    introduceAtWave: 7
     introductionSpawnAmount: 2
   - enemyPool: {fileID: 11400000, guid: 41c29ef724c01a743a5ae944511237e9, type: 2}
     pointsRequiredToSpawn: 10
-    introduceAtWave: 16
+    introduceAtWave: 15
     introductionSpawnAmount: 1
   - enemyPool: {fileID: 11400000, guid: 400fccc3e3e053c43bb97326e2fca8d9, type: 2}
     pointsRequiredToSpawn: 5
-    introduceAtWave: 12
+    introduceAtWave: 10
     introductionSpawnAmount: 2
   pointsPerWave: 3
   startingPoints: 3
