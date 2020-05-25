@@ -15,7 +15,7 @@ namespace DeepWolf.SpaceSurvivor.Managers
 
         public bool IsChangingScene { get; private set; }
         
-        protected override bool DontDestroyOnLoad => false;
+        protected override bool UseDontDestroyOnLoad => false;
 
         private void OnEnable() => UnitySceneManager.sceneLoaded += OnSceneLoaded;
         

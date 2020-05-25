@@ -24,7 +24,7 @@ namespace DeepWolf.SpaceSurvivor
             }
         }
 
-        protected virtual bool DontDestroyOnLoad => true;
+        protected virtual bool UseDontDestroyOnLoad => true;
 
         protected virtual void Awake()
         {
@@ -32,7 +32,7 @@ namespace DeepWolf.SpaceSurvivor
             { Destroy(gameObject); }
             else
             {
-                if (DontDestroyOnLoad)
+                if (UseDontDestroyOnLoad)
                 { DontDestroyOnLoad(gameObject); }
             }
         }

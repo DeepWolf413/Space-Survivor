@@ -10,7 +10,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
     public class Health : Vital
     {
         [SerializeField]
-        private bool usePooling;
+        private bool usePooling = false;
 
         [SerializeField]
         private FeedbackPlayer damagedFeedback = null;

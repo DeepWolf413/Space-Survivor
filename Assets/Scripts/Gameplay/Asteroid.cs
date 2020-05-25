@@ -23,7 +23,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         private float piecesMaxSpawnDistance = 1.0f;
 
         [SerializeField, Tooltip("The amount of pieces to spawn when this asteroid is destroyed. NOTE: This is only used if 'Spawn Pieces On Destroy' is enabled.")]
-        private int piecesSpawnAmount;
+        private int piecesSpawnAmount = 1;
 
         [SerializeField, Tooltip("An array of possible pieces to spawn when this asteroid is destroyed. NOTE: This is only used if 'Spawn Pieces On Destroy' is enabled.")]
         private PoolData[] poolsOfPiecesToSpawn = new PoolData[0];

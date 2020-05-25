@@ -16,7 +16,7 @@ namespace DeepWolf.SpaceSurvivor.Managers
 
         #region Properties
 
-        protected override bool DontDestroyOnLoad => false;
+        protected override bool UseDontDestroyOnLoad => false;
         
         public int PlayerShipCount => playerShips.Length;
 
@@ -29,8 +29,12 @@ namespace DeepWolf.SpaceSurvivor.Managers
         public event Action<PlayerShipData> SelectedShipChanged = delegate { };
 
         #endregion
-        
-        private void Awake() => LoadSaveGame();
+
+        protected override void Awake()
+        {
+            base.Awake();
+            LoadSaveGame();
+        }
 
         private void SetupSaveGame()
         {

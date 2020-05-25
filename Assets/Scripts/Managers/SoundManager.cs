@@ -17,7 +17,7 @@ namespace DeepWolf.SpaceSurvivor.Managers
 
         private List<AudioSource> pool = new List<AudioSource>();
         
-        protected override bool DontDestroyOnLoad => false;
+        protected override bool UseDontDestroyOnLoad => false;
 
         /// <summary>
         /// Plays an <see cref="AudioClip"/> in 3D.

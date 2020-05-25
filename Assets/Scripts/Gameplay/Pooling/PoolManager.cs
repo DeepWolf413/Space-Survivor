@@ -9,7 +9,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
     {
         private List<Pool> pools = new List<Pool>();
 
-        protected override bool DontDestroyOnLoad => false;
+        protected override bool UseDontDestroyOnLoad => false;
 
         #region Unity callbacks
 
