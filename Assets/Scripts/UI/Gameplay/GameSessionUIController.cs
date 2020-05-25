@@ -23,8 +23,11 @@ namespace DeepWolf.SpaceSurvivor.UI
         
         private void OnDisable()
         {
-            if (!GameManager.SceneManager.IsChangingScene && ObjectUtilities.TryGetObjectOfType(out GameSession gameSession))
-            { gameSession.GameEnded += OnGameEnded; }
+            if (GameManager.IsApplicationQuitting || GameManager.SceneManager.IsChangingScene)
+            { return; }
+            
+            if (ObjectUtilities.TryGetObjectOfType(out GameSession gameSession))
+            { gameSession.GameEnded -= OnGameEnded; }
         }
 
         #endregion
