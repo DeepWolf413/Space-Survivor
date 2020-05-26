@@ -38,7 +38,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay.Feedbacks
 
         public override void Play()
         {
-            if (flashCoroutine != null)
+            if (flashCoroutine != null || !gameObject.activeSelf)
             { return; }
 
             flashCoroutine = StartCoroutine(Flash());
