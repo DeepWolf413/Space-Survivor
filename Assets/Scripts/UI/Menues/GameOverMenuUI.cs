@@ -17,6 +17,9 @@ namespace DeepWolf.SpaceSurvivor.UI
         [SerializeField]
         private GameObject personalBestTimeLabel = null;
 
+        [SerializeField]
+        private AudioClip appearSfx = null;
+
         private void OnEnable()
         {
             if (!ObjectUtilities.TryGetObjectOfType(out GameSession gameSession))
@@ -27,6 +30,9 @@ namespace DeepWolf.SpaceSurvivor.UI
             
             if (gameSession.HasNewBestTime)
             { personalBestTimeLabel.SetActive(true); }
+
+            if (appearSfx != null)
+            { GameManager.SoundManager.PlayGlobalSound(appearSfx, ESoundType.Sfx); }
         }
 
         #region Button methods

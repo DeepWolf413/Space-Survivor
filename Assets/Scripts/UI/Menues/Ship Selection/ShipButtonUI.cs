@@ -1,5 +1,4 @@
-﻿using System;
-using DeepWolf.SpaceSurvivor.Data;
+﻿using DeepWolf.SpaceSurvivor.Data;
 using DeepWolf.SpaceSurvivor.Managers;
 using TMPro;
 using UnityEngine;
@@ -33,6 +32,9 @@ namespace DeepWolf.SpaceSurvivor.UI
         private TextMeshProUGUI priceLabel = null;
 
         [Header("[Button]")]
+        [SerializeField]
+        private AudioClip selectedSfx = null;
+        
         [SerializeField]
         private Image imageComponent = null;
 
@@ -122,7 +124,12 @@ namespace DeepWolf.SpaceSurvivor.UI
         public void OnPointerClick(PointerEventData eventData)
         {
             if (GameManager.SaveManager.IsShipOwned(representedShip))
-            { GameManager.SaveManager.SelectShip(representedShip); }
+            {
+                GameManager.SaveManager.SelectShip(representedShip);
+
+                if (selectedSfx != null)
+                { GameManager.SoundManager.PlayGlobalSound(selectedSfx, ESoundType.Sfx); }
+            }
             else
             {
                 PlayerSaveState saveState = GameManager.SaveManager.SaveState;
