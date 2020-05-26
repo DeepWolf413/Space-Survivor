@@ -51,6 +51,30 @@ PrefabInstance:
       propertyPath: shootDelay
       value: 1.25
       objectReference: {fileID: 0}
+    - target: {fileID: 1244400120485405724, guid: 7066622ab46216640bf304cb9485eea4,
+        type: 3}
+      propertyPath: spriteVariations.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 7324af328fd54ba4fb7806285f239f50,
+        type: 3}
+    - target: {fileID: 1244400120485405724, guid: 7066622ab46216640bf304cb9485eea4,
+        type: 3}
+      propertyPath: spriteVariations.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 749fe57a65b3aa043aceb3c0c8808741,
+        type: 3}
+    - target: {fileID: 1244400120485405724, guid: 7066622ab46216640bf304cb9485eea4,
+        type: 3}
+      propertyPath: spriteVariations.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 4e614b58d5b17864ba7681afe66809f3,
+        type: 3}
+    - target: {fileID: 1244400120485405724, guid: 7066622ab46216640bf304cb9485eea4,
+        type: 3}
+      propertyPath: spriteVariations.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 92719a2d70b27da468e6df9dcf433bae,
+        type: 3}
     - target: {fileID: 4357913513997015992, guid: 7066622ab46216640bf304cb9485eea4,
         type: 3}
       propertyPath: m_LocalPosition.x

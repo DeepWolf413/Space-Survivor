@@ -2,23 +2,30 @@
 
 namespace DeepWolf.SpaceSurvivor.Gameplay
 {
-    /// <summary>
-    /// Represents a ship's vitals (health, and shield).
-    /// This is responsible for controlling a ship's vitals.
-    /// <para>
-    /// As an example, if we say the ship has 50 shield and 100 health, then this script makes sure that only the shield is applied damage to
-    /// until the shield is depleted, after that the health is the one that will be applied damage to.
-    /// You could say it acts as a middle-man for the ship's actual vital components.
-    /// </para>
-    /// </summary>
-    [RequireComponent(typeof(Health), typeof(Shield))]
-    public class ShipVitalsController : MonoBehaviour
+    [RequireComponent(typeof(Health), typeof(Shield), typeof(Shooter))]
+    [SelectionBase]
+    public class Ship : MonoBehaviour
     {
         [SerializeField]
         private Health healthComponent = null;
 
         [SerializeField]
         private Shield shieldComponent = null;
+
+        #region Unity callbacks
+
+        private void OnValidate()
+        {
+            if (!healthComponent)
+            { healthComponent = GetComponent<Health>(); }
+            
+            if (!shieldComponent)
+            { shieldComponent = GetComponent<Shield>(); }
+        }
+
+        #endregion
+
+        #region Damage methods
 
         /// <summary>
         /// Applies damage to the <see cref="Shield"/> if it is not depleted,
@@ -39,5 +46,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
                 shieldComponent.ApplyDamage(damageAmount);
             }
         }
+
+        #endregion
     }
 }

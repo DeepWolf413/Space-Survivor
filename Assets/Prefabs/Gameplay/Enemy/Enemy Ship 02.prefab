@@ -36,6 +36,30 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 1b8eaa8f26bad9948916aacd6a88a8ad,
         type: 3}
+    - target: {fileID: 1244400120485405724, guid: 7066622ab46216640bf304cb9485eea4,
+        type: 3}
+      propertyPath: spriteVariations.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: d6400eebb11116a499c9c1dc3f7329e6,
+        type: 3}
+    - target: {fileID: 1244400120485405724, guid: 7066622ab46216640bf304cb9485eea4,
+        type: 3}
+      propertyPath: spriteVariations.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: d5b644a8f9421c44db192082f123052a,
+        type: 3}
+    - target: {fileID: 1244400120485405724, guid: 7066622ab46216640bf304cb9485eea4,
+        type: 3}
+      propertyPath: spriteVariations.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: bb5461038a2b91d47b25e694bfaf2ff8,
+        type: 3}
+    - target: {fileID: 1244400120485405724, guid: 7066622ab46216640bf304cb9485eea4,
+        type: 3}
+      propertyPath: spriteVariations.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1b8eaa8f26bad9948916aacd6a88a8ad,
+        type: 3}
     - target: {fileID: 4357913513997015992, guid: 7066622ab46216640bf304cb9485eea4,
         type: 3}
       propertyPath: m_LocalPosition.x

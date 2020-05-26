@@ -5567,8 +5567,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9041642232271611299}
   - component: {fileID: 9041642232271611303}
+  - component: {fileID: 4611050882136624001}
   - component: {fileID: 9041642232271611300}
-  - component: {fileID: 6650941861013105095}
   - component: {fileID: 9041642232271611297}
   - component: {fileID: 771543837080935149}
   - component: {fileID: 9041642232271611296}
@@ -5622,6 +5622,20 @@ MonoBehaviour:
   shipHealthComponent: {fileID: 9041642232271611297}
   shipShieldComponent: {fileID: 771543837080935149}
   spriteRenderer: {fileID: 9041642232271611308}
+--- !u!114 &4611050882136624001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9041642232271611311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d680a5d35a4bc247bf98259c7feb974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthComponent: {fileID: 9041642232271611297}
+  shieldComponent: {fileID: 771543837080935149}
 --- !u!114 &9041642232271611300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5636,20 +5650,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageToApply: 15
   tagToDamage: Enemy
---- !u!114 &6650941861013105095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9041642232271611311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db432660edb64f04bdc6b7a333fe7433, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthComponent: {fileID: 9041642232271611297}
-  shieldComponent: {fileID: 771543837080935149}
 --- !u!114 &9041642232271611297
 MonoBehaviour:
   m_ObjectHideFlags: 0

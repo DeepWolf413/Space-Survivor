@@ -46,6 +46,30 @@ PrefabInstance:
       propertyPath: shootPattern
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1244400120485405724, guid: 7066622ab46216640bf304cb9485eea4,
+        type: 3}
+      propertyPath: spriteVariations.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 0993d2fc3ea71d943b988d03008c673e,
+        type: 3}
+    - target: {fileID: 1244400120485405724, guid: 7066622ab46216640bf304cb9485eea4,
+        type: 3}
+      propertyPath: spriteVariations.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 2c27ab9aa2e493d46af8b97e5440ada4,
+        type: 3}
+    - target: {fileID: 1244400120485405724, guid: 7066622ab46216640bf304cb9485eea4,
+        type: 3}
+      propertyPath: spriteVariations.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 255234307b5357347847683bd352c063,
+        type: 3}
+    - target: {fileID: 1244400120485405724, guid: 7066622ab46216640bf304cb9485eea4,
+        type: 3}
+      propertyPath: spriteVariations.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: f9778b3fad2d2f440a0546dd28c3c889,
+        type: 3}
     - target: {fileID: 4357913513997015992, guid: 7066622ab46216640bf304cb9485eea4,
         type: 3}
       propertyPath: m_LocalPosition.x

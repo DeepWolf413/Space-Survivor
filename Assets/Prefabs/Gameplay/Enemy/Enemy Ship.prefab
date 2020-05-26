@@ -308,20 +308,19 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4357913513997015992}
-  - component: {fileID: 4357913513997015993}
   - component: {fileID: 1244400120485405724}
-  - component: {fileID: 8033408326480592784}
+  - component: {fileID: 7438361835409929181}
+  - component: {fileID: 4357913513997015993}
   - component: {fileID: 4357913513997015994}
   - component: {fileID: 3789859036839636418}
   - component: {fileID: 4357913513997015995}
   - component: {fileID: 6597644186389324730}
-  - component: {fileID: -8875748678304275035}
   - component: {fileID: -8155793029380553773}
   - component: {fileID: 4357913513997015996}
   - component: {fileID: 4357913513997015997}
   - component: {fileID: 4357913513997015998}
   m_Layer: 0
-  m_Name: Enemy Ship Template
+  m_Name: Enemy Ship
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -344,20 +343,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4357913513997015993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4357913513997015999}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 371ce3d1c01d22446a4715cfbd1b796a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageToApply: 10
-  tagToDamage: Player
 --- !u!114 &1244400120485405724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,7 +361,12 @@ MonoBehaviour:
   shootPattern: 1
   shootDelay: 2.5
   burstAmount: 3
---- !u!114 &8033408326480592784
+  spriteVariations:
+  - {fileID: 21300000, guid: 04f15f4b47868364984b4d1dfa903158, type: 3}
+  - {fileID: 21300000, guid: 9061060e1cc13714fb661fd1e7aa3683, type: 3}
+  - {fileID: 21300000, guid: 26be3b20ef89b9f45b44787a657826b2, type: 3}
+  - {fileID: 21300000, guid: c8e9f06d1e647a347b943a8a20c7e988, type: 3}
+--- !u!114 &7438361835409929181
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -385,11 +375,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 4357913513997015999}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db432660edb64f04bdc6b7a333fe7433, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d680a5d35a4bc247bf98259c7feb974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthComponent: {fileID: 4357913513997015994}
   shieldComponent: {fileID: 3789859036839636418}
+--- !u!114 &4357913513997015993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4357913513997015999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 371ce3d1c01d22446a4715cfbd1b796a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageToApply: 10
+  tagToDamage: Player
 --- !u!114 &4357913513997015994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,19 +459,6 @@ MonoBehaviour:
   predictTargetVelocity: 0
   offsetDistanceRange: {x: 4, y: 7}
   reachThreshold: 1
---- !u!114 &-8875748678304275035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4357913513997015999}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39a9e5cbbbf429443ad67c23ffa27ff5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprites: []
 --- !u!114 &-8155793029380553773
 MonoBehaviour:
   m_ObjectHideFlags: 0

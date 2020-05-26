@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 namespace DeepWolf.SpaceSurvivor.Gameplay
@@ -35,6 +34,10 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 
         private Coroutine shootCoroutine = null;
         
+        [Header("[Sprite Variation]")]
+        [SerializeField]
+        private Sprite[] spriteVariations = new Sprite[0];
+
         private void OnValidate()
         {
             if (!movementComponent)
@@ -49,6 +52,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 
         private void OnEnable()
         {
+            SetRndSpriteVariation();
             healthComponent.OnDeath += OnDeath;
 
             switch (shootPattern)
@@ -78,6 +82,14 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             }
         }
 
+        private void SetRndSpriteVariation()
+        {
+            if (TryGetComponent(out SpriteRenderer spriteRenderer))
+            { spriteRenderer.sprite = spriteVariations[Random.Range(0, spriteVariations.Length)]; }
+        }
+        
+        #region Shooting methods
+
         private IEnumerator ShootBurst()
         {
             yield return new WaitForSeconds(shootDelay);
@@ -96,6 +108,10 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             shootCoroutine = StartCoroutine(ShootSingle());
         }
 
+        #endregion
+
+        #region Event listeners
+
         private void OnDeath()
         {
             GameEvents.SignalEnemyShipDestroyed();
@@ -105,5 +121,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             
             shooterComponent.EndShoot();
         }
+
+        #endregion
     }
 }
