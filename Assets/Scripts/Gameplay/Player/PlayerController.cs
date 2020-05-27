@@ -63,12 +63,15 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             PlayerShipData shipData = saveManager.GetSelectedShip();
             
             spriteRenderer.sprite = shipData.Sprite;
-            shipHealthComponent.CurrentValue = shipData.Health;
+            shipHealthComponent.MaxValue = shipData.Health;
+            shipHealthComponent.ResetValue();
+
+            shipShieldComponent.MaxValue = shipData.Shield;
+            shipShieldComponent.ResetValue();
+            
             movementComponent.ThrusterPower = shipData.Speed;
             shipShieldComponent.ShieldRegenRate = shipData.ShieldRegenRate;
             shipShieldComponent.StartShieldRegenDelay = shipData.StartShieldRegenDelay;
-            
-            shipHealthComponent.ResetValue();
         }
 
         #region Event listeners
