@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using DeepWolf.SpaceSurvivor.Data;
+using DeepWolf.SpaceSurvivor.Managers;
+using UnityEngine;
 
 namespace DeepWolf.SpaceSurvivor.Gameplay
 {
@@ -12,6 +14,9 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         [SerializeField]
         private Shield shieldComponent = null;
 
+        [SerializeField]
+        private SpriteRenderer spriteRenderer = null;
+        
         #region Unity callbacks
 
         private void OnValidate()
@@ -21,10 +26,36 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             
             if (!shieldComponent)
             { shieldComponent = GetComponent<Shield>(); }
+            
+            if (!spriteRenderer)
+            { spriteRenderer = GetComponent<SpriteRenderer>(); }
         }
 
         #endregion
 
+        /// <summary>
+        /// Loads the data from the specified <paramref name="shipData"/>. This is not required, only if you want ship data to be loaded from a scriptable object.
+        /// </summary>
+        public void LoadData(PlayerShipData shipData)
+        {
+            SaveManager saveManager = GameManager.SaveManager;
+            if (!saveManager || !saveManager.GetSelectedShip())
+            { return; }
+            
+            spriteRenderer.sprite = shipData.Sprite;
+            healthComponent.MaxValue = shipData.Health;
+            healthComponent.ResetValue();
+
+            shieldComponent.MaxValue = shipData.Shield;
+            shieldComponent.ResetValue();
+
+            if (TryGetComponent(out ShipMovement shipMovement))
+            { shipMovement.ThrusterPower = shipData.Speed; }
+            
+            shieldComponent.ShieldRegenRate = shipData.ShieldRegenRate;
+            shieldComponent.StartShieldRegenDelay = shipData.StartShieldRegenDelay;
+        }
+        
         #region Damage methods
 
         /// <summary>

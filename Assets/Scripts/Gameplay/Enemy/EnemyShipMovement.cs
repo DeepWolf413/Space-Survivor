@@ -4,11 +4,8 @@ using Random = UnityEngine.Random;
 
 namespace DeepWolf.SpaceSurvivor.Gameplay
 {
-    public class EnemyShipMovement : MonoBehaviour
+    public class EnemyShipMovement : ShipMovement
     {
-        [SerializeField]
-        private float thrusterPower = 10.0f;
-
         [SerializeField]
         private Vector2 powerRange = new Vector2(10.0f, 20.0f);
 
@@ -24,13 +21,10 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         private Vector3 followOffset = Vector3.zero;
 
         private Rigidbody2D target = null;
-        private Rigidbody2D cachedRigidbody = null;
 
         public bool HasTarget => target;
 
         private Vector3 Destination => target.transform.position + followOffset;
-
-        private void Awake() => cachedRigidbody = GetComponent<Rigidbody2D>();
 
         private void Start()
         {
@@ -42,15 +36,26 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             FindRndOffsetFromTarget();
         }
 
-        private void FixedUpdate()
+        protected override void FixedUpdate()
         {
+            base.FixedUpdate();
             if (!HasTarget)
-            { return; }
+            {
+                if (moveShip)
+                { StopMove(); }
+
+                return;
+            }
 
             if (!IsWithinDestinationPos())
             { MoveTowardsTarget(); }
+            else
+            {
+                if (moveShip)
+                { StopMove(); }
+            }
             
-            LookTowardsTarget();
+            LookTowards(target.transform.position - transform.position);
         }
 
         private void MoveTowardsTarget()
@@ -71,10 +76,8 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             float minDistance = reachThreshold;
             float distance = Vector3.SqrMagnitude(Destination - transform.position);*/
             //float power = Mathf.Lerp(powerRange.x, powerRange.y, distance / maxDistance)
-            cachedRigidbody.AddForce(direction.normalized * thrusterPower);
+            StartMove(direction.x, direction.y);
         }
-
-        private void LookTowardsTarget() => transform.rotation = Quaternion.LookRotation(transform.forward, target.transform.position - transform.position);
 
         private bool IsWithinDestinationPos() => Vector3.SqrMagnitude(Destination - transform.position) <= reachThreshold * reachThreshold;
         

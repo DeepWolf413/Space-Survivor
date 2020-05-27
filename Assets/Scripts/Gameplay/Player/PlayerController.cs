@@ -14,34 +14,25 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         private PlayerShipMovement movementComponent = null;
 
         [SerializeField]
-        private Shooter shooterComponent = null;
+        private Ship shipComponent = null;
         
         [SerializeField]
         private Health shipHealthComponent = null;
-
-        [SerializeField]
-        private Shield shipShieldComponent = null;
-
-        [SerializeField]
-        private SpriteRenderer spriteRenderer = null;
 
         #region Unity callbacks
 
         private void OnValidate()
         {
+            if (!shipComponent)
+            { shipComponent = GetComponent<Ship>(); }
+
             if (!shipHealthComponent)
             { shipHealthComponent = GetComponent<Health>(); }
-            
-            if (!shipShieldComponent)
-            { shipShieldComponent = GetComponent<Shield>(); }
-
-            if (!spriteRenderer)
-            { spriteRenderer = GetComponent<SpriteRenderer>(); }
         }
 
-        private void Awake() => inputModule.Initialize(movementComponent, shooterComponent);
+        private void Awake() => inputModule.Initialize(movementComponent, GetComponentInChildren<Shooter>());
 
-        private void Start() => LoadShipData();
+        private void Start() => shipComponent.LoadData(GameManager.SaveManager.GetSelectedShip());
 
         private void OnEnable() => shipHealthComponent.OnDeath += OnShipDead;
         
@@ -50,29 +41,6 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         private void Update() => inputModule.ProcessInput();
 
         #endregion
-
-        /// <summary>
-        /// Loads the ship data from the selected player ship that is stored on the <see cref="GameManager"/>.
-        /// </summary>
-        private void LoadShipData()
-        {
-            SaveManager saveManager = GameManager.SaveManager;
-            if (!saveManager || !saveManager.GetSelectedShip())
-            { return; }
-
-            PlayerShipData shipData = saveManager.GetSelectedShip();
-            
-            spriteRenderer.sprite = shipData.Sprite;
-            shipHealthComponent.MaxValue = shipData.Health;
-            shipHealthComponent.ResetValue();
-
-            shipShieldComponent.MaxValue = shipData.Shield;
-            shipShieldComponent.ResetValue();
-            
-            movementComponent.ThrusterPower = shipData.Speed;
-            shipShieldComponent.ShieldRegenRate = shipData.ShieldRegenRate;
-            shipShieldComponent.StartShieldRegenDelay = shipData.StartShieldRegenDelay;
-        }
 
         #region Event listeners
         
