@@ -18,6 +18,11 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         [Header("[Damage]")]
         [SerializeField]
         private float damage = 2.0f;
+        
+        [Header("[Sfx]")]
+        [SerializeField]
+        private AudioClip shootSfx = null;
+
 
         #region Properties
 
@@ -29,6 +34,8 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 
         public float Damage => damage;
 
+        public AudioClip ShootSfx => shootSfx;
+        
         #endregion
     }
 }
