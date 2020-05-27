@@ -441,7 +441,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8accb3e15416776478720398de919f76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentWeapon: {fileID: 8080858113412363393}
+  startWeapon: {fileID: 11400000, guid: b0270dbd8baed4b479a4510c94385c10, type: 2}
+  weapons:
+  - {fileID: 8080858113412363393}
 --- !u!114 &6597644186389324730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -588,12 +590,12 @@ GameObject:
   - component: {fileID: 6651916869887617005}
   - component: {fileID: 6560198724835925292}
   m_Layer: 0
-  m_Name: Single Laser - Small
+  m_Name: SLaser - Small
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4572910377275280951
 Transform:
   m_ObjectHideFlags: 0
@@ -654,10 +656,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 8080858113412363393}
-  startClip: {fileID: 8300000, guid: 809eab1153d64a94a95c9ee0de67aeb8, type: 3}
-  endClip: {fileID: 0}
-  cycleClips:
-  - {fileID: 8300000, guid: 809eab1153d64a94a95c9ee0de67aeb8, type: 3}
 --- !u!1 &6323026875393519165
 GameObject:
   m_ObjectHideFlags: 0

@@ -5741,7 +5741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8accb3e15416776478720398de919f76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startWeapon: {fileID: 8764366883366709720}
+  startWeapon: {fileID: 11400000, guid: b0270dbd8baed4b479a4510c94385c10, type: 2}
   weapons:
   - {fileID: 8764366883366709720}
   - {fileID: 5762956125741451432}
