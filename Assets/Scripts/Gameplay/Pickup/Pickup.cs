@@ -7,28 +7,28 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
     {
         [Header("[General]")]
         [SerializeField, Tooltip("How many seconds it takes before the pickup despawns.")]
-        private float despawnDelay = 10.0f;
+        protected float despawnDelay = 10.0f;
 
         [SerializeField, Tooltip("How many seconds before the pickup despawns should the warning start.")]
-        private float despawnWarningTime = 3.0f;
+        protected float despawnWarningTime = 3.0f;
 
         [Header("[Bounce]")]
         [SerializeField]
-        private float scaleDuration = 0.5f;
+        protected float scaleDuration = 0.5f;
 
         [SerializeField]
-        private float scaleValue = 0.8f;
+        protected float scaleValue = 0.8f;
 
         [Header("[Despawning]")]
         [SerializeField]
-        private float fadeBlinkDuration = 0.3f;
+        protected float fadeBlinkDuration = 0.3f;
 
         [SerializeField]
-        private SpriteRenderer spriteRenderer;
+        protected SpriteRenderer spriteRenderer;
 
         #region Unity callbacks
 
-        private void OnValidate()
+        protected virtual void OnValidate()
         {
             if (!spriteRenderer)
             { spriteRenderer = GetComponentInChildren<SpriteRenderer>(); }
