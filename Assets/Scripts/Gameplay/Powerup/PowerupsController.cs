@@ -28,7 +28,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay.PowerupSystem
         /// arg1: The <see cref="Powerup"/> that was activated;
         /// </para>
         /// </summary>
-        public event Action<Powerup> PowerupActivated = delegate { };
+        public event Action<ActivePowerup> PowerupActivated = delegate { };
         
         /// <summary>
         /// Occurs when a <see cref="Powerup"/> gets deactivated.
@@ -36,7 +36,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay.PowerupSystem
         /// arg1: The <see cref="Powerup"/> that was deactivated;
         /// </para>
         /// </summary>
-        public event Action<Powerup> PowerupDeactivated = delegate { }; 
+        public event Action<ActivePowerup> PowerupDeactivated = delegate { }; 
 
         #endregion
 
@@ -71,17 +71,20 @@ namespace DeepWolf.SpaceSurvivor.Gameplay.PowerupSystem
             { DeactivatePowerup(activePowerupFound.Powerup); }
             
             // Activate the powerup we want activated.
-            activePowerups.Add(new ActivePowerup(powerupToActivate));
+            ActivePowerup activePowerup = new ActivePowerup(powerupToActivate);
+            activePowerups.Add(activePowerup);
             powerupToActivate.Activate(this);
-            PowerupActivated?.Invoke(powerupToActivate);
+            PowerupActivated?.Invoke(activePowerup);
         }
 
         private void DeactivatePowerup(Powerup powerupToDeactivate)
         {
+            ActivePowerup activePowerup = new ActivePowerup();
+            
             // Remove the powerup from the active powerups.
             for (int i = 0; i < ActivePowerupsCount; i++)
             {
-                ActivePowerup activePowerup = GetActivePowerup(i);
+                activePowerup = GetActivePowerup(i);
                 if (activePowerup.Powerup != powerupToDeactivate)
                 { continue; }
                 
@@ -90,8 +93,11 @@ namespace DeepWolf.SpaceSurvivor.Gameplay.PowerupSystem
             }
             
             // Deactivate the powerup.
-            powerupToDeactivate.Deactivate(this);
-            PowerupDeactivated?.Invoke(powerupToDeactivate);
+            if (activePowerup.Powerup != null)
+            {
+                powerupToDeactivate.Deactivate(this);
+                PowerupDeactivated?.Invoke(activePowerup);
+            }
         }
         
         private bool HasActivePowerupInGroup(EPowerupGroup group)
