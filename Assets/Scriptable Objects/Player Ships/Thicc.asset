@@ -15,10 +15,10 @@ MonoBehaviour:
   id: 2
   displayName: Thicc
   sprite: {fileID: 21300000, guid: 808d769dce112c14d8158ed97186c2c2, type: 3}
-  health: 200
+  health: 150
   speed: 15
-  shield: 500
+  shield: 200
   startShieldRegenDelay: 3
   shieldRegenRate: 400
   startOwned: 0
-  price: 2500
+  price: 5000
