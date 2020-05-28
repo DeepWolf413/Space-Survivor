@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   despawnDelay: 10
   despawnWarningTime: 7
+  pickupSfx: {fileID: 8300000, guid: 52768caf9dae7c6428646c5aa3271f7b, type: 3}
   scaleDuration: 0.5
   scaleValue: 0.8
   fadeBlinkDuration: 0.3

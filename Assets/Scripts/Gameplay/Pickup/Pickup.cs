@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using DeepWolf.SpaceSurvivor.Managers;
+using DG.Tweening;
 using UnityEngine;
 
 namespace DeepWolf.SpaceSurvivor.Gameplay
@@ -11,6 +12,9 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 
         [SerializeField, Tooltip("How many seconds before the pickup despawns should the warning start.")]
         protected float despawnWarningTime = 3.0f;
+
+        [SerializeField]
+        protected AudioClip pickupSfx = null;
 
         [Header("[Bounce]")]
         [SerializeField]
@@ -57,7 +61,13 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 
         #endregion
 
-        public virtual void Take(GameObject playerObject) => PoolManager.Despawn(gameObject);
+        public virtual void Take(GameObject playerObject)
+        {
+            if (pickupSfx != null)
+            { GameManager.SoundManager.PlayGlobalSound(pickupSfx, ESoundType.Sfx); }
+            
+            PoolManager.Despawn(gameObject);
+        }
 
         protected virtual void Despawn() => PoolManager.Despawn(gameObject);
 
