@@ -38,7 +38,10 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
                 { continue; }
 
                 if (currentWeapon != null)
-                { currentWeapon.gameObject.SetActive(false); }
+                {
+                    currentWeapon.EndUse();
+                    currentWeapon.gameObject.SetActive(false);
+                }
                 
                 currentWeapon = weapons[i];
                 currentWeapon.gameObject.SetActive(true);
