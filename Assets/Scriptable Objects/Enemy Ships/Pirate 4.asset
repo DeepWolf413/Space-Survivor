@@ -20,9 +20,9 @@ MonoBehaviour:
   shield: 10
   startShieldRegenDelay: 3
   shieldRegenRate: 400
-  shootPattern: 2
-  shootDelay: 2
-  burstAmount: 3
+  shootPattern: 1
+  shootDelay: 1.5
+  burstAmount: 2
   spriteVariations:
   - {fileID: 21300000, guid: 0993d2fc3ea71d943b988d03008c673e, type: 3}
   - {fileID: 21300000, guid: 2c27ab9aa2e493d46af8b97e5440ada4, type: 3}
