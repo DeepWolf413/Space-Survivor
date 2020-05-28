@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DeepWolf.SpaceSurvivor.Gameplay.PowerupSystem;
+using DeepWolf.SpaceSurvivor.Managers;
 using DeepWolf.SpaceSurvivor.Utilities;
 using UnityEngine;
 
@@ -30,6 +31,9 @@ namespace DeepWolf.SpaceSurvivor.UI
 
         private void OnDisable()
         {
+            if (GameManager.IsApplicationQuitting)
+            { return; }
+            
             if (!ObjectUtilities.TryGetWithTag("Player", out GameObject playerObject))
             { return; }
             
