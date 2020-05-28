@@ -54,7 +54,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
                 spawnedObject.gameObject.SetActive(true);
             }
             else
-            { spawnedObject = CreateObjectInPool(); }
+            { spawnedObject = CreateObjectInPool(position, rotation); }
 
             return spawnedObject;
         }
@@ -78,9 +78,9 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 
         #region Private methods
 
-        private GameObject CreateObjectInPool(bool startInactive = false)
+        private GameObject CreateObjectInPool(Vector3 position, Quaternion rotation, bool startInactive = false)
         {
-            GameObject spawnedObject = Instantiate(data.Prefab, Vector3.zero, Quaternion.identity);
+            GameObject spawnedObject = Instantiate(data.Prefab, position, rotation);
             spawnedObject.name = spawnedObject.name.Replace("(Clone)", string.Empty);
             spawnedObject.transform.SetParent(transform);
             pool.Add(spawnedObject);
@@ -94,7 +94,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         private void PreloadObjects()
         {
             for (int i = 0; i < data.PreloadAmount; i++)
-            { CreateObjectInPool(true); }
+            { CreateObjectInPool(Vector3.zero, Quaternion.identity, true); }
         }
 
         #endregion
