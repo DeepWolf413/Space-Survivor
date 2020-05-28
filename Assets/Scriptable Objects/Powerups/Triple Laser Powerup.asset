@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae8021db823d4ee3b96e42dd32bbf90f, type: 3}
+  m_Name: Triple Laser Powerup
+  m_EditorClassIdentifier: 
+  group: 0
+  sprite: {fileID: 21300000, guid: 8362ea2161693a547b97acd503c83c22, type: 3}
+  duration: 5
+  weapon: {fileID: 11400000, guid: f97f3f1472fe82f4ea50539d09ca17ca, type: 2}

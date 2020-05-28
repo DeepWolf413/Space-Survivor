@@ -5611,6 +5611,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9041642232271611299}
   - component: {fileID: 9041642232271611303}
+  - component: {fileID: 6350248773248951632}
   - component: {fileID: 4611050882136624001}
   - component: {fileID: 9041642232271611300}
   - component: {fileID: 9041642232271611297}
@@ -5664,6 +5665,18 @@ MonoBehaviour:
   movementComponent: {fileID: 9041642232271611302}
   shipComponent: {fileID: 4611050882136624001}
   shipHealthComponent: {fileID: 9041642232271611297}
+--- !u!114 &6350248773248951632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9041642232271611311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a75048506fffbda43a123d2ffafe4122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4611050882136624001
 MonoBehaviour:
   m_ObjectHideFlags: 0
