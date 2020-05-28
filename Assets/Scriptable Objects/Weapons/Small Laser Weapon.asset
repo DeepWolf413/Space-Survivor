@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac230594acc112a42938b150589ec8ae, type: 3}
-  m_Name: SLaser - Small
+  m_Name: Small Laser Weapon
   m_EditorClassIdentifier: 
   id: 0
-  displayName: SLaser - Small
+  displayName: Small Laser
   useRate: 0.12
   damage: 15
   shootSfx: {fileID: 8300000, guid: 809eab1153d64a94a95c9ee0de67aeb8, type: 3}

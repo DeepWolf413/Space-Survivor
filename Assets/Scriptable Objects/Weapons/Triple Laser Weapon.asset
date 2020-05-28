@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae8021db823d4ee3b96e42dd32bbf90f, type: 3}
-  m_Name: Radial Laser Powerup
+  m_Script: {fileID: 11500000, guid: ac230594acc112a42938b150589ec8ae, type: 3}
+  m_Name: Triple Laser Weapon
   m_EditorClassIdentifier: 
-  group: 0
-  sprite: {fileID: 21300000, guid: 0e80b26eed93ba0468305e884d3e6660, type: 3}
-  duration: 10
-  weapon: {fileID: 11400000, guid: b1a6673b5dd7b4e4f93ef446c9c92de1, type: 2}
+  id: 2
+  displayName: Triple Laser
+  useRate: 0.135
+  damage: 15
+  shootSfx: {fileID: 8300000, guid: 809eab1153d64a94a95c9ee0de67aeb8, type: 3}

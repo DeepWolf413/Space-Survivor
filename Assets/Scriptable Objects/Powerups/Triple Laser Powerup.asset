@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   group: 0
   sprite: {fileID: 21300000, guid: 8362ea2161693a547b97acd503c83c22, type: 3}
-  duration: 5
-  weapon: {fileID: 11400000, guid: f97f3f1472fe82f4ea50539d09ca17ca, type: 2}
+  duration: 10
+  weapon: {fileID: 11400000, guid: 0dfa350bd49620448851ba2be71e6968, type: 2}
