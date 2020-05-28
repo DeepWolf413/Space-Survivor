@@ -31,6 +31,10 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 
         #region Properties
 
+        public static System.Random WaveGenerationRng { get; private set; }
+        
+        public static System.Random PickupDropRng { get; private set; }
+
         public float TimeSinceGameStarted => Time.time - gameStartedTime;
 
         public float EndTime => gameEndedTime - gameStartedTime;
@@ -67,6 +71,10 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 
         private void Awake()
         {
+            Random.InitState(generationConfig.GlobalSeed);
+            WaveGenerationRng = new System.Random(generationConfig.WaveGenerationSeed);
+            PickupDropRng = new System.Random();
+
             pointsForSpawning = generationConfig.StartingPoints;
 
             // TODO: Add a countdown, then start the game after.
@@ -102,7 +110,6 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 
         private void StartGame()
         {
-            Random.InitState(generationConfig.Seed);
             gameStartedTime = Time.time;
             UpdateAsteroidEventTime();
             StartNextWave();

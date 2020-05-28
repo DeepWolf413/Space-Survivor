@@ -1,16 +1,18 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
-using Logger = DeepWolf.Logging.Logger;
 
 namespace DeepWolf.SpaceSurvivor.Gameplay
 {
     [CreateAssetMenu(menuName = "Game/Gameplay/New wave generation config")]
     public class WaveGenerationConfig : ScriptableObject
     {
+        [SerializeField, Tooltip("The seed for everything other than wave generation.")]
+        private int globalSeed = 4814833;
+        
         [SerializeField, Tooltip("The seed for generating waves.")]
-        private int seed = 4814833;
-
+        private int waveGenerationSeed = 4814833;
+        
         [SerializeField]
         private EnemyWaveInfo[] enemies = new EnemyWaveInfo[0];
 
@@ -43,9 +45,14 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         #region Properties
 
         /// <summary>
+        /// Gets the seed for generating everything else other than generating waves.
+        /// </summary>
+        public int GlobalSeed => globalSeed;
+
+        /// <summary>
         /// Gets the seed for generating waves.
         /// </summary>
-        public int Seed => seed;
+        public int WaveGenerationSeed => waveGenerationSeed;
 
         /// <summary>
         /// Gets the amount of points that is added per wave.
@@ -89,12 +96,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
                 { possibleEnemies.Add(enemies[i]); }
             }
 
-            if (possibleEnemies.Count > 0)
-            {
-                return enemies[Random.Range(0, possibleEnemies.Count)];
-            }
-            
-            return null;
+            return possibleEnemies.Count > 0 ? enemies[GameSession.WaveGenerationRng.Next(0, possibleEnemies.Count)] : null;
         }
         
         private EnemySpawnInfo[] GetEnemiesToIntroduce(int waveNumber)

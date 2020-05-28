@@ -286,6 +286,7 @@ GameObject:
   - component: {fileID: 4357913513997015995}
   - component: {fileID: 6597644186389324730}
   - component: {fileID: -8155793029380553773}
+  - component: {fileID: 2614068172613616068}
   - component: {fileID: 4357913513997015996}
   - component: {fileID: 4357913513997015997}
   - component: {fileID: 4357913513997015998}
@@ -440,6 +441,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amountToGive: 25
+  healthComponent: {fileID: 4357913513997015994}
+--- !u!114 &2614068172613616068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4357913513997015999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fc97ff482162c41b0b9401f5a64b8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleDrops:
+  - dropChance: 30
+    pickupToDrop: {fileID: 1012701475349119368, guid: aee8e973610283047be1e670956927fd,
+      type: 3}
+  - dropChance: 15
+    pickupToDrop: {fileID: 7359992494857925403, guid: 43689c0224f438848a9d2b2a2ccdc4e7,
+      type: 3}
+  - dropChance: 10
+    pickupToDrop: {fileID: 7359992494857925403, guid: 23f43092c8cb26d4eb81b466da314565,
+      type: 3}
+  - dropChance: 15
+    pickupToDrop: {fileID: 7359992494857925403, guid: 486feaa914f75c64fa384dd285f343e1,
+      type: 3}
   healthComponent: {fileID: 4357913513997015994}
 --- !u!50 &4357913513997015996
 Rigidbody2D:
