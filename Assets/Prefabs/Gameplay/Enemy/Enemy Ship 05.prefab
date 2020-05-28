@@ -246,6 +246,12 @@ PrefabInstance:
       propertyPath: shootPoints.Array.data[2]
       value: 
       objectReference: {fileID: 2342907715171479}
+    - target: {fileID: 7438361835409929181, guid: 7066622ab46216640bf304cb9485eea4,
+        type: 3}
+      propertyPath: defaultData
+      value: 
+      objectReference: {fileID: 11400000, guid: 8308794b6b9df1f4fbd537b1c64d0bf3,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7066622ab46216640bf304cb9485eea4, type: 3}
 --- !u!4 &6249243409855706091 stripped

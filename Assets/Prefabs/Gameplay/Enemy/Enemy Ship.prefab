@@ -355,17 +355,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d65443aa792730498a44f5e51c87c6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shipComponent: {fileID: 7438361835409929181}
   movementComponent: {fileID: 6597644186389324730}
   shooterComponent: {fileID: 4357913513997015995}
   healthComponent: {fileID: 4357913513997015994}
-  shootPattern: 1
-  shootDelay: 2.5
-  burstAmount: 3
-  spriteVariations:
-  - {fileID: 21300000, guid: 04f15f4b47868364984b4d1dfa903158, type: 3}
-  - {fileID: 21300000, guid: 9061060e1cc13714fb661fd1e7aa3683, type: 3}
-  - {fileID: 21300000, guid: 26be3b20ef89b9f45b44787a657826b2, type: 3}
-  - {fileID: 21300000, guid: c8e9f06d1e647a347b943a8a20c7e988, type: 3}
 --- !u!114 &7438361835409929181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,8 +371,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d680a5d35a4bc247bf98259c7feb974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultData: {fileID: 11400000, guid: d34fe691e7fe7254d924ec5992c2f3c9, type: 2}
   healthComponent: {fileID: 4357913513997015994}
   shieldComponent: {fileID: 3789859036839636418}
+  spriteRenderer: {fileID: 4357913513997015998}
 --- !u!114 &4357913513997015993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,6 +403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startValue: 100
   maxValue: 100
+  resetValueOnEnable: 0
   usePooling: 1
   damagedFeedback: {fileID: 1087230572784240270}
   dieFeedback: {fileID: 7364823805615568196}
@@ -425,6 +421,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startValue: 0
   maxValue: 0
+  resetValueOnEnable: 0
   shieldFx: {fileID: 1051618738193933880}
   damagedFeedback: {fileID: 8835622721177738237}
   depletedFeedback: {fileID: 0}

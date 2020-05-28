@@ -13,6 +13,9 @@ namespace DeepWolf.SpaceSurvivor
         [SerializeField]
         protected float maxValue = 100.0f;
 
+        [SerializeField]
+        private bool resetValueOnEnable = true;
+
         private float currentValue = 100.0f;
 
         #region Properties
@@ -23,7 +26,16 @@ namespace DeepWolf.SpaceSurvivor
         public float MaxValue
         {
             get => maxValue;
-            set => maxValue = value;
+            set
+            {
+                if (value < 0)
+                { maxValue = 0; }
+                else
+                { maxValue = value; }
+
+                if (CurrentValue > MaxValue)
+                { CurrentValue = MaxValue; }
+            }
         }
         
         /// <summary>
@@ -64,13 +76,17 @@ namespace DeepWolf.SpaceSurvivor
         public event Action<float, float> ValueChanged;
 
         #endregion
-        
+
         #region Unity callbacks
 
-        protected virtual void OnEnable() => currentValue = startValue;
+        protected virtual void OnEnable()
+        {
+            if (resetValueOnEnable)
+            { ResetValue(); }
+        }
 
         #endregion
-
+        
         #region Public methods
 
         public virtual void ResetValue() => CurrentValue = MaxValue;

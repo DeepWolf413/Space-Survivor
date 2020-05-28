@@ -5662,10 +5662,8 @@ MonoBehaviour:
     moveVerticalName: Vertical
     shootName: Shoot
   movementComponent: {fileID: 9041642232271611302}
-  shooterComponent: {fileID: 9041642232271611296}
+  shipComponent: {fileID: 4611050882136624001}
   shipHealthComponent: {fileID: 9041642232271611297}
-  shipShieldComponent: {fileID: 771543837080935149}
-  spriteRenderer: {fileID: 9041642232271611308}
 --- !u!114 &4611050882136624001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5678,8 +5676,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d680a5d35a4bc247bf98259c7feb974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultData: {fileID: 11400000, guid: fe935568fc577b9468fe5f0a2e7cfee8, type: 2}
   healthComponent: {fileID: 9041642232271611297}
   shieldComponent: {fileID: 771543837080935149}
+  spriteRenderer: {fileID: 9041642232271611308}
 --- !u!114 &9041642232271611300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5708,6 +5708,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startValue: 100
   maxValue: 100
+  resetValueOnEnable: 0
   usePooling: 0
   damagedFeedback: {fileID: 4485868621298186641}
   dieFeedback: {fileID: 5104270837205393342}
@@ -5725,6 +5726,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startValue: 100
   maxValue: 100
+  resetValueOnEnable: 0
   shieldFx: {fileID: 3427821756475409870}
   damagedFeedback: {fileID: 3190222699354682351}
   depletedFeedback: {fileID: 0}
@@ -5757,6 +5759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0129916a6331a5458192eae4fdbf0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thrusterPower: 20
   screenPadding: {x: 0.05, y: 0.1}
 --- !u!50 &9041642232271611298
 Rigidbody2D:

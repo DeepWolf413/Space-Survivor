@@ -140,16 +140,6 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 100
       objectReference: {fileID: 0}
-    - target: {fileID: 4357913513997015994, guid: 7066622ab46216640bf304cb9485eea4,
-        type: 3}
-      propertyPath: startValue
-      value: 75
-      objectReference: {fileID: 0}
-    - target: {fileID: 4357913513997015994, guid: 7066622ab46216640bf304cb9485eea4,
-        type: 3}
-      propertyPath: maxValue
-      value: 75
-      objectReference: {fileID: 0}
     - target: {fileID: 4357913513997015997, guid: 7066622ab46216640bf304cb9485eea4,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -181,6 +171,12 @@ PrefabInstance:
       propertyPath: projectilePool
       value: 
       objectReference: {fileID: 11400000, guid: 0d5311c94a255244aa6faf3292ff53c2,
+        type: 2}
+    - target: {fileID: 7438361835409929181, guid: 7066622ab46216640bf304cb9485eea4,
+        type: 3}
+      propertyPath: defaultData
+      value: 
+      objectReference: {fileID: 11400000, guid: 9ad0edaf29a638e4c803f8399bfa0484,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7066622ab46216640bf304cb9485eea4, type: 3}

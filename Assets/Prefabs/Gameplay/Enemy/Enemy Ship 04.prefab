@@ -135,16 +135,6 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 200
       objectReference: {fileID: 0}
-    - target: {fileID: 4357913513997015994, guid: 7066622ab46216640bf304cb9485eea4,
-        type: 3}
-      propertyPath: startValue
-      value: 125
-      objectReference: {fileID: 0}
-    - target: {fileID: 4357913513997015994, guid: 7066622ab46216640bf304cb9485eea4,
-        type: 3}
-      propertyPath: maxValue
-      value: 125
-      objectReference: {fileID: 0}
     - target: {fileID: 4357913513997015997, guid: 7066622ab46216640bf304cb9485eea4,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -161,5 +151,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Ship 04
       objectReference: {fileID: 0}
+    - target: {fileID: 7438361835409929181, guid: 7066622ab46216640bf304cb9485eea4,
+        type: 3}
+      propertyPath: defaultData
+      value: 
+      objectReference: {fileID: 11400000, guid: 67ddd8911c439a741b5d4d0a1a99eeb1,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7066622ab46216640bf304cb9485eea4, type: 3}

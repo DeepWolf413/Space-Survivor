@@ -1,17 +1,15 @@
 ﻿using System.Collections;
+using DeepWolf.SpaceSurvivor.Data;
+using DeepWolf.SpaceSurvivor.Enums;
 using UnityEngine;
 
 namespace DeepWolf.SpaceSurvivor.Gameplay
 {
     public class EnemyShipController : MonoBehaviour
     {
-        public enum EShootPattern
-        {
-            Continuous,
-            Burst,
-            Single
-        }
-        
+        [SerializeField]
+        private Ship shipComponent = null;
+
         [SerializeField]
         private EnemyShipMovement movementComponent = null;
 
@@ -21,25 +19,13 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         [SerializeField]
         private Health healthComponent = null;
 
-        [Header("[Shooting Pattern]")]
-        [SerializeField]
-        private EShootPattern shootPattern = EShootPattern.Single;
-        
-        [SerializeField]
-        private float shootDelay = 2.0f;
-
-        [Header("[Shooting Pattern - Burst]")]
-        [SerializeField]
-        private int burstAmount = 3;
-
         private Coroutine shootCoroutine = null;
-        
-        [Header("[Sprite Variation]")]
-        [SerializeField]
-        private Sprite[] spriteVariations = new Sprite[0];
 
         private void OnValidate()
         {
+            if (!shipComponent)
+            { shipComponent = GetComponent<Ship>(); }
+            
             if (!movementComponent)
             { movementComponent = GetComponent<EnemyShipMovement>(); }
 
@@ -55,7 +41,8 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             SetRndSpriteVariation();
             healthComponent.OnDeath += OnDeath;
 
-            switch (shootPattern)
+            EnemyShipData shipData = (EnemyShipData) shipComponent.Data;
+            switch (shipData.ShootPattern)
             {
                 case EShootPattern.Continuous:
                     shooterComponent.BeginShoot();
@@ -73,35 +60,41 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 
         private void Update()
         {
-            if (!movementComponent.HasTarget)
-            {
-                shooterComponent.EndShoot();
-                
-                if (shootCoroutine != null)
-                { StopCoroutine(shootCoroutine); }
-            }
+            if (movementComponent.HasTarget)
+            { return; }
+            
+            shooterComponent.EndShoot();
+            if (shootCoroutine != null)
+            { StopCoroutine(shootCoroutine); }
         }
 
         private void SetRndSpriteVariation()
         {
-            if (TryGetComponent(out SpriteRenderer spriteRenderer))
-            { spriteRenderer.sprite = spriteVariations[Random.Range(0, spriteVariations.Length)]; }
+            if (!TryGetComponent(out SpriteRenderer spriteRenderer))
+            { return; }
+            
+            EnemyShipData shipData = (EnemyShipData)shipComponent.Data;
+            spriteRenderer.sprite = shipData.GetRndSpriteVariation();
         }
         
         #region Shooting methods
 
         private IEnumerator ShootBurst()
         {
-            yield return new WaitForSeconds(shootDelay);
+            EnemyShipData shipData = (EnemyShipData)shipComponent.Data;
+            
+            yield return new WaitForSeconds(shipData.ShootDelay);
             shooterComponent.BeginShoot();
-            yield return new WaitForSeconds(shooterComponent.WeaponData.UseRate * burstAmount);
+            yield return new WaitForSeconds(shooterComponent.WeaponData.UseRate * shipData.BurstAmount);
             shooterComponent.EndShoot();
             shootCoroutine = StartCoroutine(ShootBurst());
         }
         
         private IEnumerator ShootSingle()
         {
-            yield return new WaitForSeconds(shootDelay);
+            EnemyShipData shipData = (EnemyShipData)shipComponent.Data;
+            
+            yield return new WaitForSeconds(shipData.ShootDelay);
             shooterComponent.BeginShoot();
             yield return new WaitForSeconds(shooterComponent.WeaponData.UseRate);
             shooterComponent.EndShoot();

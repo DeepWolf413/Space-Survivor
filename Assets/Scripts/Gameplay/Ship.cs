@@ -1,13 +1,17 @@
-﻿using DeepWolf.SpaceSurvivor.Data;
-using DeepWolf.SpaceSurvivor.Managers;
+﻿using System;
+using DeepWolf.SpaceSurvivor.Data;
 using UnityEngine;
 
 namespace DeepWolf.SpaceSurvivor.Gameplay
 {
+    [DefaultExecutionOrder(-5)]
     [RequireComponent(typeof(Health), typeof(Shield), typeof(Shooter))]
     [SelectionBase]
     public class Ship : MonoBehaviour
     {
+        [SerializeField]
+        private ShipData defaultData = null;
+        
         [SerializeField]
         private Health healthComponent = null;
 
@@ -16,6 +20,17 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 
         [SerializeField]
         private SpriteRenderer spriteRenderer = null;
+
+        private ShipData data = null;
+        
+        #region Properties
+
+        /// <summary>
+        /// Gets the <see cref="ShipData"/>.
+        /// </summary>
+        public ShipData Data => data;
+
+        #endregion
         
         #region Unity callbacks
 
@@ -31,21 +46,29 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             { spriteRenderer = GetComponent<SpriteRenderer>(); }
         }
 
+        private void Awake() => LoadData(defaultData);
+
+        private void OnEnable()
+        {
+            healthComponent.ResetValue();
+            shieldComponent.ResetValue();
+        }
+
         #endregion
 
         /// <summary>
         /// Loads the data from the specified <paramref name="shipData"/>. This is not required, only if you want ship data to be loaded from a scriptable object.
         /// </summary>
-        public void LoadData(PlayerShipData shipData)
+        public void LoadData(ShipData shipData)
         {
-            SaveManager saveManager = GameManager.SaveManager;
-            if (!saveManager || !saveManager.GetSelectedShip())
+            if (!shipData)
             { return; }
             
+            data = shipData;
             spriteRenderer.sprite = shipData.Sprite;
             healthComponent.MaxValue = shipData.Health;
             healthComponent.ResetValue();
-
+            
             shieldComponent.MaxValue = shipData.Shield;
             shieldComponent.ResetValue();
 
