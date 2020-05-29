@@ -49,6 +49,12 @@ namespace DeepWolf.SpaceSurvivor.UI
         }
         
         public void StartGame() => GameManager.SceneManager.LoadLevel();
+
+        public void ResetBestTime()
+        {
+            GameManager.SaveManager.SaveState.ResetBestTime();
+            RefreshBestTimeLabel();
+        }
         
         /// <summary>
         /// Quits the game.

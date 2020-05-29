@@ -112,6 +112,8 @@ namespace DeepWolf.SpaceSurvivor.Data
             return false;
         }
 
+        public void ResetBestTime() => bestTime = 0.0f;
+
         #endregion
         
         #region Ship methods
