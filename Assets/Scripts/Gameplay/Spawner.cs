@@ -15,7 +15,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         public void SpawnAsteroid()
         {
             PoolData asteroidPool = asteroidPools[Random.Range(0, asteroidPools.Length)];
-            Spawn(asteroidPool);
+            GameEvents.SignalAsteroidSpawned(Spawn(asteroidPool));
         }
         
         public GameObject Spawn(GameObject prefab, float offsetFromScreenEdge = 5.0f)

@@ -30,6 +30,15 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             Instance.GetPool(poolData).Spawn(position, rotation);
         
         /// <summary>
+        /// Spawns a gameobject from the specified pool.
+        /// </summary>
+        /// <param name="poolData">The pool to spawn from.</param>
+        /// <param name="parent">The transform to make the spawned object a child of.</param>
+        /// <returns>The gameobject that was spawned from the pool.</returns>
+        public static GameObject Spawn(PoolData poolData, Transform parent) =>
+            Instance.GetPool(poolData).Spawn(parent);
+        
+        /// <summary>
         /// Spawns a gameobject from the specified pool. This will use GetComponent() to get the wanted component.
         /// </summary>
         /// <param name="poolData">The pool to spawn from.</param>
@@ -39,6 +48,16 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         /// <returns>The component of type <typeparamref name="T"/> from the gameobject that was spawned from the pool.</returns>
         public static T Spawn<T>(PoolData poolData, Vector3 position, Quaternion rotation) where T : Object =>
             Instance.GetPool(poolData).Spawn(position, rotation).GetComponent<T>();
+        
+        /// <summary>
+        /// Spawns a gameobject from the specified pool. This will use GetComponent() to get the wanted component.
+        /// </summary>
+        /// <param name="poolData">The pool to spawn from.</param>
+        /// <param name="parent">The transform to make the spawned object a child of.</param>
+        /// <typeparam name="T">Which component to return.</typeparam>
+        /// <returns>The component of type <typeparamref name="T"/> from the gameobject that was spawned from the pool.</returns>
+        public static T Spawn<T>(PoolData poolData, Transform parent) where T : Object =>
+            Instance.GetPool(poolData).Spawn(parent).GetComponent<T>();
 
         /// <summary>
         /// Despawns the <paramref name="objectToDespawn"/>.

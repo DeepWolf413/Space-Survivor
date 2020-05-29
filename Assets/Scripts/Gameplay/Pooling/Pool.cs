@@ -49,12 +49,32 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
                 spawnedObject = objectFound;
                 
                 Transform objectTransform = spawnedObject.transform;
+                spawnedObject.transform.SetParent(transform);
                 objectTransform.position = position;
                 objectTransform.rotation = rotation;
                 spawnedObject.gameObject.SetActive(true);
             }
             else
             { spawnedObject = CreateObjectInPool(position, rotation); }
+
+            return spawnedObject;
+        }
+        
+        public GameObject Spawn(Transform parent)
+        {
+            GameObject spawnedObject = null;
+            
+            if (TryGetAvailableObject(out GameObject objectFound))
+            {
+                spawnedObject = objectFound;
+                
+                Transform objectTransform = spawnedObject.transform;
+                objectTransform.SetParent(parent);
+                objectTransform.localScale = Vector3.one;
+                spawnedObject.gameObject.SetActive(true);
+            }
+            else
+            { spawnedObject = CreateObjectInPool(parent); }
 
             return spawnedObject;
         }
@@ -83,6 +103,18 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             GameObject spawnedObject = Instantiate(data.Prefab, position, rotation);
             spawnedObject.name = spawnedObject.name.Replace("(Clone)", string.Empty);
             spawnedObject.transform.SetParent(transform);
+            pool.Add(spawnedObject);
+
+            if (startInactive)
+            { spawnedObject.SetActive(false); }
+
+            return spawnedObject;
+        }
+        
+        private GameObject CreateObjectInPool(Transform parent, bool startInactive = false)
+        {
+            GameObject spawnedObject = Instantiate(data.Prefab, parent);
+            spawnedObject.name = spawnedObject.name.Replace("(Clone)", string.Empty);
             pool.Add(spawnedObject);
 
             if (startInactive)
