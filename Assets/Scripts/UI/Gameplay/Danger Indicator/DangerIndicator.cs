@@ -1,5 +1,5 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DeepWolf.SpaceSurvivor.UI
 {
@@ -8,11 +8,12 @@ namespace DeepWolf.SpaceSurvivor.UI
         [SerializeField]
         private Transform target = null;
 
+        [FormerlySerializedAs("indicatorPieceOne")]
         [SerializeField]
-        private RectTransform indicatorPieceOne = null;
+        private RectTransform indicator = null;
 
-        [SerializeField, Tooltip("This extra piece is used for corner wrapping.")]
-        private RectTransform indicatorPieceTwo = null;
+        [SerializeField]
+        private Vector2 screenPadding = new Vector2(0.05f, 0.05f);
 
         private Vector3 targetPos = Vector3.zero;
         private Vector3 screenBounds = Vector3.zero;
@@ -24,7 +25,7 @@ namespace DeepWolf.SpaceSurvivor.UI
         private void Start()
         {
             cameraComponent = Camera.main;
-            screenBounds = cameraComponent.ViewportToWorldPoint(new Vector3(1.0f, 1.0f));
+            screenBounds = cameraComponent.ViewportToWorldPoint(new Vector3(1.0f - screenPadding.x, 1.0f - screenPadding.y));
         }
 
         private void LateUpdate()
@@ -40,20 +41,18 @@ namespace DeepWolf.SpaceSurvivor.UI
             
             targetPos = target.position;
             bool isTargetOutOfScreen = IsTargetOutOfScreen();
-            indicatorPieceOne.gameObject.SetActive(isTargetOutOfScreen);
+            indicator.gameObject.SetActive(isTargetOutOfScreen);
             
             if (isTargetOutOfScreen)
             { UpdatePosition(); }
-
-            //Debug.Log($"OOS: {IsTargetOutOfScreen()} | TargetPos: {targetPos} | ClampedPos: {GetClampedScreenPos()} | ScreenBounds: {screenBounds}");
         }
 
         private void UpdatePosition()
         {
-            indicatorPieceOne.position = GetClampedScreenPos();
+            indicator.position = GetClampedScreenPos();
 
             float zRotation = targetPos.x > screenBounds.x || targetPos.x < -screenBounds.x ? 90.0f : 0.0f;
-            indicatorPieceOne.rotation = Quaternion.Euler(0.0f, 0.0f, zRotation);
+            indicator.rotation = Quaternion.Euler(0.0f, 0.0f, zRotation);
         }
 
         private Vector3 GetClampedScreenPos()
@@ -65,9 +64,7 @@ namespace DeepWolf.SpaceSurvivor.UI
             return clampedPos;
         }
 
-        private bool IsTargetOutOfScreen()
-        {
-            return targetPos.x > screenBounds.x || targetPos.x < -screenBounds.x || targetPos.y > screenBounds.y || targetPos.y < -screenBounds.y;
-        }
+        private bool IsTargetOutOfScreen() => targetPos.x > screenBounds.x || targetPos.x < -screenBounds.x ||
+                                              targetPos.y > screenBounds.y || targetPos.y < -screenBounds.y;
     }
 }

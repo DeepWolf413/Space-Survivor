@@ -63,8 +63,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c0c5c74883961ef4db63b73c37075ba2, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 06f8fbd06de55aa40ae9f1f2c7cbc81e, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -136,8 +136,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c0c5c74883961ef4db63b73c37075ba2, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 06f8fbd06de55aa40ae9f1f2c7cbc81e, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 5808927855299923088}
   - component: {fileID: 5808927855299923089}
   m_Layer: 5
-  m_Name: Danger Indicator
+  m_Name: Asteroid Danger Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -197,5 +197,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  indicatorPieceOne: {fileID: 5808927853479000914}
-  indicatorPieceTwo: {fileID: 5808927854843528998}
+  indicator: {fileID: 5808927853479000914}
+  screenPadding: {x: 0.005, y: 0.005}

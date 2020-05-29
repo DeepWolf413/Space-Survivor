@@ -6738,8 +6738,10 @@ MonoBehaviour:
   playerHudUI: {fileID: 4042882373866787127}
   gameOverMenu: {fileID: 8008833239916726129}
   pauseMenu: {fileID: 6223524299831345840}
-  dangerIndicatorPrefab: {fileID: 5808927855299923089, guid: d8fd5448485a9cf449614b9106be9788,
-    type: 3}
+  enemyDangerIndicatorPool: {fileID: 11400000, guid: 14cb100e28d81284ba42a9a154a44beb,
+    type: 2}
+  asteroidDangerIndicatorPool: {fileID: 11400000, guid: 932f08929e889fb468067f31d7cec0b7,
+    type: 2}
 --- !u!223 &8008833240052236742
 Canvas:
   m_ObjectHideFlags: 0

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using DeepWolf.SpaceSurvivor.Gameplay;
+﻿using DeepWolf.SpaceSurvivor.Gameplay;
 using DeepWolf.SpaceSurvivor.Managers;
 using DeepWolf.SpaceSurvivor.Utilities;
 using UnityEngine;
@@ -19,9 +17,10 @@ namespace DeepWolf.SpaceSurvivor.UI
         private PauseMenuUI pauseMenu = null;
 
         [SerializeField]
-        private DangerIndicator dangerIndicatorPrefab = null;
-
-        private List<DangerIndicator> dangerIndicatorsPool = new List<DangerIndicator>();
+        private PoolData enemyDangerIndicatorPool = null;
+        
+        [SerializeField]
+        private PoolData asteroidDangerIndicatorPool = null;
 
         #region Unity callbacks
 
@@ -30,12 +29,19 @@ namespace DeepWolf.SpaceSurvivor.UI
             if (ObjectUtilities.TryGetObjectOfType(out GameSession gameSession))
             { gameSession.GameEnded += OnGameEnded; }
             
-            GameEvents.EnemyShipSpawned += GameEventsOnEnemyShipSpawned;
+            GameEvents.EnemyShipSpawned += OnEnemyShipSpawned;
+            GameEvents.AsteroidSpawned += OnAsteroidSpawned;
         }
 
         private void OnDisable()
         {
-            if (GameManager.IsApplicationQuitting || GameManager.SceneManager.IsChangingScene)
+            if (GameManager.IsApplicationQuitting)
+            { return; }
+            
+            GameEvents.EnemyShipSpawned -= OnEnemyShipSpawned;
+            GameEvents.AsteroidSpawned -= OnAsteroidSpawned;
+            
+            if (GameManager.SceneManager.IsChangingScene)
             { return; }
             
             if (ObjectUtilities.TryGetObjectOfType(out GameSession gameSession))
@@ -59,26 +65,15 @@ namespace DeepWolf.SpaceSurvivor.UI
 
         #region Danger Indicator methods
 
-        private void AddDangerIndicator(Transform target)
+        private void AddEnemyDangerIndicator(Transform target)
         {
-            DangerIndicator dangerIndicator = null;
-            
-            for (int i = 0; i < dangerIndicatorsPool.Count; i++)
-            {
-                if (dangerIndicatorsPool[i].gameObject.activeSelf)
-                { continue; }
-
-                dangerIndicator = dangerIndicatorsPool[i];
-                dangerIndicator.gameObject.SetActive(true);
-                break;
-            }
-
-            if (dangerIndicator == null)
-            {
-                dangerIndicator = Instantiate(dangerIndicatorPrefab, playerHudUI.transform);
-                dangerIndicatorsPool.Add(dangerIndicator);
-            }
-            
+            DangerIndicator dangerIndicator = PoolManager.Spawn<DangerIndicator>(enemyDangerIndicatorPool, playerHudUI.transform);
+            dangerIndicator.Target = target;
+        }
+        
+        private void AddAsteroidDangerIndicator(Transform target)
+        {
+            DangerIndicator dangerIndicator = PoolManager.Spawn<DangerIndicator>(asteroidDangerIndicatorPool, playerHudUI.transform);
             dangerIndicator.Target = target;
         }
 
@@ -86,7 +81,9 @@ namespace DeepWolf.SpaceSurvivor.UI
 
         #region Event listeners
 
-        private void GameEventsOnEnemyShipSpawned(GameObject shipSpawned) => AddDangerIndicator(shipSpawned.transform);
+        private void OnEnemyShipSpawned(GameObject shipSpawned) => AddEnemyDangerIndicator(shipSpawned.transform);
+        
+        private void OnAsteroidSpawned(GameObject asteroidSpawned) => AddAsteroidDangerIndicator(asteroidSpawned.transform);
         
         private void OnGameEnded()
         {

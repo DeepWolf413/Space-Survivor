@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a94417cf53440e280ee2146b96b4547, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
-  seed: 72472
+  globalSeed: 4814833
+  waveGenerationSeed: 4814833
   enemies: []
   pointsPerWave: 0
   startingPoints: 0
   maxPoints: 0
   nextWaveStartDelay: 5
   enemySpawnDelayRange: {x: 1, y: 2}
-  asteroidsEventSpawnDelayRange: {x: 2, y: 5}
+  asteroidsEventSpawnDelayRange: {x: 999, y: 999}
   asteroidSpawnDelay: 1
   asteroidSpawnCountRange: {x: 10, y: 15}
