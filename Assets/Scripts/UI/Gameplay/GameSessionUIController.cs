@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using DeepWolf.SpaceSurvivor.Gameplay;
 using DeepWolf.SpaceSurvivor.Managers;
 using DeepWolf.SpaceSurvivor.Utilities;
@@ -17,14 +18,21 @@ namespace DeepWolf.SpaceSurvivor.UI
         [SerializeField]
         private PauseMenuUI pauseMenu = null;
 
+        [SerializeField]
+        private DangerIndicator dangerIndicatorPrefab = null;
+
+        private List<DangerIndicator> dangerIndicatorsPool = new List<DangerIndicator>();
+
         #region Unity callbacks
 
         private void OnEnable()
         {
             if (ObjectUtilities.TryGetObjectOfType(out GameSession gameSession))
             { gameSession.GameEnded += OnGameEnded; }
+            
+            GameEvents.EnemyShipSpawned += GameEventsOnEnemyShipSpawned;
         }
-        
+
         private void OnDisable()
         {
             if (GameManager.IsApplicationQuitting || GameManager.SceneManager.IsChangingScene)
@@ -49,8 +57,37 @@ namespace DeepWolf.SpaceSurvivor.UI
             playerHudUI.gameObject.SetActive(!newActiveState);
         }
 
+        #region Danger Indicator methods
+
+        private void AddDangerIndicator(Transform target)
+        {
+            DangerIndicator dangerIndicator = null;
+            
+            for (int i = 0; i < dangerIndicatorsPool.Count; i++)
+            {
+                if (dangerIndicatorsPool[i].gameObject.activeSelf)
+                { continue; }
+
+                dangerIndicator = dangerIndicatorsPool[i];
+                dangerIndicator.gameObject.SetActive(true);
+                break;
+            }
+
+            if (dangerIndicator == null)
+            {
+                dangerIndicator = Instantiate(dangerIndicatorPrefab, playerHudUI.transform);
+                dangerIndicatorsPool.Add(dangerIndicator);
+            }
+            
+            dangerIndicator.Target = target;
+        }
+
+        #endregion
+
         #region Event listeners
 
+        private void GameEventsOnEnemyShipSpawned(GameObject shipSpawned) => AddDangerIndicator(shipSpawned.transform);
+        
         private void OnGameEnded()
         {
             playerHudUI.SetActive(false);
