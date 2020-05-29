@@ -14,6 +14,8 @@ namespace DeepWolf.SpaceSurvivor.Managers
 
         public static bool IsApplicationQuitting { get; private set; }
 
+        public static bool IsGamePaused => Mathf.Approximately(Time.timeScale, 0.0f);
+        
         #endregion
 
         #region Unity callbacks
@@ -29,5 +31,7 @@ namespace DeepWolf.SpaceSurvivor.Managers
         }
 
         #endregion
+
+        public static void PauseGame(bool pause) => Time.timeScale = pause ? 0.0f : 1.0f;
     }
 }

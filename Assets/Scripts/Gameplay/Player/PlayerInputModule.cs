@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DeepWolf.SpaceSurvivor.Managers;
+using UnityEngine;
 
 namespace DeepWolf.SpaceSurvivor.Gameplay
 {
@@ -32,7 +33,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 
         public void ProcessInput()
         {
-            if (!DetectInput)
+            if (!DetectInput || GameManager.IsGamePaused)
             { return; }
             
             if (movementComponent)

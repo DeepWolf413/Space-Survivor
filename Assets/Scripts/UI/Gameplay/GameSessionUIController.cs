@@ -1,4 +1,5 @@
-﻿using DeepWolf.SpaceSurvivor.Gameplay;
+﻿using System;
+using DeepWolf.SpaceSurvivor.Gameplay;
 using DeepWolf.SpaceSurvivor.Managers;
 using DeepWolf.SpaceSurvivor.Utilities;
 using UnityEngine;
@@ -12,6 +13,9 @@ namespace DeepWolf.SpaceSurvivor.UI
 
         [SerializeField]
         private GameOverMenuUI gameOverMenu = null;
+
+        [SerializeField]
+        private PauseMenuUI pauseMenu = null;
 
         #region Unity callbacks
 
@@ -30,7 +34,20 @@ namespace DeepWolf.SpaceSurvivor.UI
             { gameSession.GameEnded -= OnGameEnded; }
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.P) && !gameOverMenu.gameObject.activeSelf)
+            { TogglePauseMenu(); }
+        }
+
         #endregion
+
+        private void TogglePauseMenu()
+        {
+            bool newActiveState = !pauseMenu.gameObject.activeSelf;
+            pauseMenu.gameObject.SetActive(newActiveState);
+            playerHudUI.gameObject.SetActive(!newActiveState);
+        }
 
         #region Event listeners
 
@@ -38,6 +55,7 @@ namespace DeepWolf.SpaceSurvivor.UI
         {
             playerHudUI.SetActive(false);
             gameOverMenu.gameObject.SetActive(true);
+            pauseMenu.gameObject.SetActive(false);
         }
 
         #endregion
