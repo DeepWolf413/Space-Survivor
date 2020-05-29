@@ -2,6 +2,7 @@
 using DeepWolf.SpaceSurvivor.Utilities;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DeepWolf.SpaceSurvivor.UI
 {
@@ -16,8 +17,9 @@ namespace DeepWolf.SpaceSurvivor.UI
         [SerializeField]
         private RectTransform changeShipMenu = null;
 
+        [FormerlySerializedAs("optionsMenu")]
         [SerializeField]
-        private RectTransform optionsMenu = null;
+        private RectTransform creditsMenu = null;
 
         private void Start() => RefreshBestTimeLabel();
 
@@ -42,10 +44,10 @@ namespace DeepWolf.SpaceSurvivor.UI
             changeShipMenu.gameObject.SetActive(true);
         }
         
-        public void TransitionToOptionsMenu()
+        public void TransitionToCreditsMenu()
         {
             HideAllMenues();
-            optionsMenu.gameObject.SetActive(true);
+            creditsMenu.gameObject.SetActive(true);
         }
         
         public void StartGame() => GameManager.SceneManager.LoadLevel();
@@ -67,7 +69,7 @@ namespace DeepWolf.SpaceSurvivor.UI
         {
             mainMenu.gameObject.SetActive(false);
             changeShipMenu.gameObject.SetActive(false);
-            optionsMenu.gameObject.SetActive(false);
+            creditsMenu.gameObject.SetActive(false);
         }
     }
 }
