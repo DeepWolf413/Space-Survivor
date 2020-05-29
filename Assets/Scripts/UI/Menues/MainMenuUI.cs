@@ -17,7 +17,9 @@ namespace DeepWolf.SpaceSurvivor.UI
         [SerializeField]
         private RectTransform changeShipMenu = null;
 
-        [FormerlySerializedAs("optionsMenu")]
+        [SerializeField]
+        private RectTransform instructionsMenu = null;
+
         [SerializeField]
         private RectTransform creditsMenu = null;
 
@@ -42,6 +44,12 @@ namespace DeepWolf.SpaceSurvivor.UI
         {
             HideAllMenues();
             changeShipMenu.gameObject.SetActive(true);
+        }
+        
+        public void TransitionToInstructionsMenu()
+        {
+            HideAllMenues();
+            instructionsMenu.gameObject.SetActive(true);
         }
         
         public void TransitionToCreditsMenu()
@@ -69,6 +77,7 @@ namespace DeepWolf.SpaceSurvivor.UI
         {
             mainMenu.gameObject.SetActive(false);
             changeShipMenu.gameObject.SetActive(false);
+            instructionsMenu.gameObject.SetActive(false);
             creditsMenu.gameObject.SetActive(false);
         }
     }
