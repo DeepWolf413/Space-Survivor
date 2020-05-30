@@ -38,9 +38,11 @@ namespace DeepWolf.SpaceSurvivor.Gameplay.Feedbacks
 
         public override void Play()
         {
-            if (flashCoroutine != null || !gameObject.activeSelf)
+            if (flashCoroutine != null || !gameObject.activeInHierarchy)
             { return; }
 
+            // TODO: Fix Coroutine couldn't be started because the game object 'Damaged Feedback' is inactive!. We check above for it, but it doesn't seem to work.
+            // Now I just changed it to activeInHierarchy to see if it changes anything. Hopefully it fixes it.
             flashCoroutine = StartCoroutine(Flash());
         }
 
