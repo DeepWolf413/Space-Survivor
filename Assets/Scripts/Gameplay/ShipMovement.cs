@@ -6,9 +6,11 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
     {
         [SerializeField]
         protected float thrusterPower = 17.0f;
-        
+
         protected Vector3 moveInput = Vector3.zero;
         protected bool moveShip = false;
+        
+        protected float speedFactor = 1.0f;
         
         protected Rigidbody2D cachedRigidbody = null;
         protected Transform cachedTransform = null;
@@ -20,7 +22,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         /// </summary>
         public float ThrusterPower
         {
-            get => thrusterPower;
+            get => thrusterPower * speedFactor;
             set
             {
                 if (value < 0)
@@ -68,6 +70,8 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             cachedTransform.rotation = Quaternion.LookRotation(cachedTransform.forward, direction);
             //cachedTransform.rotation = Quaternion.RotateTowards(cachedTransform.rotation, Quaternion.LookRotation(cachedTransform.forward, direction), turnSpeed * Time.deltaTime);
         }
+        
+        public virtual void SetSpeedFactor(float newFactor) => speedFactor = newFactor;
 
         /// <summary>
         /// Moves the ship in the forward direction (local space).

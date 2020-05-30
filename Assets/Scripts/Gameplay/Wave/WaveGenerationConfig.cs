@@ -42,6 +42,20 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         [SerializeField]
         private Vector2Int asteroidSpawnCountRange = new Vector2Int(10, 15);
 
+        [Header("[Factors]")]
+        [SerializeField]
+        private float enemyHealthFactor = 1.0f;
+
+        [SerializeField]
+        private float enemySpeedFactor = 1.0f;
+
+        [SerializeField]
+        private float enemyDamageFactor = 1.0f;
+
+        [SerializeField]
+        private float rewardFactor = 1.0f;
+
+
         #region Properties
 
         /// <summary>
@@ -78,6 +92,26 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         /// Gets the asteroid spawn delay.
         /// </summary>
         public float AsteroidSpawnDelay => asteroidSpawnDelay;
+
+        /// <summary>
+        /// Gets the factor for enemy health.
+        /// </summary>
+        public float EnemyHealthFactor => enemyHealthFactor;
+
+        /// <summary>
+        /// Gets the factor for enemy speed.
+        /// </summary>
+        public float EnemySpeedFactor => enemySpeedFactor;
+
+        /// <summary>
+        /// Gets the factor for enemy damage.
+        /// </summary>
+        public float EnemyDamageFactor => enemyDamageFactor;
+
+        /// <summary>
+        /// Gets the reward factor.
+        /// </summary>
+        public float RewardFactor => rewardFactor;
 
         #endregion
 

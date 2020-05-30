@@ -40,15 +40,6 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         #region Events
 
         /// <summary>
-        /// Occurs when damage has been applied.
-        /// <para>
-        /// arg1: The new shield value;
-        /// arg2: The amount of damage that was applied;
-        /// </para>
-        /// </summary>
-        public event Action<float, float> DamageApplied;
-
-        /// <summary>
         /// Occurs when the shield has depleted.
         /// </summary>
         public event Action Depleted;
@@ -80,15 +71,12 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 
         #endregion
         
-        public void ApplyDamage(float amount)
+        public override void ApplyDamage(float amount)
         {
             if (IsDepleted)
             { return; }
-
-            float oldValue = CurrentValue;
-            CurrentValue -= amount;
-            DamageApplied?.Invoke(CurrentValue, oldValue);
             
+            base.ApplyDamage(amount);
             RestartRegenerationPreparation();
 
             if (IsDepleted)

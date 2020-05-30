@@ -8,7 +8,6 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 {
     public class GameSession : MonoBehaviour
     {
-        [SerializeField]
         private WaveGenerationConfig generationConfig = null;
 
         [SerializeField]
@@ -71,6 +70,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 
         private void Awake()
         {
+            generationConfig = GameManager.Instance.SelectedDifficulty;
             Random.InitState(generationConfig.GlobalSeed);
             WaveGenerationRng = new System.Random(generationConfig.WaveGenerationSeed);
             PickupDropRng = new System.Random();
@@ -104,7 +104,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 
         public void AddSpaceCreditsReward(int amount)
         {
-            SpaceCreditsCounter += amount;
+            SpaceCreditsCounter += Mathf.RoundToInt(amount * GameManager.Instance.SelectedDifficulty.RewardFactor);
             SpaceCreditsCounterChanged?.Invoke(SpaceCreditsCounter);
         }
 
@@ -130,7 +130,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             gameEndedTime = Time.time;
 
             GameManager.SaveManager.SaveState.AddSpaceCredits(SpaceCreditsCounter);
-            HasNewBestTime = GameManager.SaveManager.SaveState.SetBestTime(EndTime);
+            HasNewBestTime = GameManager.SaveManager.SetBestTime(EndTime);
             isGameInProgress = false;
             GameManager.SaveManager.SaveGame();
             GameEnded?.Invoke();

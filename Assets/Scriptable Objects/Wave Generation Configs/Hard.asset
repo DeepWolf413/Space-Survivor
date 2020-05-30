@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a94417cf53440e280ee2146b96b4547, type: 3}
-  m_Name: Easy
+  m_Name: Hard
   m_EditorClassIdentifier: 
   globalSeed: 4814833
   waveGenerationSeed: 4814833
@@ -35,15 +35,15 @@ MonoBehaviour:
     pointsRequiredToSpawn: 5
     introduceAtWave: 10
     introductionSpawnAmount: 2
-  pointsPerWave: 2
+  pointsPerWave: 3
   startingPoints: 3
   maxPoints: 40
-  nextWaveStartDelay: 6.5
-  enemySpawnDelayRange: {x: 1.5, y: 2.2}
-  asteroidsEventSpawnDelayRange: {x: 30, y: 40}
-  asteroidSpawnDelay: 1.2
-  asteroidSpawnCountRange: {x: 4, y: 6}
-  enemyHealthFactor: 0.5
-  enemySpeedFactor: 0.75
-  enemyDamageFactor: 0.5
-  rewardFactor: 0.75
+  nextWaveStartDelay: 5
+  enemySpawnDelayRange: {x: 1, y: 1.75}
+  asteroidsEventSpawnDelayRange: {x: 20, y: 25}
+  asteroidSpawnDelay: 1
+  asteroidSpawnCountRange: {x: 10, y: 15}
+  enemyHealthFactor: 1
+  enemySpeedFactor: 1.25
+  enemyDamageFactor: 1.25
+  rewardFactor: 1.5

@@ -1,6 +1,7 @@
 ﻿using System;
 using DeepWolf.SpaceSurvivor.Gameplay.Feedbacks;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DeepWolf.SpaceSurvivor.Gameplay
 {
@@ -12,8 +13,10 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         [SerializeField]
         private bool usePooling = false;
 
+        [Header("[Feedbacks]")]
+        [FormerlySerializedAs("damagedFeedback")]
         [SerializeField]
-        private FeedbackPlayer damagedFeedback = null;
+        private FeedbackPlayer damageAppliedFeedback = null;
         
         [SerializeField]
         private FeedbackPlayer dieFeedback = null;
@@ -28,15 +31,6 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         #endregion
 
         #region Events
-
-        /// <summary>
-        /// Occurs when damage has been applied.
-        /// <para>
-        /// arg1: The new health value;
-        /// arg2: The amount of damage that was applied;
-        /// </para>
-        /// </summary>
-        public event Action<float, float> DamageApplied;
 
         /// <summary>
         /// Occurs when healing has been applied.
@@ -56,21 +50,19 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         
         #region Public methods
 
-        public void ApplyDamage(float amount)
+        public override void ApplyDamage(float amount)
         {
             if (IsDead)
             { return; }
             
-            float oldHealth = CurrentValue;
-            CurrentValue -= amount;
-            DamageApplied?.Invoke(CurrentValue, oldHealth - CurrentValue);
+            base.ApplyDamage(amount);
 
             if (IsDead)
             { Die(); }
             else
             {
-                if (damagedFeedback)
-                { damagedFeedback.Play(); }
+                if (damageAppliedFeedback)
+                { damageAppliedFeedback.Play(); }
             }
         }
 

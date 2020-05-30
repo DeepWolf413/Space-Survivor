@@ -1,5 +1,6 @@
 ﻿using System;
 using DeepWolf.SpaceSurvivor.Gameplay.Feedbacks;
+using DeepWolf.SpaceSurvivor.Managers;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -14,8 +15,12 @@ namespace DeepWolf.SpaceSurvivor
         protected float maxValue = 100.0f;
 
         [SerializeField]
-        private bool resetValueOnEnable = true;
+        protected bool resetValueOnEnable = true;
 
+        private float vitalFactor = 1.0f;
+        
+        private float damageFactor = 1.0f;
+        
         private float currentValue = 100.0f;
 
         #region Properties
@@ -25,7 +30,7 @@ namespace DeepWolf.SpaceSurvivor
         /// </summary>
         public float MaxValue
         {
-            get => maxValue;
+            get => maxValue * vitalFactor;
             set
             {
                 if (value < 0)
@@ -74,6 +79,15 @@ namespace DeepWolf.SpaceSurvivor
         /// </para>
         /// </summary>
         public event Action<float, float> ValueChanged;
+        
+        /// <summary>
+        /// Occurs when damage has been applied.
+        /// <para>
+        /// arg1: The new vital value;
+        /// arg2: The amount of damage that was applied;
+        /// </para>
+        /// </summary>
+        public event Action<float, float> DamageApplied;
 
         #endregion
 
@@ -89,6 +103,17 @@ namespace DeepWolf.SpaceSurvivor
         
         #region Public methods
 
+        public virtual void SetVitalFactor(float newFactor) => vitalFactor = newFactor;
+        
+        public virtual void SetDamageFactor(float newFactor) => damageFactor = newFactor;
+
+        public virtual void ApplyDamage(float amount)
+        {
+            float oldValue = CurrentValue;
+            CurrentValue -= amount * damageFactor;
+            DamageApplied?.Invoke(CurrentValue, oldValue - CurrentValue);
+        }
+        
         public virtual void ResetValue() => CurrentValue = MaxValue;
 
         #endregion

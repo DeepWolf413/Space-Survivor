@@ -1,5 +1,5 @@
-﻿using System;
-using DeepWolf.SpaceSurvivor.Data;
+﻿using DeepWolf.SpaceSurvivor.Data;
+using DeepWolf.SpaceSurvivor.Managers;
 using UnityEngine;
 
 namespace DeepWolf.SpaceSurvivor.Gameplay
@@ -66,15 +66,25 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             
             data = shipData;
             spriteRenderer.sprite = shipData.Sprite;
+
+            if (gameObject.CompareTag("Enemy"))
+            { healthComponent.SetVitalFactor(GameManager.Instance.SelectedDifficulty.EnemyHealthFactor); }
+
+            if (gameObject.CompareTag("Player"))
+            { healthComponent.SetDamageFactor(GameManager.Instance.SelectedDifficulty.EnemyDamageFactor); }
+            
             healthComponent.MaxValue = shipData.Health;
             healthComponent.ResetValue();
+            
+            if (gameObject.CompareTag("Player"))
+            { shieldComponent.SetDamageFactor(GameManager.Instance.SelectedDifficulty.EnemyDamageFactor); }
             
             shieldComponent.MaxValue = shipData.Shield;
             shieldComponent.ResetValue();
 
             if (TryGetComponent(out ShipMovement shipMovement))
             { shipMovement.ThrusterPower = shipData.Speed; }
-            
+
             shieldComponent.ShieldRegenRate = shipData.ShieldRegenRate;
             shieldComponent.StartShieldRegenDelay = shipData.StartShieldRegenDelay;
         }
@@ -95,10 +105,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
                 shieldComponent.RestartRegenerationPreparation();
             }
             else
-            {
-                float damageAmount = shieldComponent.CurrentValue >= amount ? amount : shieldComponent.CurrentValue;
-                shieldComponent.ApplyDamage(damageAmount);
-            }
+            { shieldComponent.ApplyDamage(amount); }
         }
 
         #endregion

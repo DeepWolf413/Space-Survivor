@@ -1,10 +1,11 @@
 ﻿using System;
 using System.IO;
 using DeepWolf.SpaceSurvivor.Data;
+using DeepWolf.SpaceSurvivor.Managers;
 using UnityEngine;
 using Logger = DeepWolf.Logging.Logger;
 
-namespace DeepWolf.SpaceSurvivor.Managers
+namespace DeepWolf.SpaceSurvivor.SaveSystem
 {
     public class SaveManager : MonoSingleton<SaveManager>
     {
@@ -66,6 +67,17 @@ namespace DeepWolf.SpaceSurvivor.Managers
                 SaveState = new PlayerSaveState();
                 SetupSaveGame();
             }
+        }
+
+        public bool SetBestTime(float time) => SaveState.SetBestTime(GameManager.Instance.SelectedDifficulty.name, time);
+
+        public float GetBestTime() => SaveState.GetBestTimeForDifficulty(GameManager.Instance.SelectedDifficulty.name);
+
+        public void ResetSave()
+        {
+            SaveState = new PlayerSaveState();
+            SetupSaveGame();
+            SaveGame();
         }
 
         private PlayerShipData GetShipById(int id)

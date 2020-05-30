@@ -1,4 +1,5 @@
 ﻿using System;
+using DeepWolf.SpaceSurvivor.Managers;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -34,6 +35,8 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             
             target = playerObject.GetComponent<Rigidbody2D>();
             FindRndOffsetFromTarget();
+            
+            SetSpeedFactor(GameManager.Instance.SelectedDifficulty.EnemySpeedFactor);
         }
 
         protected override void FixedUpdate()

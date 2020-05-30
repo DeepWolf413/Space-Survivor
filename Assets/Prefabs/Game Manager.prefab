@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eec7acb651814d46aaf75093d0e33cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultDifficulty: {fileID: 11400000, guid: 586235b3e16a364459bcc9f52efee4b4, type: 2}
 --- !u!1 &3899127204836401726
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DeepWolf.SpaceSurvivor.Data
+namespace DeepWolf.SpaceSurvivor.SaveSystem
 {
     [System.Serializable]
     public class PlayerSaveState
@@ -12,18 +12,18 @@ namespace DeepWolf.SpaceSurvivor.Data
         /// </summary>
         [SerializeField]
         private int spaceCredits;
-        
+
         /// <summary>
         /// The ships the player owns.
         /// </summary>
         [SerializeField]
         private List<int> shipsOwned;
-        
+
         /// <summary>
         /// The player's best survived time.
         /// </summary>
         [SerializeField]
-        private float bestTime;
+        private List<BestTimeEntry> bestTimes;
 
         /// <summary>
         /// The ID of the selected ship.
@@ -40,18 +40,13 @@ namespace DeepWolf.SpaceSurvivor.Data
         {
             SpaceCredits = 0;
             shipsOwned = new List<int>();
-            bestTime = 0.0f;
+            bestTimes = new List<BestTimeEntry>();
             selectedShipId = -1;
         }
 
         #endregion
-        
-        #region Properties
 
-        /// <summary>
-        /// Gets the player's best survived time.
-        /// </summary>
-        public float BestTime => bestTime;
+        #region Properties
 
         /// <summary>
         /// Gets or sets(private) the amount of space credits the player has.
@@ -94,28 +89,53 @@ namespace DeepWolf.SpaceSurvivor.Data
         public void AddSpaceCredits(int amount) => SpaceCredits += amount;
 
         public void RemoveSpaceCredits(int amount) => SpaceCredits -= amount;
-        
+
         public bool CanAfford(int price) => SpaceCredits >= price;
 
         #endregion
 
         #region Best time methods
 
-        public bool SetBestTime(float time)
+        public float GetBestTimeForDifficulty(string difficultyName)
         {
-            if (time > BestTime)
+            for (int i = 0; i < bestTimes.Count; i++)
             {
-                bestTime = time;
+                if (bestTimes[i].DifficultyName == difficultyName)
+                { return bestTimes[i].Time; }
+            }
+
+            return 0.0f;
+        }
+
+        public bool SetBestTime(string difficultyName, float time)
+        {
+            BestTimeEntry bestTimeEntry = null;
+            if (TryGetBestTimeEntry(difficultyName, out bestTimeEntry))
+            { return bestTimeEntry.SetTime(time); }
+            
+            bestTimeEntry = new BestTimeEntry(difficultyName, time);
+            bestTimes.Add(bestTimeEntry);
+            return true;
+
+        }
+
+        private bool TryGetBestTimeEntry(string difficultyName, out BestTimeEntry bestTimeEntry)
+        {
+            for (int i = 0; i < bestTimes.Count; i++)
+            {
+                if (bestTimes[i].DifficultyName != difficultyName)
+                { continue; }
+                
+                bestTimeEntry = bestTimes[i];
                 return true;
             }
 
+            bestTimeEntry = null;
             return false;
         }
-
-        public void ResetBestTime() => bestTime = 0.0f;
-
-        #endregion
         
+        #endregion
+
         #region Ship methods
 
         public void AddShipAsOwned(int shipId) => shipsOwned.Add(shipId);
@@ -125,7 +145,9 @@ namespace DeepWolf.SpaceSurvivor.Data
             for (int i = 0; i < shipsOwned.Count; i++)
             {
                 if (shipsOwned[i] == shipId)
-                { return true; }
+                {
+                    return true;
+                }
             }
 
             return false;
@@ -139,7 +161,9 @@ namespace DeepWolf.SpaceSurvivor.Data
         public (bool, string) SelectShip(int shipId)
         {
             if (!IsShipOwned(shipId))
-            { return (false, $"Ship with id '{shipId.ToString()}' is not owned."); }
+            {
+                return (false, $"Ship with id '{shipId.ToString()}' is not owned.");
+            }
 
             selectedShipId = shipId;
             return (true, string.Empty);
