@@ -120,6 +120,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2888725035219540649, guid: 6fc3515f30f3d1a49b7e5523feff2b56,
+        type: 3}
+      propertyPath: strength.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2888725035219540649, guid: 6fc3515f30f3d1a49b7e5523feff2b56,
+        type: 3}
+      propertyPath: strength.x
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 4030750645679633811, guid: 6fc3515f30f3d1a49b7e5523feff2b56,
         type: 3}
       propertyPath: amountToGive
