@@ -40,7 +40,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             }
 
             if (potentialDrops.Count > 0)
-            { Instantiate(potentialDrops[GameSession.PickupDropRng.Next(0, potentialDrops.Count)], transform.position, Quaternion.identity); }
+            { GameEvents.SignalPickupSpawned(Instantiate(potentialDrops[GameSession.PickupDropRng.Next(0, potentialDrops.Count)], transform.position, Quaternion.identity)); }
         }
 
         #region Event listeners

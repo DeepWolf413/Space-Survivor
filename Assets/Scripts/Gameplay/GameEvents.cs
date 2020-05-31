@@ -14,6 +14,10 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         public static event Action AsteroidsEventSpawned = delegate { };
 
         public static event Action<GameObject> AsteroidSpawned = delegate { };
+        
+        public static event Action<Pickup> PickupSpawned = delegate { };
+        
+        public static event Action<Pickup> PickupDespawned = delegate { };
 
         public static void SignalEnemyShipSpawned(GameObject ship) => EnemyShipSpawned?.Invoke(ship);
         
@@ -24,5 +28,9 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         public static void SignalAsteroidsEventSpawned() => AsteroidsEventSpawned?.Invoke();
 
         public static void SignalAsteroidSpawned(GameObject asteroid) => AsteroidSpawned?.Invoke(asteroid);
+        
+        public static void SignalPickupSpawned(Pickup pickup) => PickupSpawned?.Invoke(pickup);
+        
+        public static void SignalPickupDespawned(Pickup pickup) => PickupDespawned?.Invoke(pickup);
     }
 }

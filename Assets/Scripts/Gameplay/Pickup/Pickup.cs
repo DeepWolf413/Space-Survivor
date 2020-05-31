@@ -47,10 +47,14 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
         
         protected virtual void OnDisable()
         {
+            if (GameManager.IsApplicationQuitting || GameManager.SceneManager.IsChangingScene)
+            { return; }
+            
             CancelInvoke(nameof(Despawn));
             CancelInvoke(nameof(StartDespawnWarning));
             StopDespawnWarning();
             DOTween.Kill(transform);
+            GameEvents.SignalPickupDespawned(this);
         }
 
         protected void OnTriggerEnter2D(Collider2D other)
