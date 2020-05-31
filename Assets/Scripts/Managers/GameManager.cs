@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace DeepWolf.SpaceSurvivor.Managers
 {
+    [DefaultExecutionOrder(-1000)]
     public class GameManager : MonoSingleton<GameManager>
     {
         [SerializeField]
