@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Logger = DeepWolf.Logging.Logger;
 
 namespace DeepWolf.SpaceSurvivor.Gameplay
@@ -14,6 +13,8 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
 
         private WeaponBehaviour currentWeapon = null;
 
+        private bool isShooting = false;
+        
         public WeaponData WeaponData => currentWeapon.Data;
 
         private void OnValidate()
@@ -45,6 +46,9 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
                 
                 currentWeapon = weapons[i];
                 currentWeapon.gameObject.SetActive(true);
+
+                if (isShooting)
+                { currentWeapon.BeginUse(); }
                 return;
             }
         }
@@ -55,6 +59,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             { return; }
             
             currentWeapon.BeginUse();
+            isShooting = true;
         }
 
         public void EndShoot()
@@ -63,6 +68,7 @@ namespace DeepWolf.SpaceSurvivor.Gameplay
             { return; }
             
             currentWeapon.EndUse();
+            isShooting = false;
         }
     }
 }
