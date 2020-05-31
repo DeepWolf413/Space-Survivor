@@ -33,7 +33,13 @@ namespace DeepWolf.SpaceSurvivor.UI
             { HighlightButton(); }
         }
 
-        private void OnDisable() => GameManager.Instance.DifficultyChanged -= OnDifficultyChanged;
+        private void OnDisable()
+        {
+            if (GameManager.IsApplicationQuitting)
+            { return; }
+            
+            GameManager.Instance.DifficultyChanged -= OnDifficultyChanged;
+        }
 
         private void HighlightButton()
         {

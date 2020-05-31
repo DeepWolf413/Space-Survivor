@@ -486,10 +486,20 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4898019053684277638, guid: 4e9d580dee1d53c48a1ec2d03e77012d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5395837827035208129, guid: 4e9d580dee1d53c48a1ec2d03e77012d,
         type: 3}
       propertyPath: m_Name
       value: '[Main Menu Master Canvas]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5395837827035208129, guid: 4e9d580dee1d53c48a1ec2d03e77012d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5395837827035208130, guid: 4e9d580dee1d53c48a1ec2d03e77012d,
         type: 3}
@@ -631,6 +641,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6492268190516737258, guid: 4e9d580dee1d53c48a1ec2d03e77012d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -41.59999
+      objectReference: {fileID: 0}
     - target: {fileID: 7115554164442563911, guid: 4e9d580dee1d53c48a1ec2d03e77012d,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -655,6 +670,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8851069941461657214, guid: 4e9d580dee1d53c48a1ec2d03e77012d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e9d580dee1d53c48a1ec2d03e77012d, type: 3}
